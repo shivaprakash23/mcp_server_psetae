@@ -28,7 +28,7 @@ from typing import Dict, List, Optional, Any
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from server.config import *
+from config.config import *
 
 # Initialize logging
 logging.basicConfig(

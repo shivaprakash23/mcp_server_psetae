@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from server.config import SERVER_PORT, SERVER_HOST
+from config.config import SERVER_PORT, SERVER_HOST
 
 def main():
     """Main function to start the MCP server"""
