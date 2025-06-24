@@ -220,11 +220,16 @@ class AdminAgent:
         inference_agent = self.create_worker_agent("sentinel1-inference-agent", "sentinel1-inference")
         logger.info(f"Sentinel-1 Inference Agent created with token: {inference_agent['token']}")
         
+        # Create Sentinel-1 tile coverage agent
+        coverage_agent = self.create_worker_agent("sentinel1-tile-coverage-agent", "sentinel1-tile-coverage")
+        logger.info(f"Sentinel-1 Tile Coverage Agent created with token: {coverage_agent['token']}")
+        
         # Return all agent information
         return {
             "data_agent": data_agent,
             "training_agent": training_agent,
-            "inference_agent": inference_agent
+            "inference_agent": inference_agent,
+            "coverage_agent": coverage_agent
         }
 
 def main():
@@ -256,6 +261,7 @@ def main():
             print(f"Sentinel-1 Data Extraction Agent: {agents['data_agent']['token']}")
             print(f"Sentinel-1 Model Training Agent: {agents['training_agent']['token']}")
             print(f"Sentinel-1 Inference Agent: {agents['inference_agent']['token']}")
+            print(f"Sentinel-1 Tile Coverage Agent: {agents['coverage_agent']['token']}")
             print("\n" + "="*50)
         
         print("\nAdmin Agent initialized successfully!")

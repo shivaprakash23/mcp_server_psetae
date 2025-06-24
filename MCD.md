@@ -19,15 +19,17 @@ PSETAE is a crop classification system using satellite imagery with deep learnin
   1. **Sentinel1DataExtractionAgent**: Handles GEE data retrieval and processing for Sentinel-1
   2. **Sentinel1ModelTrainingAgent**: Manages Sentinel-1 model training and hyperparameter tuning
   3. **Sentinel1InferenceAgent**: Applies Sentinel-1 models to new data
+  4. **Sentinel1TileCoverageAgent**: Analyzes satellite tile coverage for study areas using Sentinel-1 data
 
 ## Workflow Definition
 
 ### End-to-End Process
 1. **Project Initialization**: Define study area, time period for Sentinel-1 data
 2. **Data Preparation**: Convert shapefiles to GeoJSON format
-3. **Data Extraction**: Retrieve and process Sentinel-1 imagery using GEE
-4. **Model Training**: Train Sentinel-1 PSETAE model with specified parameters
-5. **Inference**: Apply model to new data
+3. **Tile Coverage Analysis**: Analyze satellite tile coverage for study areas
+4. **Data Extraction**: Retrieve and process Sentinel-1 imagery using GEE
+5. **Model Training**: Train Sentinel-1 PSETAE model with specified parameters
+6. **Inference**: Apply model to new data
 
 ### Agent Interactions
 - Agents communicate through the MCP server
@@ -73,6 +75,13 @@ mcp_server_psetae/
 - Load trained Sentinel-1 models
 - Apply models to new data
 - Format and store prediction results
+- Calculate performance metrics
+
+#### Sentinel1TileCoverageAgent
+- Analyze satellite tile coverage for study areas
+- Determine optimal tiles for data extraction
+- Generate coverage reports and visualizations
+- Identify gaps in coverage
 - Calculate performance metrics
 
 ## Execution Instructions

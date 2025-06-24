@@ -25,13 +25,15 @@ ADMIN_AGENT_ID = "admin-agent"
 AGENT_TYPES = {
     "sentinel1-data-extraction": "Sentinel1DataExtractionAgent",
     "sentinel1-model-training": "Sentinel1ModelTrainingAgent",
-    "sentinel1-inference": "Sentinel1InferenceAgent"
+    "sentinel1-inference": "Sentinel1InferenceAgent",
+    "sentinel1-tile-coverage": "Sentinel1TileCoverageAgent"
 }
 
 # PSETAE paths
 PSETAE_BASE_DIR = os.path.join(BASE_DIR.parent, "psetae_github_publish")
 DATA_EXTRACTION_DIR = os.path.join(PSETAE_BASE_DIR, "data_extraction", "sentinel")
-SENTINEL_DIR = os.path.join(PSETAE_BASE_DIR, "sentinel_psetae")
+SENTINEL_DIR = os.path.join(PSETAE_BASE_DIR, "sentinel_psetae", "single_sensor")
+TILES_INFO_DIR = os.path.join(PSETAE_BASE_DIR, "satellite_tiles_information_extraction")
 
 # Sentinel-1 specific settings
 SENTINEL1_BANDS = ["VV", "VH"]
