@@ -8,6 +8,7 @@ PSETAE is a crop classification system using satellite imagery from multiple sou
 
 ### Existing PSETAE Components
 - **Data Extraction**: GEE-based scripts for HLS and Sentinel data
+  - Requires GeoJSON input files for processing
 - **Model Training**: PSETAE implementations for different satellite sources
 - **Inference**: Prediction scripts for trained models
 - **Tile Analysis**: Coverage analysis for satellite data
@@ -25,10 +26,11 @@ PSETAE is a crop classification system using satellite imagery from multiple sou
 
 ### End-to-End Process
 1. **Project Initialization**: Define study area, time period, and data sources
-2. **Data Extraction**: Retrieve and process satellite imagery
-3. **Model Training**: Train PSETAE models with specified parameters
-4. **Inference**: Apply models to new data
-5. **Coverage Analysis**: Analyze satellite coverage for study areas
+2. **Data Preparation**: Convert shapefiles to GeoJSON format
+3. **Data Extraction**: Retrieve and process satellite imagery using GEE
+4. **Model Training**: Train PSETAE models with specified parameters
+5. **Inference**: Apply models to new data
+6. **Coverage Analysis**: Analyze satellite coverage for study areas
 
 ### Agent Interactions
 - Agents communicate through the MCP server
@@ -44,6 +46,7 @@ mcp_server_psetae/
 ├── server/                  # MCP server implementation
 ├── agents/                  # Agent implementations
 ├── utils/                   # Utility functions
+│   ├── shapefile_converter.py  # Shapefile to GeoJSON converter
 ├── config/                  # Configuration files
 └── tests/                   # Test scripts
 ```
@@ -58,6 +61,7 @@ mcp_server_psetae/
 
 #### DataExtractionAgent
 - Authenticate with GEE
+- Convert shapefiles (.shp) to GeoJSON format for GEE compatibility
 - Execute data extraction scripts with appropriate parameters
 - Process and normalize satellite imagery
 - Store data in standardized format
