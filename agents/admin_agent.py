@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Admin Agent for PSETAE MCP Server
-This script implements the Admin Agent that orchestrates the PSETAE workflow.
+Admin Agent for Sentinel-1 PSETAE MCP Server
+This script implements the Admin Agent that orchestrates the Sentinel-1 PSETAE workflow.
 """
 
 import os
@@ -207,29 +207,24 @@ class AdminAgent:
             raise
     
     def setup_psetae_workflow(self):
-        """Set up the complete PSETAE workflow with all required agents"""
-        # Create data extraction agent
-        data_agent = self.create_worker_agent("data-extraction-agent", "data-extraction")
-        logger.info(f"Data Extraction Agent created with token: {data_agent['token']}")
+        """Set up the Sentinel-1 PSETAE workflow with all required agents"""
+        # Create Sentinel-1 data extraction agent
+        data_agent = self.create_worker_agent("sentinel1-data-extraction-agent", "sentinel1-data-extraction")
+        logger.info(f"Sentinel-1 Data Extraction Agent created with token: {data_agent['token']}")
         
-        # Create model training agent
-        training_agent = self.create_worker_agent("model-training-agent", "model-training")
-        logger.info(f"Model Training Agent created with token: {training_agent['token']}")
+        # Create Sentinel-1 model training agent
+        training_agent = self.create_worker_agent("sentinel1-model-training-agent", "sentinel1-model-training")
+        logger.info(f"Sentinel-1 Model Training Agent created with token: {training_agent['token']}")
         
-        # Create inference agent
-        inference_agent = self.create_worker_agent("inference-agent", "inference")
-        logger.info(f"Inference Agent created with token: {inference_agent['token']}")
-        
-        # Create tile coverage agent
-        coverage_agent = self.create_worker_agent("tile-coverage-agent", "tile-coverage")
-        logger.info(f"Tile Coverage Agent created with token: {coverage_agent['token']}")
+        # Create Sentinel-1 inference agent
+        inference_agent = self.create_worker_agent("sentinel1-inference-agent", "sentinel1-inference")
+        logger.info(f"Sentinel-1 Inference Agent created with token: {inference_agent['token']}")
         
         # Return all agent information
         return {
             "data_agent": data_agent,
             "training_agent": training_agent,
-            "inference_agent": inference_agent,
-            "coverage_agent": coverage_agent
+            "inference_agent": inference_agent
         }
 
 def main():
@@ -255,13 +250,12 @@ def main():
             
             # Print agent tokens
             print("\n" + "="*50)
-            print("PSETAE Workflow Initialized")
+            print("Sentinel-1 PSETAE Workflow Initialized")
             print("="*50)
             print("\nAgent Tokens (save these for initializing worker agents):")
-            print(f"Data Extraction Agent: {agents['data_agent']['token']}")
-            print(f"Model Training Agent: {agents['training_agent']['token']}")
-            print(f"Inference Agent: {agents['inference_agent']['token']}")
-            print(f"Tile Coverage Agent: {agents['coverage_agent']['token']}")
+            print(f"Sentinel-1 Data Extraction Agent: {agents['data_agent']['token']}")
+            print(f"Sentinel-1 Model Training Agent: {agents['training_agent']['token']}")
+            print(f"Sentinel-1 Inference Agent: {agents['inference_agent']['token']}")
             print("\n" + "="*50)
         
         print("\nAdmin Agent initialized successfully!")

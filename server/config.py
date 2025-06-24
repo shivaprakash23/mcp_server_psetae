@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-MCP Server Configuration
-This module contains configuration settings for the MCP server.
+MCP Server Configuration for Sentinel-1 PSETAE
+This module contains configuration settings for the MCP server focused on Sentinel-1 data processing.
 """
 
 import os
@@ -23,19 +23,20 @@ DB_PATH = os.path.join(BASE_DIR, DB_NAME)
 # Agent settings
 ADMIN_AGENT_ID = "admin-agent"
 AGENT_TYPES = {
-    "data-extraction": "DataExtractionAgent",
-    "model-training": "ModelTrainingAgent",
-    "inference": "InferenceAgent",
-    "tile-coverage": "TileCoverageAgent"
+    "sentinel1-data-extraction": "Sentinel1DataExtractionAgent",
+    "sentinel1-model-training": "Sentinel1ModelTrainingAgent",
+    "sentinel1-inference": "Sentinel1InferenceAgent"
 }
 
 # PSETAE paths
 PSETAE_BASE_DIR = os.path.join(BASE_DIR.parent, "psetae_github_publish")
-DATA_EXTRACTION_DIR = os.path.join(PSETAE_BASE_DIR, "data_extraction")
-HLS_L30_DIR = os.path.join(PSETAE_BASE_DIR, "hls_l30_psetae")
-HLS_S30_DIR = os.path.join(PSETAE_BASE_DIR, "hls_s30_psetae")
+DATA_EXTRACTION_DIR = os.path.join(PSETAE_BASE_DIR, "data_extraction", "sentinel")
 SENTINEL_DIR = os.path.join(PSETAE_BASE_DIR, "sentinel_psetae")
-TILES_INFO_DIR = os.path.join(PSETAE_BASE_DIR, "satellite_tiles_information_extraction")
+
+# Sentinel-1 specific settings
+SENTINEL1_BANDS = ["VV", "VH"]
+SENTINEL1_COLLECTION = "COPERNICUS/S1_GRD"
+SENTINEL1_ORBIT = "ASCENDING"
 
 # Logging settings
 LOG_LEVEL = "INFO"

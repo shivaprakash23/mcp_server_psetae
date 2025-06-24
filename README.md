@@ -1,10 +1,10 @@
-# MCP Server for PSETAE
+# MCP Server for Sentinel-1 PSETAE
 
-A multi-agent system implementation using the Model Context Protocol (MCP) to orchestrate PSETAE crop classification workflows.
+A multi-agent system implementation using the Model Context Protocol (MCP) to orchestrate Sentinel-1 PSETAE crop classification workflows.
 
 ## Overview
 
-This repository implements a Model Context Protocol (MCP) server that coordinates multiple AI agents to execute PSETAE (Pixel Set Encoder with Temporal Attention Encoder) workflows for crop classification using satellite imagery. The system integrates with Google Earth Engine (GEE) for data extraction and leverages the existing PSETAE codebase for model training and inference.
+This repository implements a Model Context Protocol (MCP) server that coordinates multiple AI agents to execute PSETAE (Pixel Set Encoder with Temporal Attention Encoder) workflows for crop classification using Sentinel-1 satellite imagery. The system integrates with Google Earth Engine (GEE) for data extraction and leverages the existing PSETAE codebase for model training and inference. This implementation focuses exclusively on Sentinel-1 data to establish a stable baseline before expanding to other data sources.
 
 ## Features
 
@@ -22,10 +22,9 @@ This repository implements a Model Context Protocol (MCP) server that coordinate
 
 - **Admin Agent**: Orchestrates the workflow and delegates tasks
 - **Worker Agents**:
-  - **DataExtractionAgent**: Handles GEE data retrieval and processing
-  - **ModelTrainingAgent**: Manages model training and hyperparameter tuning
-  - **InferenceAgent**: Applies models to new data
-  - **TileCoverageAgent**: Analyzes satellite coverage for study areas
+  - **Sentinel1DataExtractionAgent**: Handles GEE data retrieval and processing for Sentinel-1
+  - **Sentinel1ModelTrainingAgent**: Manages model training and hyperparameter tuning for Sentinel-1
+  - **Sentinel1InferenceAgent**: Applies Sentinel-1 models to new data
 
 ## Installation
 

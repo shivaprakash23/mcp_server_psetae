@@ -1,36 +1,33 @@
-# Main Context Document (MCD): PSETAE Multi-Agent System
+# Main Context Document (MCD): Sentinel-1 PSETAE Multi-Agent System
 
 ## Project Overview
 
-PSETAE is a crop classification system using satellite imagery from multiple sources (HLS L30/S30, Sentinel-1/2) with deep learning. This MCD defines the implementation of a Model Context Protocol (MCP) multi-agent system to orchestrate the PSETAE workflow.
+PSETAE is a crop classification system using satellite imagery with deep learning. This MCD defines the implementation of a Model Context Protocol (MCP) multi-agent system to orchestrate the Sentinel-1 PSETAE workflow. The initial implementation focuses exclusively on Sentinel-1 data to establish a stable baseline before expanding to other data sources.
 
 ## System Architecture
 
 ### Existing PSETAE Components
-- **Data Extraction**: GEE-based scripts for HLS and Sentinel data
+- **Data Extraction**: GEE-based scripts for Sentinel-1 data
   - Requires GeoJSON input files for processing
-- **Model Training**: PSETAE implementations for different satellite sources
-- **Inference**: Prediction scripts for trained models
-- **Tile Analysis**: Coverage analysis for satellite data
+- **Model Training**: PSETAE implementation for Sentinel-1
+- **Inference**: Prediction scripts for trained Sentinel-1 models
 
 ### MCP Agent Structure
 - **MCP Server**: Central coordination point with database (`mcp_state.db`)
 - **Admin Agent**: Workflow orchestrator and task manager
 - **Worker Agents**:
-  1. **DataExtractionAgent**: Handles GEE data retrieval and processing
-  2. **ModelTrainingAgent**: Manages model training and hyperparameter tuning
-  3. **InferenceAgent**: Applies models to new data
-  4. **TileCoverageAgent**: Analyzes satellite coverage
+  1. **Sentinel1DataExtractionAgent**: Handles GEE data retrieval and processing for Sentinel-1
+  2. **Sentinel1ModelTrainingAgent**: Manages Sentinel-1 model training and hyperparameter tuning
+  3. **Sentinel1InferenceAgent**: Applies Sentinel-1 models to new data
 
 ## Workflow Definition
 
 ### End-to-End Process
-1. **Project Initialization**: Define study area, time period, and data sources
+1. **Project Initialization**: Define study area, time period for Sentinel-1 data
 2. **Data Preparation**: Convert shapefiles to GeoJSON format
-3. **Data Extraction**: Retrieve and process satellite imagery using GEE
-4. **Model Training**: Train PSETAE models with specified parameters
-5. **Inference**: Apply models to new data
-6. **Coverage Analysis**: Analyze satellite coverage for study areas
+3. **Data Extraction**: Retrieve and process Sentinel-1 imagery using GEE
+4. **Model Training**: Train Sentinel-1 PSETAE model with specified parameters
+5. **Inference**: Apply model to new data
 
 ### Agent Interactions
 - Agents communicate through the MCP server
@@ -59,29 +56,24 @@ mcp_server_psetae/
 - Monitor progress and handle exceptions
 - Generate reports and visualizations
 
-#### DataExtractionAgent
+#### Sentinel1DataExtractionAgent
 - Authenticate with GEE
 - Convert shapefiles (.shp) to GeoJSON format for GEE compatibility
-- Execute data extraction scripts with appropriate parameters
-- Process and normalize satellite imagery
+- Execute Sentinel-1 data extraction scripts with appropriate parameters
+- Process and normalize Sentinel-1 imagery
 - Store data in standardized format
 
-#### ModelTrainingAgent
-- Configure and execute training scripts
+#### Sentinel1ModelTrainingAgent
+- Configure and execute Sentinel-1 training scripts
 - Manage hyperparameter tuning
 - Track and report training metrics
 - Store model checkpoints
 
-#### InferenceAgent
-- Load trained models
+#### Sentinel1InferenceAgent
+- Load trained Sentinel-1 models
 - Apply models to new data
 - Format and store prediction results
 - Calculate performance metrics
-
-#### TileCoverageAgent
-- Analyze satellite coverage for study areas
-- Generate coverage reports
-- Provide recommendations for data acquisition
 
 ## Execution Instructions
 
