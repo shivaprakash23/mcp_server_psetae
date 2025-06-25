@@ -189,18 +189,34 @@ def write_coverage_to_file(features, output_file):
 
 def main():
     """Main function"""
+    import argparse
+    
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description='Analyze Sentinel-1 satellite tile coverage')
+    parser.add_argument('--geojson', type=str, required=True, help='Path to GeoJSON file defining the study area')
+    parser.add_argument('--output', type=str, required=True, help='Output directory for coverage analysis results')
+    parser.add_argument('--start_date', type=str, required=True, help='Start date (YYYY-MM-DD)')
+    parser.add_argument('--end_date', type=str, required=True, help='End date (YYYY-MM-DD)')
+    parser.add_argument('--collection', type=str, default='COPERNICUS/S1_GRD', help='Satellite collection name')
+    
+    args = parser.parse_args()
+    
     try:
+        # Create output directory if it doesn't exist
+        os.makedirs(args.output, exist_ok=True)
+        
         # Load GeoJSON
-        geojson_path = r'D:\Semester4\ProjectVijayapur\psetae\GEE-to-NPY-master\windsurf_code\geojsonfiles\croptype_KA28_fortileextraction.geojson'
+        geojson_path = args.geojson
+        print(f"Loading GeoJSON from: {geojson_path}")
         with open(geojson_path, 'r') as f:
             geojson = json.load(f)
         
         # Convert GeoJSON to Earth Engine geometry
         geometry = ee.Geometry.MultiPolygon(geojson['features'][0]['geometry']['coordinates'])
         
-        # Set date range (August 2024 to March 2025)
-        start_date = '2024-08-01'
-        end_date = '2025-03-31'
+        # Get date range from arguments
+        start_date = args.start_date
+        end_date = args.end_date
         
         print(f"\nAnalyzing Sentinel-1 coverage from {start_date} to {end_date}")
         print("Note: Sentinel-1 provides a 12-day revisit cycle")
@@ -219,11 +235,12 @@ def main():
             combined_features.extend(descending_results['features'])
             print(f"Found {len(descending_results['features'])} descending passes")
         
-        # Write coverage information to file
-        output_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sentinel1_coverage.txt')
+        # Write coverage information to file in the specified output directory
+        output_file = os.path.join(args.output, 'sentinel1_coverage.txt')
         if combined_features:
             write_coverage_to_file(combined_features, output_file)
             print(f"\nTotal passes found: {len(combined_features)}")
+            print(f"Results saved to: {output_file}")
         else:
             print('No Sentinel-1 data found for the specified parameters')
 
