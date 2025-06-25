@@ -1,0 +1,52 @@
+Sentinel-1 Coverage Analysis
+======================
+
+Found data for 1 tracks
+Track 63: 19 acquisitions
+
+Detailed Coverage for Track 63
+----------------------------------------
+Year | Month | Date       | Platform  | Pass Direction
+-------------------------------------------------------
+2024 |   Aug | 2024-08-06 | S1A       | DESCENDING
+2024 |   Aug | 2024-08-18 | S1A       | DESCENDING
+2024 |   Aug | 2024-08-30 | S1A       | DESCENDING
+2024 |   Sep | 2024-09-11 | S1A       | DESCENDING
+2024 |   Sep | 2024-09-23 | S1A       | DESCENDING
+2024 |   Oct | 2024-10-05 | S1A       | DESCENDING
+2024 |   Oct | 2024-10-29 | S1A       | DESCENDING
+2024 |   Nov | 2024-11-10 | S1A       | DESCENDING
+2024 |   Nov | 2024-11-22 | S1A       | DESCENDING
+2024 |   Dec | 2024-12-04 | S1A       | DESCENDING
+2024 |   Dec | 2024-12-16 | S1A       | DESCENDING
+2024 |   Dec | 2024-12-28 | S1A       | DESCENDING
+2025 |   Jan | 2025-01-09 | S1A       | DESCENDING
+2025 |   Jan | 2025-01-21 | S1A       | DESCENDING
+2025 |   Feb | 2025-02-02 | S1A       | DESCENDING
+2025 |   Feb | 2025-02-14 | S1A       | DESCENDING
+2025 |   Feb | 2025-02-26 | S1A       | DESCENDING
+2025 |   Mar | 2025-03-10 | S1A       | DESCENDING
+2025 |   Mar | 2025-03-22 | S1A       | DESCENDING
+
+Monthly Statistics
+----------------------------------------
+Year | Month | Acquisitions
+---------------------------------------------
+2024 |   Aug |            3
+2024 |   Sep |            2
+2024 |   Oct |            2
+2024 |   Nov |            2
+2024 |   Dec |            3
+2025 |   Jan |            2
+2025 |   Feb |            3
+2025 |   Mar |            2
+
+Yearly Statistics
+----------------------------------------
+Year | Acquisitions
+----------------------------------------
+2024 |           12
+2025 |            7
+
+Time Range: 2024-08-06 to 2025-03-22
+Total Acquisitions: 19

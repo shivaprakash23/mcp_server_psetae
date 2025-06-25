@@ -149,8 +149,8 @@ class Sentinel1TileCoverageAgent:
             # Ensure output directory exists
             os.makedirs(output_dir, exist_ok=True)
             
-            # Use the existing tile coverage analysis script from the PSETAE repository
-            coverage_script = os.path.join(TILES_INFO_DIR, "sentinel_tile_coverage.py")
+            # Use the sentinel1_coverage.py script from the tools directory
+            coverage_script = os.path.join(BASE_DIR, "tools", "satellite_tile_information", "sentinel1_coverage.py")
             
             # Build command
             cmd = [
@@ -267,19 +267,31 @@ class Sentinel1TileCoverageAgent:
             bool: True if task was processed successfully
         """
         try:
-            task_id = task.get("id")
-            metadata = json.loads(task.get("metadata", "{}"))
+            task_id = task.get("task_id")  # Changed from "id" to "task_id"
+            
+            # Handle metadata correctly - it could be a string or a dictionary
+            metadata = task.get("metadata", {})
+            if isinstance(metadata, str):
+                try:
+                    metadata = json.loads(metadata)
+                except json.JSONDecodeError:
+                    metadata = {}
             
             logger.info(f"Processing task {task_id}: {task.get('title')}")
+            logger.info(f"Task metadata: {metadata}")
             
-            # Check task type
-            if "tile_coverage" in task.get("title", "").lower() or "coverage_analysis" in task.get("title", "").lower():
+            # Check task type - more permissive matching for test tasks
+            if ("tile" in task.get("title", "").lower() and "coverage" in task.get("title", "").lower()) or \
+               "coverage_analysis" in task.get("title", "").lower() or \
+               "sentinel-1" in task.get("title", "").lower():
                 # Tile coverage analysis task
                 geojson_path = metadata.get("geojson_path")
                 output_dir = metadata.get("output_dir")
                 start_date = metadata.get("start_date")
                 end_date = metadata.get("end_date")
                 collection = metadata.get("collection", SENTINEL1_COLLECTION)
+                
+                logger.info(f"Tile coverage parameters: geojson={geojson_path}, output={output_dir}, dates={start_date} to {end_date}")
                 
                 if not all([geojson_path, output_dir, start_date, end_date]):
                     raise ValueError("Missing required parameters in task metadata")
