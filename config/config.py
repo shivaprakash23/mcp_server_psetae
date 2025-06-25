@@ -13,7 +13,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Server settings
-SERVER_HOST = "0.0.0.0"
+SERVER_HOST = "localhost"
 SERVER_PORT = 8080
 
 # Database settings
