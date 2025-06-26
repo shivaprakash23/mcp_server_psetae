@@ -94,8 +94,8 @@ def parse_args():
 def create_task():
     args = parse_args()
     
-    # Create output directory if it doesn't exist
-    output_dir = args.output_dir
+    # Get output directory from args or use default
+    output_dir = args.output_dir or DEFAULT_OUTPUT_DIR
     os.makedirs(output_dir, exist_ok=True)
     
     # Determine date range

@@ -311,7 +311,7 @@ class Sentinel1DataExtractionAgent:
                 sys.executable,
                 sentinel_script,
                 geojson_path,  # First positional argument is rpg_file (GeoJSON)
-                output_dir,    # Second positional argument is output_dir
+                output_dir,    # Second positional argument is output_dir (use the dataset directory directly)
                 "--col_id", "COPERNICUS/S1_GRD",  # Sentinel-1 collection
                 "--start_date", start_date,
                 "--end_date", end_date,
@@ -357,58 +357,37 @@ class Sentinel1DataExtractionAgent:
             raise
     
     def process_task(self, task):
-        """Process a task assigned to this agent
+        """Process a data extraction task
         
         Args:
-            task (dict): Task information
+            task (dict): Task data from MCP server
             
         Returns:
-            bool: True if task was processed successfully
+            bool: True if task was processed successfully, False otherwise
         """
         try:
+            # Extract task metadata
+            metadata = task.get("metadata", {})
             task_id = task.get("id")
             
-            # Handle metadata correctly - it could be a string or a dict
-            metadata = task.get("metadata", {})
-            if isinstance(metadata, str):
-                try:
-                    metadata = json.loads(metadata)
-                except json.JSONDecodeError:
-                    metadata = {}
+            # Check if this is a data extraction task
+            if metadata.get("task_type") != "data_extraction":
+                logger.warning(f"Task {task_id} is not a data extraction task. Skipping.")
+                return False
             
             logger.info(f"Processing task {task_id}: {task.get('title')}")
             logger.info(f"Task metadata: {metadata}")
             
-            # Check task type from metadata or title
-            task_type = metadata.get("task_type", "")
+            # Extract parameters from metadata
+            geojson_path = metadata.get("geojson_path")
+            output_dir = metadata.get("output_dir")
+            start_date = metadata.get("start_date")
+            end_date = metadata.get("end_date")
+            bands = metadata.get("bands", ["VV", "VH"])
             
-            if task_type == "shapefile_conversion" or "shapefile_conversion" in task.get("title", "").lower():
-                # Shapefile conversion task
-                shapefile_path = metadata.get("shapefile_path")
-                output_path = metadata.get("output_path")
-                
-                if not shapefile_path:
-                    raise ValueError("Missing shapefile_path in task metadata")
-                
-                self.convert_shapefile(shapefile_path, output_path)
-                
-            elif task_type == "batch_conversion" or "batch_conversion" in task.get("title", "").lower():
-                # Batch shapefile conversion task
-                input_dir = metadata.get("input_dir")
-                output_dir = metadata.get("output_dir")
-                
-                if not input_dir:
-                    raise ValueError("Missing input_dir in task metadata")
-                
-                self.batch_convert_shapefiles(input_dir, output_dir)
-                
-            elif task_type == "data_extraction" or "data_extraction" in task.get("title", "").lower():
-                # Data extraction task
-                geojson_path = metadata.get("geojson_path")
-                output_dir = metadata.get("output_dir")
-                start_date = metadata.get("start_date")
-                end_date = metadata.get("end_date")
-                bands = metadata.get("bands")
+            # Validate required parameters
+            if not all([geojson_path, output_dir, start_date, end_date]):
+                logger.error(f"Missing required parameters in task {task_id}")
                 
                 # Check if we need to retrieve date range from coverage analysis
                 if not all([start_date, end_date]) and "coverage_task_id" in metadata:
@@ -443,6 +422,7 @@ class Sentinel1DataExtractionAgent:
                     raise ValueError("Missing required parameters in task metadata and could not retrieve from coverage task")
                 
                 logger.info(f"Extracting Sentinel-1 data for period: {start_date} to {end_date}")
+                # Ensure we use the output directory directly without creating date-specific subdirectories
                 self.extract_sentinel1_data(geojson_path, output_dir, start_date, end_date, bands)
                 
             else:
