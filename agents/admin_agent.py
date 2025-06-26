@@ -266,64 +266,76 @@ class AdminAgent:
             # Create workflow tasks
             workflow = {}
             
-            # 1. Create tile coverage analysis task
+            # 1. Create shapefile conversion task
+            workflow["conversion_task"] = self.create_task(
+                title="Shapefile to GeoJSON Conversion",
+                description=f"Convert shapefile {shapefile_path} to GeoJSON format",
+                assigned_to="sentinel1-data-extraction-agent",
+                priority=1,
+                metadata={
+                    "shapefile_path": shapefile_path,
+                    "output_path": geojson_path
+                }
+            )
+            
+            # 2. Create tile coverage analysis task
             workflow["coverage_task"] = self.create_task(
                 title="Sentinel-1 Tile Coverage Analysis",
-                description=f"Analyze Sentinel-1 tile coverage for area in {shapefile_path} from {start_date} to {end_date}",
+                description=f"Analyze Sentinel-1 tile coverage for area in {geojson_path} from {start_date} to {end_date}",
                 assigned_to="sentinel1-tile-coverage-agent",
-                priority=1,
-                metadata=json.dumps({
+                priority=2,
+                metadata={
                     "geojson_path": geojson_path,
                     "output_dir": coverage_dir,
                     "start_date": start_date,
                     "end_date": end_date,
                     "collection": SENTINEL1_COLLECTION
-                })
+                }
             )
             
-            # 2. Create data extraction task
+            # 3. Create data extraction task
             workflow["extraction_task"] = self.create_task(
                 title="Sentinel-1 Data Extraction",
-                description=f"Extract Sentinel-1 data for area in {shapefile_path} from {start_date} to {end_date}",
+                description=f"Extract Sentinel-1 data for area in {geojson_path} from {start_date} to {end_date}",
                 assigned_to="sentinel1-data-extraction-agent",
-                priority=2,
-                metadata=json.dumps({
-                    "shapefile_path": shapefile_path,
+                priority=3,
+                metadata={
                     "geojson_path": geojson_path,
                     "output_dir": data_dir,
                     "start_date": start_date,
-                    "end_date": end_date
-                })
+                    "end_date": end_date,
+                    "bands": ["VV", "VH"]
+                }
             )
             
-            # 3. Create model training task
+            # 4. Create model training task
             workflow["training_task"] = self.create_task(
                 title="Sentinel-1 Model Training",
                 description=f"Train Sentinel-1 PSETAE model using data in {data_dir}",
                 assigned_to="sentinel1-model-training-agent",
-                priority=3,
-                metadata=json.dumps({
+                priority=4,
+                metadata={
                     "data_dir": data_dir,
                     "output_dir": model_dir,
                     "config_file": model_config,
                     "epochs": 100,
                     "batch_size": 32,
                     "learning_rate": 0.001
-                })
+                }
             )
             
-            # 4. Create inference task
+            # 5. Create inference task
             workflow["inference_task"] = self.create_task(
                 title="Sentinel-1 Model Inference",
                 description=f"Run inference using trained model on data in {data_dir}",
                 assigned_to="sentinel1-inference-agent",
-                priority=4,
-                metadata=json.dumps({
+                priority=5,
+                metadata={
                     "model_path": os.path.join(model_dir, "models", "best_model.pth"),  # This will be updated by the training agent
                     "data_dir": data_dir,
                     "output_dir": inference_dir,
                     "config_file": model_config
-                })
+                }
             )
             
             # Add workflow to memory

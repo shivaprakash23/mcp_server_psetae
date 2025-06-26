@@ -99,6 +99,33 @@ class Sentinel1DataExtractionAgent:
             logger.error(f"Error getting tasks: {str(e)}")
             raise
     
+    def get_task_info(self, task_id):
+        """Get information about a specific task
+        
+        Args:
+            task_id (str): ID of the task to retrieve
+            
+        Returns:
+            dict: Task information or None if not found
+        """
+        try:
+            response = requests.get(
+                f"{self.server_url}/api/tasks/{task_id}",
+                params={"token": self.token}
+            )
+            
+            if response.status_code != 200:
+                logger.error(f"Failed to get task info: {response.text}")
+                return None
+            
+            task_info = response.json()
+            logger.info(f"Retrieved information for task {task_id}")
+            
+            return task_info
+        except Exception as e:
+            logger.error(f"Error getting task info: {str(e)}")
+            return None
+    
     def add_memory(self, content, metadata=None):
         """Add a memory entry
         
@@ -271,24 +298,24 @@ class Sentinel1DataExtractionAgent:
             # Ensure output directory exists
             os.makedirs(output_dir, exist_ok=True)
             
-            # Use the existing Sentinel-1 extraction script
-            sentinel_script = os.path.join(DATA_EXTRACTION_DIR, "sentinel_extraction.py")
+            # Use the sentinel_extraction.py script from tools/satellite_data_extraction_gee
+            sentinel_script = os.path.join(BASE_DIR, "tools", "satellite_data_extraction_gee", "sentinel_extraction.py")
             
             # Default bands if not specified
             if bands is None:
-                bands = SENTINEL1_BANDS
+                bands = ["VV", "VH"]
             
-            # Build command
+            # Build command based on sentinel_extraction.py parameters
             cmd = [
                 sys.executable,
                 sentinel_script,
-                "--geojson", geojson_path,
-                "--output", output_dir,
+                geojson_path,  # First positional argument is rpg_file (GeoJSON)
+                "--output_dir", output_dir,
+                "--col_id", "COPERNICUS/S1_GRD",  # Sentinel-1 collection
                 "--start_date", start_date,
                 "--end_date", end_date,
-                "--bands", ",".join(bands),
-                "--collection", SENTINEL1_COLLECTION,
-                "--orbit", SENTINEL1_ORBIT
+                "--speckle_filter", "temporal",  # Default speckle filter
+                "--kernel_size", "5"  # Default kernel size
             ]
             
             # Execute command
@@ -339,12 +366,22 @@ class Sentinel1DataExtractionAgent:
         """
         try:
             task_id = task.get("id")
-            metadata = json.loads(task.get("metadata", "{}"))
+            
+            # Handle metadata correctly - it could be a string or a dict
+            metadata = task.get("metadata", {})
+            if isinstance(metadata, str):
+                try:
+                    metadata = json.loads(metadata)
+                except json.JSONDecodeError:
+                    metadata = {}
             
             logger.info(f"Processing task {task_id}: {task.get('title')}")
+            logger.info(f"Task metadata: {metadata}")
             
-            # Check task type
-            if "shapefile_conversion" in task.get("title", "").lower():
+            # Check task type from metadata or title
+            task_type = metadata.get("task_type", "")
+            
+            if task_type == "shapefile_conversion" or "shapefile_conversion" in task.get("title", "").lower():
                 # Shapefile conversion task
                 shapefile_path = metadata.get("shapefile_path")
                 output_path = metadata.get("output_path")
@@ -354,7 +391,7 @@ class Sentinel1DataExtractionAgent:
                 
                 self.convert_shapefile(shapefile_path, output_path)
                 
-            elif "batch_conversion" in task.get("title", "").lower():
+            elif task_type == "batch_conversion" or "batch_conversion" in task.get("title", "").lower():
                 # Batch shapefile conversion task
                 input_dir = metadata.get("input_dir")
                 output_dir = metadata.get("output_dir")
@@ -364,7 +401,7 @@ class Sentinel1DataExtractionAgent:
                 
                 self.batch_convert_shapefiles(input_dir, output_dir)
                 
-            elif "data_extraction" in task.get("title", "").lower():
+            elif task_type == "data_extraction" or "data_extraction" in task.get("title", "").lower():
                 # Data extraction task
                 geojson_path = metadata.get("geojson_path")
                 output_dir = metadata.get("output_dir")
@@ -372,21 +409,96 @@ class Sentinel1DataExtractionAgent:
                 end_date = metadata.get("end_date")
                 bands = metadata.get("bands")
                 
-                if not all([geojson_path, output_dir, start_date, end_date]):
-                    raise ValueError("Missing required parameters in task metadata")
+                # Check if we need to retrieve date range from coverage analysis
+                if not all([start_date, end_date]) and "coverage_task_id" in metadata:
+                    # Get coverage task information to extract date range
+                    coverage_task_info = self.get_task_info(metadata["coverage_task_id"])
+                    if coverage_task_info:
+                        coverage_metadata = coverage_task_info.get("metadata", {})
+                        if isinstance(coverage_metadata, str):
+                            try:
+                                coverage_metadata = json.loads(coverage_metadata)
+                            except json.JSONDecodeError:
+                                coverage_metadata = {}
+                        
+                        # Extract date range from coverage task
+                        start_date = coverage_metadata.get("start_date")
+                        end_date = coverage_metadata.get("end_date")
+                        
+                        logger.info(f"Retrieved date range from coverage task: {start_date} to {end_date}")
                 
+                # If we still don't have dates, check for coverage output file
+                if not all([start_date, end_date]):
+                    # Look for coverage output directory
+                    coverage_dir = os.path.join(BASE_DIR, "output", "tile_coverage")
+                    coverage_file = os.path.join(coverage_dir, "sentinel1_coverage.txt")
+                    
+                    if os.path.exists(coverage_file):
+                        logger.info(f"Found coverage file: {coverage_file}")
+                        # Extract date range from the file if possible
+                        # This would require parsing the file format
+                
+                if not all([geojson_path, output_dir, start_date, end_date]):
+                    raise ValueError("Missing required parameters in task metadata and could not retrieve from coverage task")
+                
+                logger.info(f"Extracting Sentinel-1 data for period: {start_date} to {end_date}")
                 self.extract_sentinel1_data(geojson_path, output_dir, start_date, end_date, bands)
                 
             else:
                 logger.warning(f"Unknown task type: {task.get('title')}")
                 return False
             
+            # Update task status to completed
+            self.update_task_status(task_id, "completed", f"Task completed successfully at {datetime.now().isoformat()}")
+            
             logger.info(f"Task {task_id} processed successfully")
             return True
             
         except Exception as e:
             logger.error(f"Error processing task: {str(e)}")
+            # Update task status to failed
+            try:
+                self.update_task_status(task.get("id"), "failed", f"Task failed: {str(e)}")
+            except Exception as update_error:
+                logger.error(f"Error updating task status: {str(update_error)}")
             return False
+    
+    def update_task_status(self, task_id, status, message=None):
+        """Update the status of a task
+        
+        Args:
+            task_id (str): ID of the task to update
+            status (str): New status for the task (e.g., 'completed', 'failed')
+            message (str): Optional status message
+            
+        Returns:
+            dict: Updated task information
+        """
+        try:
+            payload = {
+                "status": status
+            }
+            
+            if message:
+                payload["status_message"] = message
+            
+            response = requests.put(
+                f"{self.server_url}/api/tasks/{task_id}/status",
+                params={"token": self.token},
+                json=payload
+            )
+            
+            if response.status_code != 200:
+                logger.error(f"Failed to update task status: {response.text}")
+                raise ValueError(f"Failed to update task status: {response.text}")
+            
+            task_info = response.json()
+            logger.info(f"Updated task {task_id} status to {status}")
+            
+            return task_info
+        except Exception as e:
+            logger.error(f"Error updating task status: {str(e)}")
+            raise
     
     def run(self):
         """Run the agent to process tasks"""
