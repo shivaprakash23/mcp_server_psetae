@@ -2,65 +2,47 @@ Sentinel-1 Coverage Analysis
 ======================
 
 Found data for 1 tracks
-Track 63: 30 acquisitions
+Track 63: 16 acquisitions
 
 Detailed Coverage for Track 63
 ----------------------------------------
 Year | Month | Date       | Platform  | Pass Direction
 -------------------------------------------------------
-2022 |   Jan | 2022-01-01 | S1A       | DESCENDING
-2022 |   Jan | 2022-01-13 | S1A       | DESCENDING
-2022 |   Feb | 2022-02-06 | S1A       | DESCENDING
-2022 |   Feb | 2022-02-18 | S1A       | DESCENDING
-2022 |   Mar | 2022-03-14 | S1A       | DESCENDING
-2022 |   Mar | 2022-03-14 | S1A       | DESCENDING
-2022 |   Mar | 2022-03-26 | S1A       | DESCENDING
-2022 |   Apr | 2022-04-07 | S1A       | DESCENDING
-2022 |   Apr | 2022-04-19 | S1A       | DESCENDING
-2022 |   May | 2022-05-01 | S1A       | DESCENDING
-2022 |   May | 2022-05-13 | S1A       | DESCENDING
-2022 |   May | 2022-05-25 | S1A       | DESCENDING
-2022 |   Jun | 2022-06-06 | S1A       | DESCENDING
-2022 |   Jun | 2022-06-18 | S1A       | DESCENDING
-2022 |   Jun | 2022-06-30 | S1A       | DESCENDING
-2022 |   Jul | 2022-07-12 | S1A       | DESCENDING
-2022 |   Jul | 2022-07-24 | S1A       | DESCENDING
-2022 |   Aug | 2022-08-05 | S1A       | DESCENDING
-2022 |   Aug | 2022-08-17 | S1A       | DESCENDING
-2022 |   Aug | 2022-08-29 | S1A       | DESCENDING
-2022 |   Sep | 2022-09-10 | S1A       | DESCENDING
-2022 |   Sep | 2022-09-22 | S1A       | DESCENDING
-2022 |   Oct | 2022-10-04 | S1A       | DESCENDING
-2022 |   Oct | 2022-10-16 | S1A       | DESCENDING
-2022 |   Oct | 2022-10-28 | S1A       | DESCENDING
-2022 |   Nov | 2022-11-09 | S1A       | DESCENDING
-2022 |   Nov | 2022-11-21 | S1A       | DESCENDING
-2022 |   Dec | 2022-12-03 | S1A       | DESCENDING
-2022 |   Dec | 2022-12-15 | S1A       | DESCENDING
-2022 |   Dec | 2022-12-27 | S1A       | DESCENDING
+2024 |   Sep | 2024-09-11 | S1A       | DESCENDING
+2024 |   Sep | 2024-09-23 | S1A       | DESCENDING
+2024 |   Oct | 2024-10-05 | S1A       | DESCENDING
+2024 |   Oct | 2024-10-29 | S1A       | DESCENDING
+2024 |   Nov | 2024-11-10 | S1A       | DESCENDING
+2024 |   Nov | 2024-11-22 | S1A       | DESCENDING
+2024 |   Dec | 2024-12-04 | S1A       | DESCENDING
+2024 |   Dec | 2024-12-16 | S1A       | DESCENDING
+2024 |   Dec | 2024-12-28 | S1A       | DESCENDING
+2025 |   Jan | 2025-01-09 | S1A       | DESCENDING
+2025 |   Jan | 2025-01-21 | S1A       | DESCENDING
+2025 |   Feb | 2025-02-02 | S1A       | DESCENDING
+2025 |   Feb | 2025-02-14 | S1A       | DESCENDING
+2025 |   Feb | 2025-02-26 | S1A       | DESCENDING
+2025 |   Mar | 2025-03-10 | S1A       | DESCENDING
+2025 |   Mar | 2025-03-22 | S1A       | DESCENDING
 
 Monthly Statistics
 ----------------------------------------
 Year | Month | Acquisitions
 ---------------------------------------------
-2022 |   Jan |            2
-2022 |   Feb |            2
-2022 |   Mar |            3
-2022 |   Apr |            2
-2022 |   May |            3
-2022 |   Jun |            3
-2022 |   Jul |            2
-2022 |   Aug |            3
-2022 |   Sep |            2
-2022 |   Oct |            3
-2022 |   Nov |            2
-2022 |   Dec |            3
+2024 |   Sep |            2
+2024 |   Oct |            2
+2024 |   Nov |            2
+2024 |   Dec |            3
+2025 |   Jan |            2
+2025 |   Feb |            3
+2025 |   Mar |            2
 
 Yearly Statistics
 ----------------------------------------
 Year | Acquisitions
 ----------------------------------------
-2022 |           30
+2024 |            9
+2025 |            7
 
-Time Range: 2022-01-01 to 2022-12-27
-Total Acquisitions: 30
+Time Range: 2024-09-11 to 2025-03-22
+Total Acquisitions: 16

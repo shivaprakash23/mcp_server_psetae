@@ -88,7 +88,10 @@ mcp_server_psetae/
 
 1. Start MCP server
 2. Initialize Admin Agent with this MCD
-3. Admin creates worker agents
+3. **REQUIRED**: Run Admin Agent with `--setup-workflow` flag to create all worker agents
+   - This step is mandatory and must be performed every time the Admin Agent starts
+   - Use `python agents/admin_agent.py --token <admin_token> --server-url <server_url> --setup-workflow`
+   - Save the generated worker agent tokens for future use
 4. Define project parameters
 5. Execute workflow through Admin Agent
 
