@@ -14,10 +14,10 @@ from datetime import datetime
 
 # Server configuration
 SERVER_URL = "http://localhost:8080"
-ADMIN_TOKEN = "d29e611c-ce46-4c51-8cb4-05948b9dccdb"  # Updated admin token
+ADMIN_TOKEN = "4c4e2130-6bd1-4c76-87b8-83da2b9a2504"  # Updated admin token
 
 # Default paths
-DEFAULT_GEOJSON_PATH = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson"
+DEFAULT_GEOJSON_PATH = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\geojson\\croptype_KA28_wgs84_test_622.geojson"
 DEFAULT_OUTPUT_DIR = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data"
 DEFAULT_COVERAGE_FILE = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt"
 
@@ -126,9 +126,6 @@ def create_task():
     if not end_date:
         end_date = "2025-03-31"  # Default to March 2025
     
-    # Create date-specific folder name
-    date_folder = f"{start_date.replace('-', '')}_{end_date.replace('-', '')}"
-    
     # Determine dataset type (test, train, validation) based on geojson filename
     geojson_filename = os.path.basename(args.geojson).lower()
     if "test" in geojson_filename:
@@ -143,11 +140,7 @@ def create_task():
         print(f"Warning: Could not determine dataset type from filename '{geojson_filename}'. Using '{dataset_type}' as default.")
     
     # Create dataset-specific output directory
-    dataset_dir = os.path.join(output_dir, dataset_type)
-    os.makedirs(dataset_dir, exist_ok=True)
-    
-    # Create date-specific folder within dataset directory
-    specific_output_dir = os.path.join(dataset_dir, date_folder)
+    specific_output_dir = os.path.join(output_dir, dataset_type)
     os.makedirs(specific_output_dir, exist_ok=True)
     
     print(f"Dataset type: {dataset_type} (determined from GeoJSON filename)")

@@ -238,7 +238,7 @@ def main():
 
     # Initialize Earth Engine
     ee.Authenticate()
-    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ee.Initialize(project='ee-shivaprakashssy-psetae-ka28')  # Use specific project ID
 
     prepare_dataset(
         rpg_file=args.rpg_file,

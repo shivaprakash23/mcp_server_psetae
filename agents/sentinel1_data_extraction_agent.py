@@ -306,11 +306,12 @@ class Sentinel1DataExtractionAgent:
                 bands = ["VV", "VH"]
             
             # Build command based on sentinel_extraction.py parameters
+            # Note: The script requires rpg_file and output_dir as positional arguments
             cmd = [
                 sys.executable,
                 sentinel_script,
                 geojson_path,  # First positional argument is rpg_file (GeoJSON)
-                "--output_dir", output_dir,
+                output_dir,    # Second positional argument is output_dir
                 "--col_id", "COPERNICUS/S1_GRD",  # Sentinel-1 collection
                 "--start_date", start_date,
                 "--end_date", end_date,

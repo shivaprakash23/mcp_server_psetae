@@ -35,3 +35,20 @@
 2025-06-26 23:10:13,449 - mcp_server - INFO - Added memory for agent sentinel1-tile-coverage-agent
 2025-06-26 23:10:52,558 - mcp_server - INFO - Added memory for agent sentinel1-tile-coverage-agent
 2025-06-26 23:11:29,344 - mcp_server - INFO - Added memory for agent sentinel1-tile-coverage-agent
+2025-06-27 00:20:58,287 - mcp_server - INFO - Created task: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31 assigned to sentinel1-data-extraction-agent
+2025-06-27 00:27:22,008 - mcp_server - INFO - Created task: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31 assigned to sentinel1-data-extraction-agent
+2025-06-27 00:32:59,591 - mcp_server - INFO - Created task: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31 assigned to sentinel1-data-extraction-agent
+2025-06-27 00:37:43,973 - mcp_server - INFO - Added memory for agent admin-agent
+2025-06-27 00:37:43,986 - mcp_server - INFO - Created worker agent: sentinel1-data-extraction-agent of type sentinel1-data-extraction
+2025-06-27 00:37:43,999 - mcp_server - INFO - Created worker agent: sentinel1-model-training-agent of type sentinel1-model-training
+2025-06-27 00:37:44,011 - mcp_server - INFO - Created worker agent: sentinel1-inference-agent of type sentinel1-inference
+2025-06-27 00:37:44,023 - mcp_server - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
+2025-06-27 00:44:34,886 - mcp_server - INFO - Database initialized at D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\.agent/mcp_state.db
+2025-06-27 00:44:34,886 - mcp_server - INFO - Admin token: 4c4e2130-6bd1-4c76-87b8-83da2b9a2504
+2025-06-27 00:44:39,669 - mcp_server - INFO - Added memory for agent admin-agent
+2025-06-27 00:45:19,183 - mcp_server - INFO - Added memory for agent admin-agent
+2025-06-27 00:45:19,192 - mcp_server - INFO - Created worker agent: sentinel1-data-extraction-agent of type sentinel1-data-extraction
+2025-06-27 00:45:19,202 - mcp_server - INFO - Created worker agent: sentinel1-model-training-agent of type sentinel1-model-training
+2025-06-27 00:45:19,212 - mcp_server - INFO - Created worker agent: sentinel1-inference-agent of type sentinel1-inference
+2025-06-27 00:45:19,223 - mcp_server - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
+2025-06-27 00:53:55,043 - mcp_server - INFO - Created task: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31 assigned to sentinel1-data-extraction-agent

@@ -1,0 +1,598 @@
+2025-06-27 00:38:01,042 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 00:38:01,042 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 00:38:01,048 - sentinel1_data_extraction_agent - INFO - Retrieved 3 tasks
+2025-06-27 00:38:01,048 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:38:01,049 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:38:01,056 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:38:01,057 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson --output_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:38:04,145 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:04,147 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:04,147 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:04,151 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:04,151 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:04,151 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:04,152 - sentinel1_data_extraction_agent - INFO - Processing task c0f49084-84db-4123-b623-9c8d08b0c64f: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:38:04,152 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:38:04,152 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:38:04,152 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson --output_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:38:06,043 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:06,043 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:06,046 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:06,049 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:06,049 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:06,049 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:06,049 - sentinel1_data_extraction_agent - INFO - Processing task 8c4b960a-360e-413b-ad52-e0ef4de48b4e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:38:06,049 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:38:06,049 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:38:06,052 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson --output_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:38:07,975 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:07,975 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:07,975 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: usage: sentinel_extraction.py [-h] [--id_field ID_FIELD]
+                              [--label_names LABEL_NAMES] [--col_id COL_ID]
+                              [--start_date START_DATE] [--end_date END_DATE]
+                              [--num_per_month NUM_PER_MONTH]
+                              [--footprint_id FOOTPRINT_ID]
+                              [--speckle_filter SPECKLE_FILTER]
+                              [--kernel_size KERNEL_SIZE]
+                              [--cloud_cover CLOUD_COVER] [--addNDVI ADDNDVI]
+                              rpg_file output_dir
+sentinel_extraction.py: error: unrecognized arguments: --output_dir
+
+2025-06-27 00:38:07,981 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:07,981 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:38:07,981 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:54:54,757 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 00:54:54,758 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 00:54:54,763 - sentinel1_data_extraction_agent - INFO - Retrieved 4 tasks
+2025-06-27 00:54:54,764 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:54:54,764 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:54:54,764 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:54:54,764 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:54:59,451 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'service': 'earthengine.googleapis.com', 'containerInfo': 'your-project-id', 'consumer': 'projects/your-project-id'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:54:59,452 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'service': 'earthengine.googleapis.com', 'containerInfo': 'your-project-id', 'consumer': 'projects/your-project-id'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:54:59,453 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'service': 'earthengine.googleapis.com', 'containerInfo': 'your-project-id', 'consumer': 'projects/your-project-id'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:54:59,457 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:54:59,457 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:54:59,458 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:54:59,458 - sentinel1_data_extraction_agent - INFO - Processing task c0f49084-84db-4123-b623-9c8d08b0c64f: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:54:59,458 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:54:59,458 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:54:59,459 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:55:03,312 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'consumer': 'projects/your-project-id', 'containerInfo': 'your-project-id', 'service': 'earthengine.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:03,315 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'consumer': 'projects/your-project-id', 'containerInfo': 'your-project-id', 'service': 'earthengine.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:03,315 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'consumer': 'projects/your-project-id', 'containerInfo': 'your-project-id', 'service': 'earthengine.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:03,319 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:03,319 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:03,319 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:03,319 - sentinel1_data_extraction_agent - INFO - Processing task 8c4b960a-360e-413b-ad52-e0ef4de48b4e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:55:03,319 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:55:03,320 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:55:03,320 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:55:06,775 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'containerInfo': 'your-project-id', 'service': 'earthengine.googleapis.com', 'consumer': 'projects/your-project-id'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:06,775 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'containerInfo': 'your-project-id', 'service': 'earthengine.googleapis.com', 'consumer': 'projects/your-project-id'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:06,775 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'containerInfo': 'your-project-id', 'service': 'earthengine.googleapis.com', 'consumer': 'projects/your-project-id'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:06,783 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:06,783 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:06,783 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:06,784 - sentinel1_data_extraction_agent - INFO - Processing task 371604f2-457b-4538-a7e7-3a2926665e94: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 00:55:06,784 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\geojson\\croptype_KA28_wgs84_test_622.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 00:55:06,784 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 00:55:06,784 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\geojson\croptype_KA28_wgs84_test_622.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 00:55:11,095 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'containerInfo': 'your-project-id', 'consumer': 'projects/your-project-id', 'service': 'earthengine.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:11,097 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'containerInfo': 'your-project-id', 'consumer': 'projects/your-project-id', 'service': 'earthengine.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:11,097 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: Traceback (most recent call last):
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 408, in _execute_cloud_call
+    return call.execute(num_retries=num_retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://earthengine.googleapis.com/v1/projects/your-project-id/algorithms?prettyPrint=false&alt=json returned "Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.". Details: "[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'USER_PROJECT_DENIED', 'domain': 'googleapis.com', 'metadata': {'containerInfo': 'your-project-id', 'consumer': 'projects/your-project-id', 'service': 'earthengine.googleapis.com'}}, {'@type': 'type.googleapis.com/google.rpc.LocalizedMessage', 'locale': 'en-US', 'message': 'Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.'}, {'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Google developer console IAM admin', 'url': 'https://console.developers.google.com/iam-admin/iam/project?project=your-project-id'}]}]">
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 241, in main
+    ee.Initialize(project='your-project-id')  # Replace with your GEE project ID
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\_utils.py", line 38, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 230, in Initialize
+    raise e
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\__init__.py", line 212, in Initialize
+    ApiFunction.initialize()
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\apifunction.py", line 161, in initialize
+    signatures = data.getAlgorithms()
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 1499, in getAlgorithms
+    return _cloud_api_utils.convert_algorithms(_execute_cloud_call(call))
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\ee\data.py", line 410, in _execute_cloud_call
+    raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ee.ee_exception.EEException: Caller does not have required permission to use project your-project-id. Grant the caller the roles/serviceusage.serviceUsageConsumer role, or a custom role with the serviceusage.services.use permission, by visiting https://console.developers.google.com/iam-admin/iam/project?project=your-project-id and then retry. Propagation of the new permission may take a few minutes.
+
+2025-06-27 00:55:11,102 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:11,102 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 00:55:11,102 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
