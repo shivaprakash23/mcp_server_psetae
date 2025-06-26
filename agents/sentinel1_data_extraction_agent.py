@@ -298,6 +298,11 @@ class Sentinel1DataExtractionAgent:
             # Ensure output directory exists
             os.makedirs(output_dir, exist_ok=True)
             
+            # Create DATA and META subdirectories directly in the output directory
+            # This ensures we don't need date-specific subdirectories
+            os.makedirs(os.path.join(output_dir, 'DATA'), exist_ok=True)
+            os.makedirs(os.path.join(output_dir, 'META'), exist_ok=True)
+            
             # Use the sentinel_extraction.py script from tools/satellite_data_extraction_gee
             sentinel_script = os.path.join(BASE_DIR, "tools", "satellite_data_extraction_gee", "sentinel_extraction.py")
             
@@ -370,10 +375,28 @@ class Sentinel1DataExtractionAgent:
             metadata = task.get("metadata", {})
             task_id = task.get("id")
             
+            # Handle case where metadata is a JSON string instead of a dictionary
+            if isinstance(metadata, str):
+                try:
+                    import json
+                    metadata = json.loads(metadata)
+                    logger.info("Converted metadata from string to dictionary")
+                except json.JSONDecodeError:
+                    logger.error(f"Failed to parse metadata string as JSON: {metadata}")
+                    return False
+            
             # Check if this is a data extraction task
             if metadata.get("task_type") != "data_extraction":
-                logger.warning(f"Task {task_id} is not a data extraction task. Skipping.")
-                return False
+                # If task_type is not explicitly set, check the title for "Data Extraction"
+                title = task.get('title', '')
+                if "Data Extraction" not in title and "data extraction" not in title.lower():
+                    logger.warning(f"Task {task_id} is not a data extraction task. Skipping.")
+                    return False
+                else:
+                    # It's a data extraction task based on title
+                    if "task_type" not in metadata:
+                        metadata["task_type"] = "data_extraction"
+                        logger.info(f"Set task_type to 'data_extraction' based on title: {title}")
             
             logger.info(f"Processing task {task_id}: {task.get('title')}")
             logger.info(f"Task metadata: {metadata}")
@@ -420,20 +443,22 @@ class Sentinel1DataExtractionAgent:
                 
                 if not all([geojson_path, output_dir, start_date, end_date]):
                     raise ValueError("Missing required parameters in task metadata and could not retrieve from coverage task")
-                
-                logger.info(f"Extracting Sentinel-1 data for period: {start_date} to {end_date}")
-                # Ensure we use the output directory directly without creating date-specific subdirectories
-                self.extract_sentinel1_data(geojson_path, output_dir, start_date, end_date, bands)
-                
-            else:
-                logger.warning(f"Unknown task type: {task.get('title')}")
-                return False
+            
+            # Now that we have all parameters, extract the data
+            logger.info(f"Extracting Sentinel-1 data for period: {start_date} to {end_date}")
+            # Ensure we use the output directory directly without creating date-specific subdirectories
+            self.extract_sentinel1_data(geojson_path, output_dir, start_date, end_date, bands)
             
             # Update task status to completed
             self.update_task_status(task_id, "completed", f"Task completed successfully at {datetime.now().isoformat()}")
             
             logger.info(f"Task {task_id} processed successfully")
             return True
+            
+            # This code is unreachable now
+            # else:
+            #    logger.warning(f"Unknown task type: {task.get('title')}")
+            #    return False
             
         except Exception as e:
             logger.error(f"Error processing task: {str(e)}")
