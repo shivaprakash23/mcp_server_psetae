@@ -78,6 +78,10 @@ class MemoryEntry(BaseModel):
     content: str
     metadata: Optional[Dict[str, Any]] = None
 
+class TaskStatusUpdate(BaseModel):
+    status: str
+    message: Optional[str] = None
+
 # Database initialization
 def init_db(db_path):
     """Initialize the SQLite database with required tables"""
@@ -311,7 +315,7 @@ async def get_tasks(agent_id: str, token: str):
     cursor = conn.cursor()
     
     cursor.execute('''
-    SELECT * FROM tasks WHERE assigned_to = ? ORDER BY priority DESC, created_at ASC
+    SELECT * FROM tasks WHERE assigned_to = ? AND status != 'completed' ORDER BY priority DESC, created_at ASC
     ''', (agent_id,))
     
     tasks = [dict(row) for row in cursor.fetchall()]
@@ -368,7 +372,6 @@ async def query_memory(agent_id: str, query: str, token: str):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     
-    # Simple keyword search (in a real implementation, use a vector database or better search)
     cursor.execute('''
     SELECT * FROM memory 
     WHERE agent_id = ? AND content LIKE ?
@@ -380,6 +383,91 @@ async def query_memory(agent_id: str, query: str, token: str):
     conn.close()
     
     return {"memories": memories}
+
+@app.put("/api/tasks/{task_id}/status")
+async def update_task_status(task_id: str, update: TaskStatusUpdate, token: str):
+    """Update task status"""
+    agent_info = validate_token(token, DB_PATH)
+    if not agent_info:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+    
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    SELECT assigned_to FROM tasks
+    WHERE id = ?
+    ''', (task_id,))
+    
+    result = cursor.fetchone()
+    if not result:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Task not found")
+    
+    assigned_to = result[0]
+    
+    if agent_info["agent_id"] != assigned_to and agent_info["agent_type"] != "admin":
+        conn.close()
+        raise HTTPException(status_code=403, detail="Not authorized to update this task")
+    
+    try:
+        cursor.execute('''
+        UPDATE tasks
+        SET status = ?, updated_at = ?, metadata = 
+            CASE 
+                WHEN metadata IS NULL THEN json_object('message', ?)
+                WHEN json_valid(metadata) THEN json_set(metadata, '$.message', ?)
+                ELSE json_object('message', ?)
+            END
+        WHERE id = ?
+        ''', (
+            update.status,
+            datetime.now().isoformat(),
+            update.message,
+            update.message,
+            update.message,
+            task_id
+        ))
+        
+        if cursor.rowcount == 0:
+            conn.close()
+            raise HTTPException(status_code=404, detail="Task not found")
+            
+        conn.commit()
+        
+        cursor.execute('''
+        SELECT id, title, description, assigned_to, status, priority, created_at, updated_at, metadata
+        FROM tasks
+        WHERE id = ?
+        ''', (task_id,))
+        
+        result = cursor.fetchone()
+        conn.close()
+        
+        if not result:
+            raise HTTPException(status_code=404, detail="Task not found")
+        
+        logger.info(f"Task {task_id} status updated to '{update.status}' by {agent_info['agent_id']}")
+        
+        task = {
+            "id": result[0],
+            "title": result[1],
+            "description": result[2],
+            "assigned_to": result[3],
+            "status": result[4],
+            "priority": result[5],
+            "created_at": result[6],
+            "updated_at": result[7],
+            "metadata": json.loads(result[8]) if result[8] else None
+        }
+        
+        return task
+        
+    except Exception as e:
+        conn.rollback()
+        conn.close()
+        logger.error(f"Error updating task status: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error updating task status: {str(e)}")
 
 @app.get("/admin/token")
 async def get_admin_token():

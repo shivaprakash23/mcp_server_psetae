@@ -50,6 +50,16 @@ class Sentinel1DataExtractionAgent:
         self.agent_id = agent_id
         self.agent_type = "sentinel1-data-extraction"
         
+        # Track processed tasks to avoid reprocessing
+        self.processed_tasks = set()
+        
+        # Track processed task parameters to avoid reprocessing duplicate tasks
+        self.processed_task_params = set()
+        
+        # Create a file to persist processed tasks across restarts
+        self.processed_tasks_file = os.path.join(BASE_DIR, "logs", f"{self.agent_id}_processed_tasks.json")
+        self._load_processed_tasks()
+        
         # Validate token
         self.validate_token()
         
@@ -99,6 +109,31 @@ class Sentinel1DataExtractionAgent:
         except Exception as e:
             logger.error(f"Error getting tasks: {str(e)}")
             raise
+            
+    def get_incomplete_tasks(self):
+        """Get only incomplete tasks assigned to this agent
+        
+        Returns:
+            list: List of incomplete tasks
+        """
+        try:
+            all_tasks = self.get_tasks()
+            incomplete_tasks = []
+            
+            for task in all_tasks:
+                # Check if task status is not 'completed' or 'failed'
+                status = task.get("status", "").lower()
+                if status != "completed" and status != "failed":
+                    incomplete_tasks.append(task)
+                else:
+                    logger.info(f"Skipping task {task.get('id')} with status '{status}'")
+            
+            logger.info(f"Found {len(incomplete_tasks)} incomplete tasks out of {len(all_tasks)} total tasks")
+            return incomplete_tasks
+        except Exception as e:
+            logger.error(f"Error getting incomplete tasks: {str(e)}")
+            # Return empty list on error to avoid processing tasks when we can't determine status
+            return []
     
     def get_task_info(self, task_id):
         """Get information about a specific task
@@ -364,44 +399,104 @@ class Sentinel1DataExtractionAgent:
             raise
     
     def process_task(self, task):
-        """Process a data extraction task
-        
-        Args:
-            task (dict): Task data from MCP server
-            
-        Returns:
-            bool: True if task was processed successfully, False otherwise
-        """
+        """Process a single data extraction task"""
         try:
-            # Extract task metadata
-            metadata = task.get("metadata", {})
             task_id = task.get("id")
+            title = task.get("title", "")
+            metadata = task.get("metadata", {})
             
-            # Handle case where metadata is a JSON string instead of a dictionary
+            # Handle both string and dict metadata
             if isinstance(metadata, str):
                 try:
-                    import json
                     metadata = json.loads(metadata)
-                    logger.info("Converted metadata from string to dictionary")
                 except json.JSONDecodeError:
-                    logger.error(f"Failed to parse metadata string as JSON: {metadata}")
-                    return False
+                    logger.error(f"Failed to parse metadata JSON for task {task_id}")
+                    metadata = {}
             
-            # Check if this is a data extraction task
-            if metadata.get("task_type") != "data_extraction":
-                # If task_type is not explicitly set, check the title for "Data Extraction"
-                title = task.get('title', '')
-                if "Data Extraction" not in title and "data extraction" not in title.lower():
-                    logger.warning(f"Task {task_id} is not a data extraction task. Skipping.")
-                    return False
-                else:
-                    # It's a data extraction task based on title
-                    if "task_type" not in metadata:
-                        metadata["task_type"] = "data_extraction"
-                        logger.info(f"Set task_type to 'data_extraction' based on title: {title}")
+            # Ensure task_type is set correctly
+            if "task_type" not in metadata:
+                if "extraction" in title.lower() or "data" in title.lower():
+                    metadata["task_type"] = "data_extraction"
+                    logger.info(f"Set task_type to 'data_extraction' based on title: {title}")
             
             logger.info(f"Processing task {task_id}: {task.get('title')}")
             logger.info(f"Task metadata: {metadata}")
+            
+            # Check if this is a sequential workflow task
+            workflow_type = metadata.get("workflow_type")
+            if workflow_type == "sequential_extraction":
+                return self.process_sequential_extraction_task(task, metadata)
+            else:
+                # Legacy processing for backward compatibility
+                return self.process_legacy_extraction_task(task, metadata)
+                
+        except Exception as e:
+            logger.error(f"Error processing task {task_id}: {str(e)}")
+            return False
+
+    def process_sequential_extraction_task(self, task, metadata):
+        """Process a sequential extraction task with proper isolation"""
+        try:
+            task_id = task.get("id")
+            split = metadata.get("split", "unknown")
+            processing_order = metadata.get("processing_order", 0)
+            
+            logger.info(f"Processing sequential extraction task for {split.upper()} split (order: {processing_order})")
+            
+            # Extract parameters directly from metadata (no modification needed)
+            geojson_path = metadata.get("geojson_path")
+            output_dir = metadata.get("output_dir")
+            start_date = metadata.get("start_date")
+            end_date = metadata.get("end_date")
+            bands = metadata.get("bands", ["VV", "VH"])
+            
+            # Validate required parameters
+            if not all([geojson_path, output_dir, start_date, end_date]):
+                logger.error(f"Missing required parameters for task {task_id}")
+                logger.error(f"geojson_path: {geojson_path}")
+                logger.error(f"output_dir: {output_dir}")
+                logger.error(f"start_date: {start_date}")
+                logger.error(f"end_date: {end_date}")
+                return False
+            
+            # Verify GeoJSON file exists
+            if not os.path.exists(geojson_path):
+                logger.error(f"GeoJSON file not found: {geojson_path}")
+                return False
+            
+            # Ensure output directory exists
+            os.makedirs(output_dir, exist_ok=True)
+            
+            logger.info(f"Sequential extraction parameters:")
+            logger.info(f"  Split: {split}")
+            logger.info(f"  GeoJSON: {geojson_path}")
+            logger.info(f"  Output: {output_dir}")
+            logger.info(f"  Date range: {start_date} to {end_date}")
+            logger.info(f"  Bands: {bands}")
+            
+            # Execute the extraction
+            success = self.execute_extraction(geojson_path, output_dir, start_date, end_date, bands)
+            
+            if success:
+                logger.info(f"Sequential extraction completed successfully for {split} split")
+                logger.info(f"Results saved to: {output_dir}")
+                
+                # Update task status with metadata for parameter tracking
+                self.update_task_status(task_id, "completed", metadata)
+                return True
+            else:
+                logger.error(f"Sequential extraction failed for {split} split")
+                self.update_task_status(task_id, "failed", f"Sequential extraction failed for {split} split")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Error in sequential extraction task: {str(e)}")
+            return False
+
+    def process_legacy_extraction_task(self, task, metadata):
+        """Process legacy extraction task (backward compatibility)"""
+        try:
+            task_id = task.get("id")
             
             # Remove any date-specific subdirectory from output_dir if present
             output_dir = metadata.get("output_dir", "")
@@ -489,120 +584,301 @@ class Sentinel1DataExtractionAgent:
             end_date = metadata.get("end_date")
             bands = metadata.get("bands", ["VV", "VH"])
             
-            # Ensure we're not using date-specific subdirectories
-            # The output_dir should be used directly as provided in the task metadata
-            
             # Validate required parameters
             if not all([geojson_path, output_dir, start_date, end_date]):
-                logger.error(f"Missing required parameters in task {task_id}")
+                logger.error(f"Missing required parameters for task {task_id}")
+                return False
+            
+            # Execute the extraction
+            success = self.execute_extraction(geojson_path, output_dir, start_date, end_date, bands)
+            
+            if success:
+                logger.info(f"Legacy extraction completed successfully")
+                self.update_task_status(task_id, "completed", "Data extraction completed successfully")
+                return True
+            else:
+                logger.error(f"Legacy extraction failed")
+                self.update_task_status(task_id, "failed", "Data extraction failed")
+                return False
                 
-                # Check if we need to retrieve date range from coverage analysis
-                if not all([start_date, end_date]) and "coverage_task_id" in metadata:
-                    # Get coverage task information to extract date range
-                    coverage_task_info = self.get_task_info(metadata["coverage_task_id"])
-                    if coverage_task_info:
-                        coverage_metadata = coverage_task_info.get("metadata", {})
-                        if isinstance(coverage_metadata, str):
-                            try:
-                                coverage_metadata = json.loads(coverage_metadata)
-                            except json.JSONDecodeError:
-                                coverage_metadata = {}
-                        
-                        # Extract date range from coverage task
-                        start_date = coverage_metadata.get("start_date")
-                        end_date = coverage_metadata.get("end_date")
-                        
-                        logger.info(f"Retrieved date range from coverage task: {start_date} to {end_date}")
-                
-                # If we still don't have dates, check for coverage output file
-                if not all([start_date, end_date]):
-                    # Look for coverage output directory
-                    coverage_dir = os.path.join(BASE_DIR, "output", "tile_coverage")
-                    coverage_file = os.path.join(coverage_dir, "sentinel1_coverage.txt")
-                    
-                    if os.path.exists(coverage_file):
-                        logger.info(f"Found coverage file: {coverage_file}")
-                        # Extract date range from the file if possible
-                        # This would require parsing the file format
-                
-                if not all([geojson_path, output_dir, start_date, end_date]):
-                    raise ValueError("Missing required parameters in task metadata and could not retrieve from coverage task")
-            
-            # Now that we have all parameters, extract the data
-            logger.info(f"Extracting Sentinel-1 data for period: {start_date} to {end_date}")
-            # Use the output directory directly without creating date-specific subdirectories
-            # The sentinel_extraction.py script will handle creating necessary subdirectories
-            self.extract_sentinel1_data(geojson_path, output_dir, start_date, end_date, bands)
-            
-            # Update task status to completed
-            self.update_task_status(task_id, "completed", f"Task completed successfully at {datetime.now().isoformat()}")
-            
-            logger.info(f"Task {task_id} processed successfully")
-            return True
-            
-            # This code is unreachable now
-            # else:
-            #    logger.warning(f"Unknown task type: {task.get('title')}")
-            #    return False
-            
         except Exception as e:
-            logger.error(f"Error processing task: {str(e)}")
-            # Update task status to failed
-            try:
-                self.update_task_status(task.get("id"), "failed", f"Task failed: {str(e)}")
-            except Exception as update_error:
-                logger.error(f"Error updating task status: {str(update_error)}")
+            logger.error(f"Error in legacy extraction task: {str(e)}")
+            return False
+
+    def execute_extraction(self, geojson_path, output_dir, start_date, end_date, bands):
+        """Execute the actual data extraction"""
+        try:
+            # Ensure output directory exists
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Let sentinel_extraction.py handle the creation of DATA and META subdirectories
+            # through its prepare_output function
+            
+            # Use the sentinel_extraction.py script from tools/satellite_data_extraction_gee
+            sentinel_script = os.path.join(BASE_DIR, "tools", "satellite_data_extraction_gee", "sentinel_extraction.py")
+            
+            # Default bands if not specified
+            if bands is None:
+                bands = ["VV", "VH"]
+            
+            # Build command based on sentinel_extraction.py parameters
+            # Note: The script requires rpg_file and output_dir as positional arguments
+            cmd = [
+                sys.executable,
+                sentinel_script,
+                geojson_path,  # First positional argument is rpg_file (GeoJSON)
+                output_dir,    # Second positional argument is output_dir
+                "--col_id", "COPERNICUS/S1_GRD",  # Sentinel-1 collection
+                "--start_date", start_date,
+                "--end_date", end_date,
+                "--speckle_filter", "temporal",  # Default speckle filter
+                "--kernel_size", "5"  # Default kernel size
+            ]
+            
+            # Log the command for debugging
+            logger.info(f"Command: {' '.join(cmd)}")
+            
+            # Execute command
+            logger.info(f"Executing Sentinel-1 extraction: {' '.join(cmd)}")
+            process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            
+            stdout, stderr = process.communicate()
+            
+            if process.returncode != 0:
+                logger.error(f"Sentinel-1 extraction failed: {stderr}")
+                raise RuntimeError(f"Sentinel-1 extraction failed: {stderr}")
+            
+            logger.info(f"Sentinel-1 extraction completed successfully")
+            logger.debug(f"Extraction output: {stdout}")
+            
+            # Add memory entry
+            self.add_memory(
+                f"Extracted Sentinel-1 data for area in {geojson_path} from {start_date} to {end_date}",
+                {
+                    "action": "sentinel1_extraction",
+                    "geojson_path": geojson_path,
+                    "output_dir": output_dir,
+                    "start_date": start_date,
+                    "end_date": end_date,
+                    "bands": bands,
+                    "timestamp": datetime.now().isoformat()
+                }
+            )
+            
+            return True
+        except Exception as e:
+            logger.error(f"Error executing extraction: {str(e)}")
             return False
     
-    def update_task_status(self, task_id, status, message=None):
-        """Update the status of a task
+    def update_task_status(self, task_id, status, message=None, max_retries=3):
+        """Update the status of a task with retry logic
         
         Args:
             task_id (str): ID of the task to update
             status (str): New status for the task (e.g., 'completed', 'failed')
             message (str): Optional status message
+            max_retries (int): Maximum number of retry attempts
             
         Returns:
-            dict: Updated task information
+            dict: Updated task information or None if all retries failed
         """
-        try:
-            payload = {
-                "status": status
-            }
-            
-            if message:
-                payload["status_message"] = message
-            
-            response = requests.put(
-                f"{self.server_url}/api/tasks/{task_id}/status",
-                params={"token": self.token},
-                json=payload
-            )
-            
-            if response.status_code != 200:
-                logger.error(f"Failed to update task status: {response.text}")
-                raise ValueError(f"Failed to update task status: {response.text}")
-            
-            task_info = response.json()
-            logger.info(f"Updated task {task_id} status to {status}")
-            
-            return task_info
-        except Exception as e:
-            logger.error(f"Error updating task status: {str(e)}")
-            raise
+        retries = 0
+        while retries <= max_retries:
+            try:
+                payload = {
+                    "status": status
+                }
+                
+                if message:
+                    payload["status_message"] = message
+                
+                logger.info(f"Updating task {task_id} status to '{status}' (attempt {retries+1}/{max_retries+1})")
+                response = requests.put(
+                    f"{self.server_url}/api/tasks/{task_id}/status",
+                    params={"token": self.token},
+                    json=payload
+                )
+                
+                if response.status_code == 200:
+                    task_info = response.json()
+                    logger.info(f"Successfully updated task {task_id} status to '{status}'")
+                    
+                    # Add to processed tasks tracking
+                    self._add_to_processed_tasks(task_id, status, message)
+                    
+                    return task_info
+                elif response.status_code == 404 and "Not Found" in response.text:
+                    # Special handling for 'Not Found' errors
+                    logger.warning(f"Task {task_id} not found on server. Marking as processed locally.")
+                    self._add_to_processed_tasks(task_id, status, message)
+                    return None
+                else:
+                    logger.error(f"Failed to update task status: {response.text}")
+                    
+                    # Only retry on server errors (5xx) or specific 4xx errors
+                    if response.status_code >= 500 or response.status_code in [429, 408]:
+                        retries += 1
+                        if retries <= max_retries:
+                            logger.info(f"Retrying update for task {task_id} in 2 seconds...")
+                            import time
+                            time.sleep(2)  # Wait before retry
+                            continue
+                    
+                    # For other errors, mark locally and return
+                    logger.warning(f"Could not update task status on server. Marking as processed locally.")
+                    self._add_to_processed_tasks(task_id, status, message)
+                    return None
+                    
+            except Exception as e:
+                logger.error(f"Error updating task status: {str(e)}")
+                retries += 1
+                if retries <= max_retries:
+                    logger.info(f"Retrying update for task {task_id} in 2 seconds...")
+                    import time
+                    time.sleep(2)  # Wait before retry
+                else:
+                    # After all retries, mark locally and return
+                    logger.warning(f"Failed all retries to update task status. Marking as processed locally.")
+                    self._add_to_processed_tasks(task_id, status, message)
+                    return None
+        
+        return None
     
+    def _load_processed_tasks(self):
+        """Load the set of processed tasks from disk"""
+        try:
+            if os.path.exists(self.processed_tasks_file):
+                with open(self.processed_tasks_file, 'r') as f:
+                    data = json.load(f)
+                    self.processed_tasks = set(data.get('processed_task_ids', []))
+                    self.processed_task_params = set(tuple(item) for item in data.get('processed_task_params', []))
+                    logger.info(f"Loaded {len(self.processed_tasks)} previously processed tasks and {len(self.processed_task_params)} task parameter sets")
+            else:
+                logger.info("No processed tasks file found, starting with empty set")
+                self.processed_tasks = set()
+                self.processed_task_params = set()
+        except Exception as e:
+            logger.error(f"Error loading processed tasks: {str(e)}")
+            self.processed_tasks = set()
+            self.processed_task_params = set()
+    
+    def _save_processed_tasks(self):
+        """Save the set of processed tasks to disk"""
+        try:
+            os.makedirs(os.path.dirname(self.processed_tasks_file), exist_ok=True)
+            with open(self.processed_tasks_file, 'w') as f:
+                json.dump({
+                    'processed_task_ids': list(self.processed_tasks),
+                    'processed_task_params': [list(params) for params in self.processed_task_params],
+                    'last_updated': datetime.now().isoformat()
+                }, f)
+            logger.info(f"Saved {len(self.processed_tasks)} processed tasks and {len(self.processed_task_params)} task parameter sets to disk")
+        except Exception as e:
+            logger.error(f"Error saving processed tasks: {str(e)}")
+    
+    def _add_to_processed_tasks(self, task_id, status, metadata=None):
+        """Add a task to the processed tasks set
+        
+        Args:
+            task_id (str): ID of the task
+            status (str): Status of the task (e.g., 'completed', 'failed')
+            metadata (dict): Task metadata for parameter tracking
+        """
+        self.processed_tasks.add(task_id)
+        
+        # Also track task parameters to detect duplicates
+        if metadata and isinstance(metadata, dict):
+            # Create a parameter fingerprint for this task
+            param_keys = ['geojson_path', 'output_dir', 'start_date', 'end_date', 'split']
+            param_values = []
+            
+            for key in param_keys:
+                if key in metadata:
+                    # For paths, just use the basename to handle different path formats
+                    if key in ['geojson_path', 'output_dir'] and metadata[key]:
+                        param_values.append(os.path.basename(metadata[key]))
+                    else:
+                        param_values.append(str(metadata[key]))
+                else:
+                    param_values.append(None)
+            
+            # Add the parameter fingerprint to the set
+            param_fingerprint = tuple(param_values)
+            self.processed_task_params.add(param_fingerprint)
+            logger.info(f"Added parameter fingerprint {param_fingerprint} to processed task parameters")
+        
+        logger.info(f"Added task {task_id} to processed tasks (status: {status})")
+        self._save_processed_tasks()
+    
+    def _is_task_processed(self, task_id, metadata=None):
+        """Check if a task has already been processed
+        
+        Args:
+            task_id (str): ID of the task
+            metadata (dict): Task metadata for parameter-based duplicate detection
+            
+        Returns:
+            bool: True if the task has been processed, False otherwise
+        """
+        # First check by ID
+        if task_id in self.processed_tasks:
+            return True
+            
+        # Then check by parameters to catch duplicates
+        if metadata and isinstance(metadata, dict):
+            # Create a parameter fingerprint for this task
+            param_keys = ['geojson_path', 'output_dir', 'start_date', 'end_date', 'split']
+            param_values = []
+            
+            for key in param_keys:
+                if key in metadata:
+                    # For paths, just use the basename to handle different path formats
+                    if key in ['geojson_path', 'output_dir'] and metadata[key]:
+                        param_values.append(os.path.basename(metadata[key]))
+                    else:
+                        param_values.append(str(metadata[key]))
+                else:
+                    param_values.append(None)
+            
+            # Check if this parameter fingerprint exists
+            param_fingerprint = tuple(param_values)
+            if param_fingerprint in self.processed_task_params:
+                logger.info(f"Task {task_id} has identical parameters to a previously processed task")
+                return True
+                
+        return False
+            
     def run(self):
         """Run the agent to process tasks"""
         try:
-            # Get tasks
-            tasks = self.get_tasks()
+            # Get only incomplete tasks
+            tasks = self.get_incomplete_tasks()
             
             if not tasks:
-                logger.info("No tasks assigned to this agent")
+                logger.info("No incomplete tasks assigned to this agent")
                 return
             
-            # Process each task
+            # Sort tasks by processing_order if available
+            tasks.sort(key=lambda t: int(t.get('metadata', {}).get('processing_order', 999)) 
+                      if isinstance(t.get('metadata'), dict) else 999)
+            
+            # Process each task, skipping already processed ones
             for task in tasks:
+                task_id = task.get('id')
+                
+                # Get task metadata for parameter-based duplicate detection
+                metadata = task.get('metadata', {})
+                
+                if self._is_task_processed(task_id, metadata):
+                    logger.info(f"Skipping already processed task {task_id}")
+                    continue
+                    
+                logger.info(f"Processing task {task_id} (not in processed tasks list)")
                 self.process_task(task)
                 
         except Exception as e:

@@ -47,6 +47,7 @@ mcp_server_psetae/
 ├── utils/                   # Utility functions
 │   ├── shapefile_converter.py  # Shapefile to GeoJSON converter
 ├── config/                  # Configuration files
+├── logs/                    # Log files (only check if errors occur)
 └── tests/                   # Test scripts
 ```
 
@@ -64,9 +65,19 @@ mcp_server_psetae/
 - Execute Sentinel-1 data extraction scripts with appropriate parameters
 - Process and normalize Sentinel-1 imagery
 - Store data in standardized format
-- **IMPORTANT**: Requires separate extraction tasks for test, training, and validation data splits
-  - Each split must use its corresponding GeoJSON file (containing 'test', 'training', or 'validation' in filename)
-  - Output is placed in dataset-specific directories (testdirectory, traindirectory, validationdirectory)
+- **SEQUENTIAL EXTRACTION WORKFLOW ARCHITECTURE**: Create a single extraction task for all data splits (test, training, validation)
+  - Use `create_sequential_extraction_workflow.py` with the following parameters:
+    ```bash
+    python create_sequential_extraction_workflow.py --geojson "output/geojson/croptype_KA28_wgs84_test_622.geojson" --start-date <start_date> --end-date <end_date>
+    ```
+  - The task will automatically determine the correct output directories for each split based on the GeoJSON filename
+- **GEE Authentication Requirements**:
+  - Must use correct GEE project ID in `sentinel_extraction.py` (not 'your-project-id')
+  - Uses the script in `tools/satellite_data_extraction_gee/sentinel_extraction.py`
+- **Task Switching Mechanism**:
+  - Agent tracks processed tasks locally to prevent reprocessing
+  - Updates task status to "completed" after successful processing
+  - Filters for incomplete tasks to ensure sequential processing
 
 #### Sentinel1ModelTrainingAgent
 - Configure and execute Sentinel-1 training scripts
@@ -87,31 +98,35 @@ mcp_server_psetae/
 - Identify gaps in coverage
 - Calculate performance metrics
 
+## Operational Guidelines
+
+### Log Monitoring Policy
+- Log files should only be checked if there is an error in the workflow
+- Do not routinely inspect logs (e.g., sentinel1_data_extraction_agent.log) unless a failure is detected
+- If checking logs, focus on recent entries (current timestamp) to identify relevant errors
+
 ## Execution Instructions
 
-1. Start MCP server
+1. Start MCP server using start_mcp_server.py
 2. Initialize Admin Agent with this MCD
 3. **REQUIRED**: Run Admin Agent with `--setup-workflow` flag to create all worker agents
    - This step is mandatory and must be performed every time the Admin Agent starts
    - Use `python agents/admin_agent.py --token <admin_token> --server-url <server_url> --setup-workflow`
    - Save the generated worker agent tokens for future use
 4. Define project parameters
-5. **REQUIRED**: Create separate extraction tasks for test, training, and validation splits
-   - **CRITICAL WORKFLOW REQUIREMENT**: Before running any extraction workflow, ALWAYS check if all three extraction tasks (test, training, validation) exist on the MCP server. If any are missing, they MUST be created.
-   - Use `create_data_extraction_task.py` with appropriate GeoJSON files:
+5. **SEQUENTIAL EXTRACTION WORKFLOW ARCHITECTURE**: Create a single extraction task for all data splits (test, training, validation)
+   - Use `create_sequential_extraction_workflow.py` with the following parameters:
      ```bash
-     # For test data
-     python create_data_extraction_task.py --geojson "output/geojson/croptype_KA28_wgs84_test_622.geojson" --start-date <start_date> --end-date <end_date>
-     
-     # For training data
-     python create_data_extraction_task.py --geojson "output/geojson/croptype_KA28_wgs84_training_622.geojson" --start-date <start_date> --end-date <end_date>
-     
-     # For validation data
-     python create_data_extraction_task.py --geojson "output/geojson/croptype_KA28_wgs84_validation_622.geojson" --start-date <start_date> --end-date <end_date>
+     python create_sequential_extraction_workflow.py --start-date <start_date> --end-date <end_date>
      ```
-   - Each task will automatically determine the correct output directory based on the GeoJSON filename
-   - To check existing tasks, use: `python -c "import requests; response = requests.get('http://localhost:8080/api/tasks/list', params={'token': '<admin_token>'}); print(response.text)"` and verify that tasks for all three splits are present
-6. Execute workflow through Admin Agent
+   - The script uses hardcoded GeoJSON files for each split (test, validation, training)
+   - The task will automatically determine the correct output directories for each split based on the GeoJSON filename
+6. **IMPORTANT - SENTINEL1 DATA EXTRACTION AGENT CONSIDERATIONS**:
+   - **GEE Authentication**: Ensure the Google Earth Engine project ID is correctly set to `ee-shivaprakashssy-psetae-ka28` in the `sentinel_extraction.py` script
+   - **Script Location**: The agent must use the correct version of `sentinel_extraction.py` from `mcp_server_psetae/tools/satellite_data_extraction_gee/`
+   - **Task Switching**: The agent implements task tracking to prevent task repetition and ensure proper sequential processing of test, validation, and training splits
+   - If tasks are being repeated or overwritten, check that task status updates are working correctly
+7. Execute workflow through Admin Agent
 
 ## References
 - PSETAE GitHub Repository

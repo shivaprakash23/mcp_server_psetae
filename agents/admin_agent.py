@@ -365,6 +365,141 @@ class AdminAgent:
             logger.error(f"Error creating Sentinel-1 workflow: {str(e)}")
             raise
     
+    def create_sequential_extraction_workflow(self, geojson_files, output_base_dir, start_date, end_date, bands=None):
+        """Create a sequential multi-split extraction workflow for test, validation, and training data.
+        
+        This method creates extraction tasks one at a time to avoid cross-task interference
+        and ensure each split's data goes to the correct output directory.
+        
+        Args:
+            geojson_files (dict): Dictionary mapping split names to GeoJSON file paths
+                                 e.g., {"test": "test.geojson", "validation": "val.geojson", "training": "train.geojson"}
+            output_base_dir (str): Base directory for all outputs
+            start_date (str): Start date in YYYY-MM-DD format
+            end_date (str): End date in YYYY-MM-DD format
+            bands (list): List of bands to extract (default: ["VV", "VH"])
+            
+        Returns:
+            dict: Workflow information including task IDs for each split
+        """
+        if bands is None:
+            bands = ["VV", "VH"]
+            
+        try:
+            # Create output directories for each split
+            sentinel1_data_dir = os.path.join(output_base_dir, "sentinel1_data")
+            split_directories = {
+                "test": os.path.join(sentinel1_data_dir, "testdirectory"),
+                "validation": os.path.join(sentinel1_data_dir, "validationdirectory"), 
+                "training": os.path.join(sentinel1_data_dir, "traindirectory")
+            }
+            
+            # Create all directories
+            for split_dir in split_directories.values():
+                os.makedirs(split_dir, exist_ok=True)
+                logger.info(f"Created directory: {split_dir}")
+            
+            # Read tile coverage information if available
+            coverage_file = os.path.join(output_base_dir, "tile_coverage", "sentinel1_coverage.txt")
+            tile_info = {"tracks": ["63"], "acquisitions": {"63": 16}}  # Default values
+            
+            if os.path.exists(coverage_file):
+                try:
+                    with open(coverage_file, 'r') as f:
+                        content = f.read()
+                        # Parse tile information from coverage file
+                        tracks = []
+                        acquisitions = {}
+                        for line in content.split('\n'):
+                            if 'Track' in line and 'acquisitions' in line:
+                                parts = line.split()
+                                if len(parts) >= 4:
+                                    track = parts[1].rstrip(':')
+                                    acq_count = int(parts[2])
+                                    tracks.append(track)
+                                    acquisitions[track] = acq_count
+                        
+                        if tracks:
+                            tile_info = {"tracks": tracks, "acquisitions": acquisitions}
+                            logger.info(f"Found tile information: {len(tracks)} tracks")
+                except Exception as e:
+                    logger.warning(f"Could not read tile coverage file: {e}")
+            
+            # Create workflow tasks for each split
+            workflow = {}
+            
+            # Define processing order: test -> validation -> training
+            processing_order = ["test", "validation", "training"]
+            priority = 1
+            
+            for split in processing_order:
+                if split not in geojson_files:
+                    logger.warning(f"No GeoJSON file provided for {split} split, skipping")
+                    continue
+                    
+                geojson_path = geojson_files[split]
+                output_dir = split_directories[split]
+                
+                # Verify GeoJSON file exists
+                if not os.path.exists(geojson_path):
+                    logger.error(f"GeoJSON file not found for {split} split: {geojson_path}")
+                    continue
+                
+                # Create extraction task for this split
+                task_metadata = {
+                    "geojson_path": geojson_path,
+                    "output_dir": output_dir,
+                    "start_date": start_date,
+                    "end_date": end_date,
+                    "bands": bands,
+                    "task_type": "data_extraction",
+                    "tile_information": tile_info,
+                    "coverage_file": coverage_file,
+                    "split": split,  # Explicitly mark the split type
+                    "workflow_type": "sequential_extraction",  # Mark as sequential workflow
+                    "processing_order": processing_order.index(split) + 1  # Order in sequence
+                }
+                
+                task_title = f"Sentinel-1 {split.upper()} Data Extraction {start_date} to {end_date}"
+                task_description = f"Extract Sentinel-1 data for {split.upper()} split from {start_date} to {end_date} using {os.path.basename(geojson_path)}"
+                
+                extraction_task = self.create_task(
+                    title=task_title,
+                    description=task_description,
+                    assigned_to="sentinel1-data-extraction-agent",
+                    priority=priority,
+                    metadata=task_metadata
+                )
+                
+                workflow[f"{split}_extraction_task"] = extraction_task
+                logger.info(f"Created {split} extraction task with ID: {extraction_task.get('id')}")
+                logger.info(f"  GeoJSON: {geojson_path}")
+                logger.info(f"  Output: {output_dir}")
+                
+                priority += 1
+            
+            # Add workflow to memory
+            self.add_memory(
+                f"Created sequential extraction workflow for {len(workflow)} splits from {start_date} to {end_date}",
+                {
+                    "action": "create_sequential_extraction_workflow",
+                    "splits": list(geojson_files.keys()),
+                    "output_base_dir": output_base_dir,
+                    "start_date": start_date,
+                    "end_date": end_date,
+                    "bands": bands,
+                    "workflow": workflow,
+                    "processing_order": processing_order
+                }
+            )
+            
+            logger.info(f"Sequential extraction workflow created successfully with {len(workflow)} tasks")
+            return workflow
+            
+        except Exception as e:
+            logger.error(f"Error creating sequential extraction workflow: {str(e)}")
+            raise
+
     def add_memory(self, content, metadata=None):
         """Add a memory entry
         
