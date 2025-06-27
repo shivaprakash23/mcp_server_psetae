@@ -420,33 +420,36 @@ class Sentinel1DataExtractionAgent:
             # Ensure output directory contains dataset-specific directory (testdirectory, traindirectory, validationdirectory)
             output_dir = metadata.get("output_dir", "")
             if output_dir:
-                # Check if output_dir already ends with a dataset-specific directory
+                # First, remove any date-specific subdirectory if present
+                # This ensures we're working with the base sentinel1_data directory
                 output_dir_parts = output_dir.split(os.sep)
-                last_part = output_dir_parts[-1].lower() if output_dir_parts else ""
+                if len(output_dir_parts) >= 1 and re.match(r'\d{8}_\d{8}', output_dir_parts[-1]):
+                    output_dir = os.sep.join(output_dir_parts[:-1])
+                    logger.info(f"Removed date-specific subdirectory. Using output_dir: {output_dir}")
                 
-                # If not ending with dataset-specific directory, determine from geojson filename
-                if last_part not in ["testdirectory", "traindirectory", "validationdirectory"]:
-                    geojson_path = metadata.get("geojson_path", "")
-                    if geojson_path:
-                        geojson_filename = os.path.basename(geojson_path).lower()
-                        if "test" in geojson_filename:
-                            dataset_type = "testdirectory"
-                        elif "train" in geojson_filename:
-                            dataset_type = "traindirectory"
-                        elif "valid" in geojson_filename or "val" in geojson_filename:
-                            dataset_type = "validationdirectory"
-                        else:
-                            # Default to test if can't determine
-                            dataset_type = "testdirectory"
-                            logger.info(f"Could not determine dataset type from filename '{geojson_filename}'. Using '{dataset_type}' as default.")
-                        
-                        # Append dataset-specific directory to output_dir
-                        output_dir = os.path.join(output_dir, dataset_type)
-                        metadata["output_dir"] = output_dir
-                        os.makedirs(output_dir, exist_ok=True)
-                        logger.info(f"Ensured dataset-specific directory. Using output_dir: {output_dir}")
-                else:
-                    logger.info(f"Output directory already contains dataset-specific directory: {last_part}")
+                # Now determine the dataset type from the GeoJSON filename
+                geojson_path = metadata.get("geojson_path", "")
+                if geojson_path:
+                    geojson_filename = os.path.basename(geojson_path).lower()
+                    
+                    # Force dataset type based on GeoJSON filename, regardless of current output_dir
+                    if "test" in geojson_filename:
+                        dataset_type = "testdirectory"
+                    elif "training" in geojson_filename:
+                        dataset_type = "traindirectory"
+                    elif "validation" in geojson_filename or "val" in geojson_filename:
+                        dataset_type = "validationdirectory"
+                    else:
+                        # Default to test if can't determine
+                        dataset_type = "testdirectory"
+                        logger.info(f"Could not determine dataset type from filename '{geojson_filename}'. Using '{dataset_type}' as default.")
+                    
+                    # Always use the determined dataset type, overriding any existing directory
+                    base_dir = os.path.dirname(output_dir) if output_dir.lower().endswith(("testdirectory", "traindirectory", "validationdirectory")) else output_dir
+                    output_dir = os.path.join(base_dir, dataset_type)
+                    metadata["output_dir"] = output_dir
+                    os.makedirs(output_dir, exist_ok=True)
+                    logger.info(f"Using dataset-specific directory based on GeoJSON filename: {output_dir}")
 
             
             # Extract parameters from metadata

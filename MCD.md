@@ -64,6 +64,9 @@ mcp_server_psetae/
 - Execute Sentinel-1 data extraction scripts with appropriate parameters
 - Process and normalize Sentinel-1 imagery
 - Store data in standardized format
+- **IMPORTANT**: Requires separate extraction tasks for test, training, and validation data splits
+  - Each split must use its corresponding GeoJSON file (containing 'test', 'training', or 'validation' in filename)
+  - Output is placed in dataset-specific directories (testdirectory, traindirectory, validationdirectory)
 
 #### Sentinel1ModelTrainingAgent
 - Configure and execute Sentinel-1 training scripts
@@ -93,7 +96,22 @@ mcp_server_psetae/
    - Use `python agents/admin_agent.py --token <admin_token> --server-url <server_url> --setup-workflow`
    - Save the generated worker agent tokens for future use
 4. Define project parameters
-5. Execute workflow through Admin Agent
+5. **REQUIRED**: Create separate extraction tasks for test, training, and validation splits
+   - **CRITICAL WORKFLOW REQUIREMENT**: Before running any extraction workflow, ALWAYS check if all three extraction tasks (test, training, validation) exist on the MCP server. If any are missing, they MUST be created.
+   - Use `create_data_extraction_task.py` with appropriate GeoJSON files:
+     ```bash
+     # For test data
+     python create_data_extraction_task.py --geojson "output/geojson/croptype_KA28_wgs84_test_622.geojson" --start-date <start_date> --end-date <end_date>
+     
+     # For training data
+     python create_data_extraction_task.py --geojson "output/geojson/croptype_KA28_wgs84_training_622.geojson" --start-date <start_date> --end-date <end_date>
+     
+     # For validation data
+     python create_data_extraction_task.py --geojson "output/geojson/croptype_KA28_wgs84_validation_622.geojson" --start-date <start_date> --end-date <end_date>
+     ```
+   - Each task will automatically determine the correct output directory based on the GeoJSON filename
+   - To check existing tasks, use: `python -c "import requests; response = requests.get('http://localhost:8080/api/tasks/list', params={'token': '<admin_token>'}); print(response.text)"` and verify that tasks for all three splits are present
+6. Execute workflow through Admin Agent
 
 ## References
 - PSETAE GitHub Repository
