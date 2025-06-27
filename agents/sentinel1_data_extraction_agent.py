@@ -14,6 +14,7 @@ import argparse
 import logging
 import requests
 import subprocess
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -298,10 +299,8 @@ class Sentinel1DataExtractionAgent:
             # Ensure output directory exists
             os.makedirs(output_dir, exist_ok=True)
             
-            # Create DATA and META subdirectories directly in the output directory
-            # This ensures we don't need date-specific subdirectories
-            os.makedirs(os.path.join(output_dir, 'DATA'), exist_ok=True)
-            os.makedirs(os.path.join(output_dir, 'META'), exist_ok=True)
+            # Let sentinel_extraction.py handle the creation of DATA and META subdirectories
+            # through its prepare_output function
             
             # Use the sentinel_extraction.py script from tools/satellite_data_extraction_gee
             sentinel_script = os.path.join(BASE_DIR, "tools", "satellite_data_extraction_gee", "sentinel_extraction.py")
@@ -316,13 +315,16 @@ class Sentinel1DataExtractionAgent:
                 sys.executable,
                 sentinel_script,
                 geojson_path,  # First positional argument is rpg_file (GeoJSON)
-                output_dir,    # Second positional argument is output_dir (use the dataset directory directly)
+                output_dir,    # Second positional argument is output_dir
                 "--col_id", "COPERNICUS/S1_GRD",  # Sentinel-1 collection
                 "--start_date", start_date,
                 "--end_date", end_date,
                 "--speckle_filter", "temporal",  # Default speckle filter
                 "--kernel_size", "5"  # Default kernel size
             ]
+            
+            # Log the command for debugging
+            logger.info(f"Command: {' '.join(cmd)}")
             
             # Execute command
             logger.info(f"Executing Sentinel-1 extraction: {' '.join(cmd)}")
@@ -401,12 +403,61 @@ class Sentinel1DataExtractionAgent:
             logger.info(f"Processing task {task_id}: {task.get('title')}")
             logger.info(f"Task metadata: {metadata}")
             
+            # Remove any date-specific subdirectory from output_dir if present
+            output_dir = metadata.get("output_dir", "")
+            if output_dir:
+                # Check if the output_dir ends with a date pattern like 20240901_20250331
+                output_dir_parts = output_dir.split(os.sep)
+                if len(output_dir_parts) > 0:
+                    last_part = output_dir_parts[-1]
+                    # Check if the last part matches a date pattern (YYYYMMDD_YYYYMMDD)
+                    if re.match(r'\d{8}_\d{8}', last_part):
+                        # Remove the date-specific subdirectory
+                        output_dir = os.path.dirname(output_dir)
+                        metadata["output_dir"] = output_dir
+                        logger.info(f"Removed date-specific subdirectory. Using output_dir: {output_dir}")
+                        
+            # Ensure output directory contains dataset-specific directory (testdirectory, traindirectory, validationdirectory)
+            output_dir = metadata.get("output_dir", "")
+            if output_dir:
+                # Check if output_dir already ends with a dataset-specific directory
+                output_dir_parts = output_dir.split(os.sep)
+                last_part = output_dir_parts[-1].lower() if output_dir_parts else ""
+                
+                # If not ending with dataset-specific directory, determine from geojson filename
+                if last_part not in ["testdirectory", "traindirectory", "validationdirectory"]:
+                    geojson_path = metadata.get("geojson_path", "")
+                    if geojson_path:
+                        geojson_filename = os.path.basename(geojson_path).lower()
+                        if "test" in geojson_filename:
+                            dataset_type = "testdirectory"
+                        elif "train" in geojson_filename:
+                            dataset_type = "traindirectory"
+                        elif "valid" in geojson_filename or "val" in geojson_filename:
+                            dataset_type = "validationdirectory"
+                        else:
+                            # Default to test if can't determine
+                            dataset_type = "testdirectory"
+                            logger.info(f"Could not determine dataset type from filename '{geojson_filename}'. Using '{dataset_type}' as default.")
+                        
+                        # Append dataset-specific directory to output_dir
+                        output_dir = os.path.join(output_dir, dataset_type)
+                        metadata["output_dir"] = output_dir
+                        os.makedirs(output_dir, exist_ok=True)
+                        logger.info(f"Ensured dataset-specific directory. Using output_dir: {output_dir}")
+                else:
+                    logger.info(f"Output directory already contains dataset-specific directory: {last_part}")
+
+            
             # Extract parameters from metadata
             geojson_path = metadata.get("geojson_path")
             output_dir = metadata.get("output_dir")
             start_date = metadata.get("start_date")
             end_date = metadata.get("end_date")
             bands = metadata.get("bands", ["VV", "VH"])
+            
+            # Ensure we're not using date-specific subdirectories
+            # The output_dir should be used directly as provided in the task metadata
             
             # Validate required parameters
             if not all([geojson_path, output_dir, start_date, end_date]):
@@ -446,7 +497,8 @@ class Sentinel1DataExtractionAgent:
             
             # Now that we have all parameters, extract the data
             logger.info(f"Extracting Sentinel-1 data for period: {start_date} to {end_date}")
-            # Ensure we use the output directory directly without creating date-specific subdirectories
+            # Use the output directory directly without creating date-specific subdirectories
+            # The sentinel_extraction.py script will handle creating necessary subdirectories
             self.extract_sentinel1_data(geojson_path, output_dir, start_date, end_date, bands)
             
             # Update task status to completed

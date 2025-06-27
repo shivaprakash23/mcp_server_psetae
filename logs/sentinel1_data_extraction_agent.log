@@ -2017,3 +2017,841 @@ ee.ee_exception.EEException: Caller does not have required permission to use pro
 2025-06-27 01:46:35,046 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
 2025-06-27 01:46:35,046 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
 2025-06-27 01:46:35,046 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 02:00:37,215 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: 
+  0%|          | 0/536 [00:00<?, ?it/s]
+100%|##########| 536/536 [00:00<?, ?it/s]
+
+  0%|          | 0/536 [00:00<?, ?it/s]
+  0%|          | 1/536 [00:21<3:10:55, 21.41s/it]
+  0%|          | 2/536 [00:24<1:34:33, 10.63s/it]
+  1%|          | 3/536 [00:28<1:06:04,  7.44s/it]
+  1%|          | 4/536 [00:31<52:23,  5.91s/it]  
+  1%|          | 5/536 [00:38<53:51,  6.09s/it]
+  1%|1         | 6/536 [00:40<43:27,  4.92s/it]
+  1%|1         | 7/536 [00:44<41:18,  4.69s/it]
+  1%|1         | 8/536 [00:49<39:35,  4.50s/it]
+  2%|1         | 9/536 [00:52<36:13,  4.12s/it]
+  2%|1         | 10/536 [00:55<33:43,  3.85s/it]
+  2%|2         | 11/536 [00:58<30:54,  3.53s/it]
+  2%|2         | 12/536 [01:00<27:50,  3.19s/it]
+  2%|2         | 13/536 [01:05<31:41,  3.64s/it]
+  3%|2         | 14/536 [01:08<29:17,  3.37s/it]
+  3%|2         | 15/536 [01:11<28:20,  3.26s/it]
+  3%|2         | 16/536 [01:13<24:51,  2.87s/it]
+  3%|3         | 17/536 [01:14<21:25,  2.48s/it]
+  3%|3         | 18/536 [01:16<19:45,  2.29s/it]
+  4%|3         | 19/536 [01:18<19:38,  2.28s/it]
+  4%|3         | 20/536 [01:21<20:26,  2.38s/it]
+  4%|3         | 21/536 [01:23<19:23,  2.26s/it]
+  4%|4         | 22/536 [01:26<20:17,  2.37s/it]
+  4%|4         | 23/536 [01:28<19:47,  2.31s/it]
+  4%|4         | 24/536 [01:31<21:44,  2.55s/it]
+  5%|4         | 25/536 [01:33<21:07,  2.48s/it]
+  5%|4         | 26/536 [01:35<20:31,  2.41s/it]
+  5%|5         | 27/536 [01:39<22:49,  2.69s/it]
+  5%|5         | 28/536 [01:41<20:33,  2.43s/it]
+  5%|5         | 29/536 [01:44<21:59,  2.60s/it]
+  6%|5         | 30/536 [01:47<23:20,  2.77s/it]
+  6%|5         | 31/536 [01:49<22:13,  2.64s/it]
+  6%|5         | 32/536 [01:51<21:14,  2.53s/it]
+  6%|6         | 33/536 [01:54<20:15,  2.42s/it]
+  6%|6         | 34/536 [01:56<19:34,  2.34s/it]
+  7%|6         | 35/536 [01:58<19:14,  2.30s/it]
+  7%|6         | 36/536 [02:00<19:35,  2.35s/it]
+  7%|6         | 37/536 [02:02<18:53,  2.27s/it]
+  7%|7         | 38/536 [02:04<17:06,  2.06s/it]
+  7%|7         | 39/536 [02:06<17:00,  2.05s/it]
+  7%|7         | 40/536 [02:08<17:22,  2.10s/it]
+  8%|7         | 41/536 [02:11<18:07,  2.20s/it]
+  8%|7         | 42/536 [02:13<17:28,  2.12s/it]
+  8%|8         | 43/536 [02:15<18:06,  2.20s/it]
+  8%|8         | 44/536 [02:17<18:24,  2.24s/it]
+  8%|8         | 45/536 [02:19<16:57,  2.07s/it]
+  9%|8         | 46/536 [02:21<16:10,  1.98s/it]
+  9%|8         | 47/536 [02:24<18:41,  2.29s/it]
+  9%|8         | 48/536 [02:44<1:03:22,  7.79s/it]
+  9%|9         | 49/536 [02:47<49:46,  6.13s/it]  
+  9%|9         | 50/536 [02:49<40:28,  5.00s/it]
+ 10%|9         | 51/536 [02:51<33:32,  4.15s/it]
+ 10%|9         | 52/536 [02:54<30:26,  3.77s/it]
+ 10%|9         | 53/536 [02:56<25:27,  3.16s/it]
+ 10%|#         | 54/536 [02:58<23:43,  2.95s/it]
+ 10%|#         | 55/536 [03:00<21:40,  2.70s/it]
+ 10%|#         | 56/536 [03:32<1:30:35, 11.32s/it]
+ 11%|#         | 57/536 [03:35<1:10:41,  8.86s/it]
+ 11%|#         | 58/536 [03:37<53:47,  6.75s/it]  
+ 11%|#1        | 59/536 [03:39<43:06,  5.42s/it]
+ 11%|#1        | 60/536 [03:47<48:22,  6.10s/it]
+ 11%|#1        | 61/536 [03:56<54:35,  6.90s/it]
+ 12%|#1        | 62/536 [03:58<44:59,  5.69s/it]
+ 12%|#1        | 63/536 [04:00<35:59,  4.57s/it]
+ 12%|#1        | 64/536 [04:03<30:31,  3.88s/it]
+ 12%|#2        | 65/536 [04:05<26:41,  3.40s/it]
+ 12%|#2        | 66/536 [04:09<28:35,  3.65s/it]
+ 12%|#2        | 67/536 [04:11<25:00,  3.20s/it]
+ 13%|#2        | 68/536 [04:24<48:11,  6.18s/it]
+ 13%|#2        | 69/536 [04:27<39:07,  5.03s/it]
+ 13%|#3        | 70/536 [04:29<31:47,  4.09s/it]
+ 13%|#3        | 71/536 [04:30<26:02,  3.36s/it]
+ 13%|#3        | 72/536 [04:32<22:33,  2.92s/it]
+ 14%|#3        | 73/536 [04:41<34:59,  4.53s/it]
+ 14%|#3        | 74/536 [05:13<1:39:12, 12.88s/it]
+ 14%|#3        | 75/536 [05:15<1:14:55,  9.75s/it]
+ 14%|#4        | 76/536 [05:18<57:50,  7.54s/it]  
+ 14%|#4        | 77/536 [05:22<50:15,  6.57s/it]
+ 15%|#4        | 78/536 [05:25<40:40,  5.33s/it]
+ 15%|#4        | 79/536 [05:27<33:43,  4.43s/it]
+ 15%|#4        | 80/536 [05:36<44:06,  5.80s/it]
+ 15%|#5        | 81/536 [05:38<35:58,  4.74s/it]
+ 15%|#5        | 82/536 [05:40<30:11,  3.99s/it]
+ 15%|#5        | 83/536 [05:43<27:12,  3.60s/it]
+ 16%|#5        | 84/536 [05:47<26:58,  3.58s/it]
+ 16%|#5        | 85/536 [05:49<23:20,  3.10s/it]
+ 16%|#6        | 86/536 [05:51<22:36,  3.01s/it]
+ 16%|#6        | 87/536 [05:57<28:39,  3.83s/it]
+ 16%|#6        | 88/536 [06:00<27:13,  3.65s/it]
+ 17%|#6        | 89/536 [06:02<23:45,  3.19s/it]
+ 17%|#6        | 90/536 [06:04<20:32,  2.76s/it]
+ 17%|#6        | 91/536 [06:06<18:04,  2.44s/it]
+ 17%|#7        | 92/536 [06:08<16:14,  2.19s/it]
+ 17%|#7        | 93/536 [06:09<15:37,  2.12s/it]
+ 18%|#7        | 94/536 [06:12<16:34,  2.25s/it]
+ 18%|#7        | 95/536 [06:17<21:36,  2.94s/it]
+ 18%|#7        | 96/536 [06:18<19:07,  2.61s/it]
+ 18%|#8        | 97/536 [06:20<17:02,  2.33s/it]
+ 18%|#8        | 98/536 [06:22<15:27,  2.12s/it]
+ 18%|#8        | 99/536 [06:24<15:23,  2.11s/it]
+ 19%|#8        | 100/536 [06:26<14:37,  2.01s/it]
+ 19%|#8        | 101/536 [06:45<51:36,  7.12s/it]
+ 19%|#9        | 102/536 [06:46<40:05,  5.54s/it]
+ 19%|#9        | 103/536 [06:49<34:01,  4.71s/it]
+ 19%|#9        | 104/536 [07:02<50:39,  7.04s/it]
+ 20%|#9        | 105/536 [07:04<40:14,  5.60s/it]
+ 20%|#9        | 106/536 [07:17<56:16,  7.85s/it]
+ 20%|#9        | 107/536 [07:19<43:09,  6.04s/it]
+ 20%|##        | 108/536 [07:21<35:32,  4.98s/it]
+ 20%|##        | 109/536 [07:24<29:22,  4.13s/it]
+ 21%|##        | 110/536 [07:27<28:08,  3.96s/it]
+ 21%|##        | 111/536 [07:29<24:15,  3.43s/it]
+ 21%|##        | 112/536 [07:32<23:14,  3.29s/it]
+ 21%|##1       | 113/536 [07:35<22:46,  3.23s/it]
+ 21%|##1       | 114/536 [07:40<25:42,  3.66s/it]
+ 21%|##1       | 115/536 [07:48<33:53,  4.83s/it]
+ 22%|##1       | 116/536 [07:51<30:45,  4.39s/it]
+ 22%|##1       | 117/536 [07:53<25:06,  3.60s/it]
+ 22%|##2       | 118/536 [08:16<1:05:32,  9.41s/it]
+ 22%|##2       | 119/536 [08:43<1:41:59, 14.67s/it]
+ 22%|##2       | 120/536 [09:09<2:05:27, 18.10s/it]
+ 22%|##2       | 120/536 [13:56<48:20,  6.97s/it]  
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 243, in main
+    prepare_dataset(
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 205, in prepare_dataset
+    np.save(os.path.join(output_dir, 'DATA', str(parcel_id)), np_all_dates)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\numpy\lib\npyio.py", line 542, in save
+    file_ctx = open(file, "wb")
+               ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331\\DATA\\787.npy'
+
+2025-06-27 02:00:37,216 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: 
+  0%|          | 0/536 [00:00<?, ?it/s]
+100%|##########| 536/536 [00:00<?, ?it/s]
+
+  0%|          | 0/536 [00:00<?, ?it/s]
+  0%|          | 1/536 [00:21<3:10:55, 21.41s/it]
+  0%|          | 2/536 [00:24<1:34:33, 10.63s/it]
+  1%|          | 3/536 [00:28<1:06:04,  7.44s/it]
+  1%|          | 4/536 [00:31<52:23,  5.91s/it]  
+  1%|          | 5/536 [00:38<53:51,  6.09s/it]
+  1%|1         | 6/536 [00:40<43:27,  4.92s/it]
+  1%|1         | 7/536 [00:44<41:18,  4.69s/it]
+  1%|1         | 8/536 [00:49<39:35,  4.50s/it]
+  2%|1         | 9/536 [00:52<36:13,  4.12s/it]
+  2%|1         | 10/536 [00:55<33:43,  3.85s/it]
+  2%|2         | 11/536 [00:58<30:54,  3.53s/it]
+  2%|2         | 12/536 [01:00<27:50,  3.19s/it]
+  2%|2         | 13/536 [01:05<31:41,  3.64s/it]
+  3%|2         | 14/536 [01:08<29:17,  3.37s/it]
+  3%|2         | 15/536 [01:11<28:20,  3.26s/it]
+  3%|2         | 16/536 [01:13<24:51,  2.87s/it]
+  3%|3         | 17/536 [01:14<21:25,  2.48s/it]
+  3%|3         | 18/536 [01:16<19:45,  2.29s/it]
+  4%|3         | 19/536 [01:18<19:38,  2.28s/it]
+  4%|3         | 20/536 [01:21<20:26,  2.38s/it]
+  4%|3         | 21/536 [01:23<19:23,  2.26s/it]
+  4%|4         | 22/536 [01:26<20:17,  2.37s/it]
+  4%|4         | 23/536 [01:28<19:47,  2.31s/it]
+  4%|4         | 24/536 [01:31<21:44,  2.55s/it]
+  5%|4         | 25/536 [01:33<21:07,  2.48s/it]
+  5%|4         | 26/536 [01:35<20:31,  2.41s/it]
+  5%|5         | 27/536 [01:39<22:49,  2.69s/it]
+  5%|5         | 28/536 [01:41<20:33,  2.43s/it]
+  5%|5         | 29/536 [01:44<21:59,  2.60s/it]
+  6%|5         | 30/536 [01:47<23:20,  2.77s/it]
+  6%|5         | 31/536 [01:49<22:13,  2.64s/it]
+  6%|5         | 32/536 [01:51<21:14,  2.53s/it]
+  6%|6         | 33/536 [01:54<20:15,  2.42s/it]
+  6%|6         | 34/536 [01:56<19:34,  2.34s/it]
+  7%|6         | 35/536 [01:58<19:14,  2.30s/it]
+  7%|6         | 36/536 [02:00<19:35,  2.35s/it]
+  7%|6         | 37/536 [02:02<18:53,  2.27s/it]
+  7%|7         | 38/536 [02:04<17:06,  2.06s/it]
+  7%|7         | 39/536 [02:06<17:00,  2.05s/it]
+  7%|7         | 40/536 [02:08<17:22,  2.10s/it]
+  8%|7         | 41/536 [02:11<18:07,  2.20s/it]
+  8%|7         | 42/536 [02:13<17:28,  2.12s/it]
+  8%|8         | 43/536 [02:15<18:06,  2.20s/it]
+  8%|8         | 44/536 [02:17<18:24,  2.24s/it]
+  8%|8         | 45/536 [02:19<16:57,  2.07s/it]
+  9%|8         | 46/536 [02:21<16:10,  1.98s/it]
+  9%|8         | 47/536 [02:24<18:41,  2.29s/it]
+  9%|8         | 48/536 [02:44<1:03:22,  7.79s/it]
+  9%|9         | 49/536 [02:47<49:46,  6.13s/it]  
+  9%|9         | 50/536 [02:49<40:28,  5.00s/it]
+ 10%|9         | 51/536 [02:51<33:32,  4.15s/it]
+ 10%|9         | 52/536 [02:54<30:26,  3.77s/it]
+ 10%|9         | 53/536 [02:56<25:27,  3.16s/it]
+ 10%|#         | 54/536 [02:58<23:43,  2.95s/it]
+ 10%|#         | 55/536 [03:00<21:40,  2.70s/it]
+ 10%|#         | 56/536 [03:32<1:30:35, 11.32s/it]
+ 11%|#         | 57/536 [03:35<1:10:41,  8.86s/it]
+ 11%|#         | 58/536 [03:37<53:47,  6.75s/it]  
+ 11%|#1        | 59/536 [03:39<43:06,  5.42s/it]
+ 11%|#1        | 60/536 [03:47<48:22,  6.10s/it]
+ 11%|#1        | 61/536 [03:56<54:35,  6.90s/it]
+ 12%|#1        | 62/536 [03:58<44:59,  5.69s/it]
+ 12%|#1        | 63/536 [04:00<35:59,  4.57s/it]
+ 12%|#1        | 64/536 [04:03<30:31,  3.88s/it]
+ 12%|#2        | 65/536 [04:05<26:41,  3.40s/it]
+ 12%|#2        | 66/536 [04:09<28:35,  3.65s/it]
+ 12%|#2        | 67/536 [04:11<25:00,  3.20s/it]
+ 13%|#2        | 68/536 [04:24<48:11,  6.18s/it]
+ 13%|#2        | 69/536 [04:27<39:07,  5.03s/it]
+ 13%|#3        | 70/536 [04:29<31:47,  4.09s/it]
+ 13%|#3        | 71/536 [04:30<26:02,  3.36s/it]
+ 13%|#3        | 72/536 [04:32<22:33,  2.92s/it]
+ 14%|#3        | 73/536 [04:41<34:59,  4.53s/it]
+ 14%|#3        | 74/536 [05:13<1:39:12, 12.88s/it]
+ 14%|#3        | 75/536 [05:15<1:14:55,  9.75s/it]
+ 14%|#4        | 76/536 [05:18<57:50,  7.54s/it]  
+ 14%|#4        | 77/536 [05:22<50:15,  6.57s/it]
+ 15%|#4        | 78/536 [05:25<40:40,  5.33s/it]
+ 15%|#4        | 79/536 [05:27<33:43,  4.43s/it]
+ 15%|#4        | 80/536 [05:36<44:06,  5.80s/it]
+ 15%|#5        | 81/536 [05:38<35:58,  4.74s/it]
+ 15%|#5        | 82/536 [05:40<30:11,  3.99s/it]
+ 15%|#5        | 83/536 [05:43<27:12,  3.60s/it]
+ 16%|#5        | 84/536 [05:47<26:58,  3.58s/it]
+ 16%|#5        | 85/536 [05:49<23:20,  3.10s/it]
+ 16%|#6        | 86/536 [05:51<22:36,  3.01s/it]
+ 16%|#6        | 87/536 [05:57<28:39,  3.83s/it]
+ 16%|#6        | 88/536 [06:00<27:13,  3.65s/it]
+ 17%|#6        | 89/536 [06:02<23:45,  3.19s/it]
+ 17%|#6        | 90/536 [06:04<20:32,  2.76s/it]
+ 17%|#6        | 91/536 [06:06<18:04,  2.44s/it]
+ 17%|#7        | 92/536 [06:08<16:14,  2.19s/it]
+ 17%|#7        | 93/536 [06:09<15:37,  2.12s/it]
+ 18%|#7        | 94/536 [06:12<16:34,  2.25s/it]
+ 18%|#7        | 95/536 [06:17<21:36,  2.94s/it]
+ 18%|#7        | 96/536 [06:18<19:07,  2.61s/it]
+ 18%|#8        | 97/536 [06:20<17:02,  2.33s/it]
+ 18%|#8        | 98/536 [06:22<15:27,  2.12s/it]
+ 18%|#8        | 99/536 [06:24<15:23,  2.11s/it]
+ 19%|#8        | 100/536 [06:26<14:37,  2.01s/it]
+ 19%|#8        | 101/536 [06:45<51:36,  7.12s/it]
+ 19%|#9        | 102/536 [06:46<40:05,  5.54s/it]
+ 19%|#9        | 103/536 [06:49<34:01,  4.71s/it]
+ 19%|#9        | 104/536 [07:02<50:39,  7.04s/it]
+ 20%|#9        | 105/536 [07:04<40:14,  5.60s/it]
+ 20%|#9        | 106/536 [07:17<56:16,  7.85s/it]
+ 20%|#9        | 107/536 [07:19<43:09,  6.04s/it]
+ 20%|##        | 108/536 [07:21<35:32,  4.98s/it]
+ 20%|##        | 109/536 [07:24<29:22,  4.13s/it]
+ 21%|##        | 110/536 [07:27<28:08,  3.96s/it]
+ 21%|##        | 111/536 [07:29<24:15,  3.43s/it]
+ 21%|##        | 112/536 [07:32<23:14,  3.29s/it]
+ 21%|##1       | 113/536 [07:35<22:46,  3.23s/it]
+ 21%|##1       | 114/536 [07:40<25:42,  3.66s/it]
+ 21%|##1       | 115/536 [07:48<33:53,  4.83s/it]
+ 22%|##1       | 116/536 [07:51<30:45,  4.39s/it]
+ 22%|##1       | 117/536 [07:53<25:06,  3.60s/it]
+ 22%|##2       | 118/536 [08:16<1:05:32,  9.41s/it]
+ 22%|##2       | 119/536 [08:43<1:41:59, 14.67s/it]
+ 22%|##2       | 120/536 [09:09<2:05:27, 18.10s/it]
+ 22%|##2       | 120/536 [13:56<48:20,  6.97s/it]  
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 243, in main
+    prepare_dataset(
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 205, in prepare_dataset
+    np.save(os.path.join(output_dir, 'DATA', str(parcel_id)), np_all_dates)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\numpy\lib\npyio.py", line 542, in save
+    file_ctx = open(file, "wb")
+               ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331\\DATA\\787.npy'
+
+2025-06-27 02:00:37,216 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: 
+  0%|          | 0/536 [00:00<?, ?it/s]
+100%|##########| 536/536 [00:00<?, ?it/s]
+
+  0%|          | 0/536 [00:00<?, ?it/s]
+  0%|          | 1/536 [00:21<3:10:55, 21.41s/it]
+  0%|          | 2/536 [00:24<1:34:33, 10.63s/it]
+  1%|          | 3/536 [00:28<1:06:04,  7.44s/it]
+  1%|          | 4/536 [00:31<52:23,  5.91s/it]  
+  1%|          | 5/536 [00:38<53:51,  6.09s/it]
+  1%|1         | 6/536 [00:40<43:27,  4.92s/it]
+  1%|1         | 7/536 [00:44<41:18,  4.69s/it]
+  1%|1         | 8/536 [00:49<39:35,  4.50s/it]
+  2%|1         | 9/536 [00:52<36:13,  4.12s/it]
+  2%|1         | 10/536 [00:55<33:43,  3.85s/it]
+  2%|2         | 11/536 [00:58<30:54,  3.53s/it]
+  2%|2         | 12/536 [01:00<27:50,  3.19s/it]
+  2%|2         | 13/536 [01:05<31:41,  3.64s/it]
+  3%|2         | 14/536 [01:08<29:17,  3.37s/it]
+  3%|2         | 15/536 [01:11<28:20,  3.26s/it]
+  3%|2         | 16/536 [01:13<24:51,  2.87s/it]
+  3%|3         | 17/536 [01:14<21:25,  2.48s/it]
+  3%|3         | 18/536 [01:16<19:45,  2.29s/it]
+  4%|3         | 19/536 [01:18<19:38,  2.28s/it]
+  4%|3         | 20/536 [01:21<20:26,  2.38s/it]
+  4%|3         | 21/536 [01:23<19:23,  2.26s/it]
+  4%|4         | 22/536 [01:26<20:17,  2.37s/it]
+  4%|4         | 23/536 [01:28<19:47,  2.31s/it]
+  4%|4         | 24/536 [01:31<21:44,  2.55s/it]
+  5%|4         | 25/536 [01:33<21:07,  2.48s/it]
+  5%|4         | 26/536 [01:35<20:31,  2.41s/it]
+  5%|5         | 27/536 [01:39<22:49,  2.69s/it]
+  5%|5         | 28/536 [01:41<20:33,  2.43s/it]
+  5%|5         | 29/536 [01:44<21:59,  2.60s/it]
+  6%|5         | 30/536 [01:47<23:20,  2.77s/it]
+  6%|5         | 31/536 [01:49<22:13,  2.64s/it]
+  6%|5         | 32/536 [01:51<21:14,  2.53s/it]
+  6%|6         | 33/536 [01:54<20:15,  2.42s/it]
+  6%|6         | 34/536 [01:56<19:34,  2.34s/it]
+  7%|6         | 35/536 [01:58<19:14,  2.30s/it]
+  7%|6         | 36/536 [02:00<19:35,  2.35s/it]
+  7%|6         | 37/536 [02:02<18:53,  2.27s/it]
+  7%|7         | 38/536 [02:04<17:06,  2.06s/it]
+  7%|7         | 39/536 [02:06<17:00,  2.05s/it]
+  7%|7         | 40/536 [02:08<17:22,  2.10s/it]
+  8%|7         | 41/536 [02:11<18:07,  2.20s/it]
+  8%|7         | 42/536 [02:13<17:28,  2.12s/it]
+  8%|8         | 43/536 [02:15<18:06,  2.20s/it]
+  8%|8         | 44/536 [02:17<18:24,  2.24s/it]
+  8%|8         | 45/536 [02:19<16:57,  2.07s/it]
+  9%|8         | 46/536 [02:21<16:10,  1.98s/it]
+  9%|8         | 47/536 [02:24<18:41,  2.29s/it]
+  9%|8         | 48/536 [02:44<1:03:22,  7.79s/it]
+  9%|9         | 49/536 [02:47<49:46,  6.13s/it]  
+  9%|9         | 50/536 [02:49<40:28,  5.00s/it]
+ 10%|9         | 51/536 [02:51<33:32,  4.15s/it]
+ 10%|9         | 52/536 [02:54<30:26,  3.77s/it]
+ 10%|9         | 53/536 [02:56<25:27,  3.16s/it]
+ 10%|#         | 54/536 [02:58<23:43,  2.95s/it]
+ 10%|#         | 55/536 [03:00<21:40,  2.70s/it]
+ 10%|#         | 56/536 [03:32<1:30:35, 11.32s/it]
+ 11%|#         | 57/536 [03:35<1:10:41,  8.86s/it]
+ 11%|#         | 58/536 [03:37<53:47,  6.75s/it]  
+ 11%|#1        | 59/536 [03:39<43:06,  5.42s/it]
+ 11%|#1        | 60/536 [03:47<48:22,  6.10s/it]
+ 11%|#1        | 61/536 [03:56<54:35,  6.90s/it]
+ 12%|#1        | 62/536 [03:58<44:59,  5.69s/it]
+ 12%|#1        | 63/536 [04:00<35:59,  4.57s/it]
+ 12%|#1        | 64/536 [04:03<30:31,  3.88s/it]
+ 12%|#2        | 65/536 [04:05<26:41,  3.40s/it]
+ 12%|#2        | 66/536 [04:09<28:35,  3.65s/it]
+ 12%|#2        | 67/536 [04:11<25:00,  3.20s/it]
+ 13%|#2        | 68/536 [04:24<48:11,  6.18s/it]
+ 13%|#2        | 69/536 [04:27<39:07,  5.03s/it]
+ 13%|#3        | 70/536 [04:29<31:47,  4.09s/it]
+ 13%|#3        | 71/536 [04:30<26:02,  3.36s/it]
+ 13%|#3        | 72/536 [04:32<22:33,  2.92s/it]
+ 14%|#3        | 73/536 [04:41<34:59,  4.53s/it]
+ 14%|#3        | 74/536 [05:13<1:39:12, 12.88s/it]
+ 14%|#3        | 75/536 [05:15<1:14:55,  9.75s/it]
+ 14%|#4        | 76/536 [05:18<57:50,  7.54s/it]  
+ 14%|#4        | 77/536 [05:22<50:15,  6.57s/it]
+ 15%|#4        | 78/536 [05:25<40:40,  5.33s/it]
+ 15%|#4        | 79/536 [05:27<33:43,  4.43s/it]
+ 15%|#4        | 80/536 [05:36<44:06,  5.80s/it]
+ 15%|#5        | 81/536 [05:38<35:58,  4.74s/it]
+ 15%|#5        | 82/536 [05:40<30:11,  3.99s/it]
+ 15%|#5        | 83/536 [05:43<27:12,  3.60s/it]
+ 16%|#5        | 84/536 [05:47<26:58,  3.58s/it]
+ 16%|#5        | 85/536 [05:49<23:20,  3.10s/it]
+ 16%|#6        | 86/536 [05:51<22:36,  3.01s/it]
+ 16%|#6        | 87/536 [05:57<28:39,  3.83s/it]
+ 16%|#6        | 88/536 [06:00<27:13,  3.65s/it]
+ 17%|#6        | 89/536 [06:02<23:45,  3.19s/it]
+ 17%|#6        | 90/536 [06:04<20:32,  2.76s/it]
+ 17%|#6        | 91/536 [06:06<18:04,  2.44s/it]
+ 17%|#7        | 92/536 [06:08<16:14,  2.19s/it]
+ 17%|#7        | 93/536 [06:09<15:37,  2.12s/it]
+ 18%|#7        | 94/536 [06:12<16:34,  2.25s/it]
+ 18%|#7        | 95/536 [06:17<21:36,  2.94s/it]
+ 18%|#7        | 96/536 [06:18<19:07,  2.61s/it]
+ 18%|#8        | 97/536 [06:20<17:02,  2.33s/it]
+ 18%|#8        | 98/536 [06:22<15:27,  2.12s/it]
+ 18%|#8        | 99/536 [06:24<15:23,  2.11s/it]
+ 19%|#8        | 100/536 [06:26<14:37,  2.01s/it]
+ 19%|#8        | 101/536 [06:45<51:36,  7.12s/it]
+ 19%|#9        | 102/536 [06:46<40:05,  5.54s/it]
+ 19%|#9        | 103/536 [06:49<34:01,  4.71s/it]
+ 19%|#9        | 104/536 [07:02<50:39,  7.04s/it]
+ 20%|#9        | 105/536 [07:04<40:14,  5.60s/it]
+ 20%|#9        | 106/536 [07:17<56:16,  7.85s/it]
+ 20%|#9        | 107/536 [07:19<43:09,  6.04s/it]
+ 20%|##        | 108/536 [07:21<35:32,  4.98s/it]
+ 20%|##        | 109/536 [07:24<29:22,  4.13s/it]
+ 21%|##        | 110/536 [07:27<28:08,  3.96s/it]
+ 21%|##        | 111/536 [07:29<24:15,  3.43s/it]
+ 21%|##        | 112/536 [07:32<23:14,  3.29s/it]
+ 21%|##1       | 113/536 [07:35<22:46,  3.23s/it]
+ 21%|##1       | 114/536 [07:40<25:42,  3.66s/it]
+ 21%|##1       | 115/536 [07:48<33:53,  4.83s/it]
+ 22%|##1       | 116/536 [07:51<30:45,  4.39s/it]
+ 22%|##1       | 117/536 [07:53<25:06,  3.60s/it]
+ 22%|##2       | 118/536 [08:16<1:05:32,  9.41s/it]
+ 22%|##2       | 119/536 [08:43<1:41:59, 14.67s/it]
+ 22%|##2       | 120/536 [09:09<2:05:27, 18.10s/it]
+ 22%|##2       | 120/536 [13:56<48:20,  6.97s/it]  
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 243, in main
+    prepare_dataset(
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 205, in prepare_dataset
+    np.save(os.path.join(output_dir, 'DATA', str(parcel_id)), np_all_dates)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\numpy\lib\npyio.py", line 542, in save
+    file_ctx = open(file, "wb")
+               ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331\\DATA\\787.npy'
+
+2025-06-27 02:00:37,223 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:00:37,223 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:00:37,223 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:00:37,223 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 02:00:37,224 - sentinel1_data_extraction_agent - INFO - Processing task c0f49084-84db-4123-b623-9c8d08b0c64f: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 02:00:37,224 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 02:00:37,224 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 02:00:37,233 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 02:25:59,543 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 02:25:59,544 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 02:25:59,548 - sentinel1_data_extraction_agent - INFO - Retrieved 7 tasks
+2025-06-27 02:25:59,548 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 02:25:59,550 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 02:25:59,550 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 02:25:59,550 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 02:25:59,550 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 02:34:16,435 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 02:34:16,437 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 02:34:16,454 - sentinel1_data_extraction_agent - INFO - Retrieved 8 tasks
+2025-06-27 02:34:16,455 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 02:34:16,455 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 02:34:16,455 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 02:34:16,455 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 02:34:16,455 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\20240901_20250331 --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 02:37:09,276 - sentinel1_data_extraction_agent - INFO - Sentinel-1 extraction completed successfully
+2025-06-27 02:37:09,288 - sentinel1_data_extraction_agent - INFO - Added memory with ID: f8edeea7-9e8b-4307-ab2f-a3fbf4326e09
+2025-06-27 02:37:09,292 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:37:09,293 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:37:09,293 - sentinel1_data_extraction_agent - ERROR - Error processing task: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - INFO - Processing task 8c4b960a-360e-413b-ad52-e0ef4de48b4e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 02:37:09,296 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 02:37:09,298 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 03:00:53,617 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 03:00:53,617 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 03:00:53,625 - sentinel1_data_extraction_agent - INFO - Retrieved 9 tasks
+2025-06-27 03:00:53,625 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,625 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:00:53,626 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,626 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,631 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,631 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,632 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,632 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,632 - sentinel1_data_extraction_agent - INFO - Processing task c0f49084-84db-4123-b623-9c8d08b0c64f: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:00:53,632 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,632 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,637 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,637 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,637 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,637 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,637 - sentinel1_data_extraction_agent - INFO - Processing task 8c4b960a-360e-413b-ad52-e0ef4de48b4e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:00:53,637 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,638 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,642 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,642 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,642 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,643 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,643 - sentinel1_data_extraction_agent - INFO - Processing task 371604f2-457b-4538-a7e7-3a2926665e94: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:00:53,643 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\geojson\\croptype_KA28_wgs84_test_622.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,643 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,647 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,647 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,647 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,647 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,648 - sentinel1_data_extraction_agent - INFO - Processing task fe21fa57-e8e1-468b-b96e-b3b3c907020a: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:00:53,648 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\geojson\\croptype_KA28_wgs84_test_622.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,648 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,652 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,653 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,653 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,653 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,653 - sentinel1_data_extraction_agent - INFO - Processing task 78e496a5-7b2a-4490-93d1-d2a19082f820: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31 Test Fix
+2025-06-27 03:00:53,653 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\geojson\\croptype_KA28_wgs84_test_622.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,653 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,657 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,657 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,658 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,658 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,658 - sentinel1_data_extraction_agent - INFO - Set task_type to 'data_extraction' based on title: Test Sentinel-1 Data Extraction
+2025-06-27 03:00:53,658 - sentinel1_data_extraction_agent - INFO - Processing task 181d344c-066c-4f1f-ae19-4b4fcc6c0eb6: Test Sentinel-1 Data Extraction
+2025-06-27 03:00:53,658 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:/Semester4/ProjectVijayapur/psetae/psetae_all_github/mcp_server_psetae/data/geojson/test_area.geojson', 'output_dir': 'D:/Semester4/ProjectVijayapur/psetae/psetae_all_github/mcp_server_psetae/output/data', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction'}
+2025-06-27 03:00:53,658 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,662 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,663 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,663 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,663 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,663 - sentinel1_data_extraction_agent - INFO - Set task_type to 'data_extraction' based on title: Test Sentinel-1 Data Extraction (Fixed)
+2025-06-27 03:00:53,664 - sentinel1_data_extraction_agent - INFO - Processing task 80f9d195-7e2d-486d-9346-20ee4d7e8d18: Test Sentinel-1 Data Extraction (Fixed)
+2025-06-27 03:00:53,664 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:/Semester4/ProjectVijayapur/psetae/psetae_all_github/mcp_server_psetae/data/geojson/test_area.geojson', 'output_dir': 'D:/Semester4/ProjectVijayapur/psetae/psetae_all_github/mcp_server_psetae/output/data', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction'}
+2025-06-27 03:00:53,664 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,667 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,667 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,667 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,668 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:00:53,668 - sentinel1_data_extraction_agent - INFO - Processing task ba53ceee-96de-4a78-b2b9-5b42aa6726a2: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:00:53,669 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:00:53,669 - sentinel1_data_extraction_agent - ERROR - Error processing task: name 're' is not defined
+2025-06-27 03:00:53,673 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,674 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:00:53,674 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:02:33,859 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 03:02:33,859 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 03:02:33,865 - sentinel1_data_extraction_agent - INFO - Retrieved 9 tasks
+2025-06-27 03:02:33,865 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:02:33,865 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:02:33,865 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:02:33,866 - sentinel1_data_extraction_agent - INFO - Removed date-specific subdirectory. Using output_dir: D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data
+2025-06-27 03:02:33,866 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 03:02:33,866 - sentinel1_data_extraction_agent - INFO - Command: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 03:02:33,866 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 03:08:15,964 - sentinel1_data_extraction_agent - INFO - Agent token validated successfully
+2025-06-27 03:08:15,965 - sentinel1_data_extraction_agent - INFO - Sentinel-1 Data Extraction Agent initialized with ID: sentinel1-data-extraction-agent
+2025-06-27 03:08:15,971 - sentinel1_data_extraction_agent - INFO - Retrieved 9 tasks
+2025-06-27 03:08:15,971 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:08:15,971 - sentinel1_data_extraction_agent - INFO - Processing task 5008ac3e-dbc7-4390-801b-92922d0c606e: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:08:15,971 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:08:15,972 - sentinel1_data_extraction_agent - INFO - Removed date-specific subdirectory. Using output_dir: D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data
+2025-06-27 03:08:15,973 - sentinel1_data_extraction_agent - INFO - Ensured dataset-specific directory. Using output_dir: D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory
+2025-06-27 03:08:15,973 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 03:08:15,973 - sentinel1_data_extraction_agent - INFO - Command: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 03:08:15,973 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 03:09:52,106 - sentinel1_data_extraction_agent - ERROR - Sentinel-1 extraction failed: 
+  0%|          | 0/536 [00:00<?, ?it/s]
+100%|##########| 536/536 [00:00<?, ?it/s]
+
+  0%|          | 0/536 [00:00<?, ?it/s]
+  0%|          | 1/536 [00:08<1:13:34,  8.25s/it]
+  0%|          | 2/536 [00:46<3:51:43, 26.04s/it]
+  1%|          | 3/536 [00:50<2:22:29, 16.04s/it]
+  1%|          | 4/536 [00:52<1:33:14, 10.52s/it]
+  1%|          | 5/536 [00:54<1:04:17,  7.27s/it]
+  1%|1         | 6/536 [00:56<49:06,  5.56s/it]  
+  1%|1         | 7/536 [00:59<41:00,  4.65s/it]
+  1%|1         | 8/536 [01:02<35:35,  4.04s/it]
+  2%|1         | 9/536 [01:09<44:42,  5.09s/it]
+  2%|1         | 10/536 [01:12<39:38,  4.52s/it]
+  2%|2         | 11/536 [01:15<34:33,  3.95s/it]
+  2%|2         | 12/536 [01:19<33:48,  3.87s/it]
+  2%|2         | 13/536 [01:26<42:27,  4.87s/it]
+  3%|2         | 14/536 [01:29<37:08,  4.27s/it]
+  3%|2         | 15/536 [01:32<34:42,  4.00s/it]
+  3%|2         | 16/536 [01:35<31:08,  3.59s/it]
+  3%|3         | 17/536 [01:37<27:44,  3.21s/it]
+  3%|3         | 18/536 [01:38<22:40,  2.63s/it]
+  4%|3         | 19/536 [01:41<21:33,  2.50s/it]
+  4%|3         | 20/536 [01:42<19:57,  2.32s/it]
+  4%|3         | 21/536 [01:45<20:17,  2.36s/it]
+  4%|4         | 22/536 [01:49<25:15,  2.95s/it]
+  4%|4         | 23/536 [02:16<1:27:29, 10.23s/it]
+  4%|4         | 24/536 [02:19<1:06:21,  7.78s/it]
+  5%|4         | 25/536 [02:21<53:12,  6.25s/it]  
+  5%|4         | 26/536 [02:23<41:36,  4.90s/it]
+  5%|5         | 27/536 [02:25<34:36,  4.08s/it]
+  5%|5         | 28/536 [02:27<28:54,  3.42s/it]
+  5%|5         | 29/536 [02:34<38:08,  4.51s/it]
+  6%|5         | 30/536 [02:36<31:05,  3.69s/it]
+  6%|5         | 31/536 [02:55<1:10:10,  8.34s/it]
+  6%|5         | 32/536 [02:57<53:01,  6.31s/it]  
+  6%|6         | 33/536 [02:59<42:55,  5.12s/it]
+  6%|6         | 34/536 [03:01<35:10,  4.20s/it]
+  7%|6         | 35/536 [03:03<28:47,  3.45s/it]
+  7%|6         | 36/536 [03:05<25:11,  3.02s/it]
+  7%|6         | 37/536 [03:06<21:47,  2.62s/it]
+  7%|7         | 38/536 [03:09<20:54,  2.52s/it]
+  7%|7         | 39/536 [03:13<24:42,  2.98s/it]
+  7%|7         | 40/536 [03:14<21:12,  2.57s/it]
+  8%|7         | 41/536 [03:16<18:39,  2.26s/it]
+  8%|7         | 42/536 [03:17<16:43,  2.03s/it]
+  8%|8         | 43/536 [03:19<15:13,  1.85s/it]
+  8%|8         | 44/536 [03:20<14:27,  1.76s/it]
+  8%|8         | 45/536 [03:22<13:22,  1.63s/it]
+  9%|8         | 46/536 [03:23<12:51,  1.58s/it]
+  9%|8         | 47/536 [03:25<13:55,  1.71s/it]
+  9%|8         | 48/536 [03:27<13:07,  1.61s/it]
+  9%|9         | 49/536 [03:28<12:24,  1.53s/it]
+  9%|9         | 50/536 [03:29<12:30,  1.54s/it]
+ 10%|9         | 51/536 [03:31<12:44,  1.58s/it]
+ 10%|9         | 52/536 [03:33<13:04,  1.62s/it]
+ 10%|9         | 53/536 [03:35<13:18,  1.65s/it]
+ 10%|#         | 54/536 [03:36<13:03,  1.63s/it]
+ 10%|#         | 55/536 [03:38<12:34,  1.57s/it]
+ 10%|#         | 56/536 [03:39<11:46,  1.47s/it]
+ 11%|#         | 57/536 [03:40<11:06,  1.39s/it]
+ 11%|#         | 58/536 [03:41<10:56,  1.37s/it]
+ 11%|#1        | 59/536 [03:44<12:50,  1.62s/it]
+ 11%|#1        | 60/536 [03:51<27:01,  3.41s/it]
+ 11%|#1        | 61/536 [03:52<22:01,  2.78s/it]
+ 12%|#1        | 62/536 [03:55<20:50,  2.64s/it]
+ 12%|#1        | 63/536 [03:56<18:18,  2.32s/it]
+ 12%|#1        | 64/536 [03:58<16:03,  2.04s/it]
+ 12%|#2        | 65/536 [04:02<20:25,  2.60s/it]
+ 12%|#2        | 66/536 [04:03<17:53,  2.28s/it]
+ 12%|#2        | 67/536 [04:05<16:55,  2.16s/it]
+ 13%|#2        | 68/536 [04:06<15:13,  1.95s/it]
+ 13%|#2        | 69/536 [04:08<15:18,  1.97s/it]
+ 13%|#3        | 70/536 [04:10<14:17,  1.84s/it]
+ 13%|#3        | 71/536 [04:11<13:10,  1.70s/it]
+ 13%|#3        | 72/536 [04:14<15:08,  1.96s/it]
+ 14%|#3        | 73/536 [04:16<15:27,  2.00s/it]
+ 14%|#3        | 74/536 [04:31<46:23,  6.03s/it]
+ 14%|#3        | 75/536 [06:41<5:31:52, 43.19s/it]
+ 14%|#4        | 76/536 [06:44<3:56:42, 30.88s/it]
+ 14%|#4        | 77/536 [06:45<2:48:12, 21.99s/it]
+ 15%|#4        | 78/536 [07:08<2:51:32, 22.47s/it]
+ 15%|#4        | 78/536 [07:13<42:25,  5.56s/it]  
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 243, in main
+    prepare_dataset(
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 205, in prepare_dataset
+    np.save(os.path.join(output_dir, 'DATA', str(parcel_id)), np_all_dates)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\numpy\lib\npyio.py", line 542, in save
+    file_ctx = open(file, "wb")
+               ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\DATA\\493.npy'
+
+2025-06-27 03:09:52,106 - sentinel1_data_extraction_agent - ERROR - Error extracting Sentinel-1 data: Sentinel-1 extraction failed: 
+  0%|          | 0/536 [00:00<?, ?it/s]
+100%|##########| 536/536 [00:00<?, ?it/s]
+
+  0%|          | 0/536 [00:00<?, ?it/s]
+  0%|          | 1/536 [00:08<1:13:34,  8.25s/it]
+  0%|          | 2/536 [00:46<3:51:43, 26.04s/it]
+  1%|          | 3/536 [00:50<2:22:29, 16.04s/it]
+  1%|          | 4/536 [00:52<1:33:14, 10.52s/it]
+  1%|          | 5/536 [00:54<1:04:17,  7.27s/it]
+  1%|1         | 6/536 [00:56<49:06,  5.56s/it]  
+  1%|1         | 7/536 [00:59<41:00,  4.65s/it]
+  1%|1         | 8/536 [01:02<35:35,  4.04s/it]
+  2%|1         | 9/536 [01:09<44:42,  5.09s/it]
+  2%|1         | 10/536 [01:12<39:38,  4.52s/it]
+  2%|2         | 11/536 [01:15<34:33,  3.95s/it]
+  2%|2         | 12/536 [01:19<33:48,  3.87s/it]
+  2%|2         | 13/536 [01:26<42:27,  4.87s/it]
+  3%|2         | 14/536 [01:29<37:08,  4.27s/it]
+  3%|2         | 15/536 [01:32<34:42,  4.00s/it]
+  3%|2         | 16/536 [01:35<31:08,  3.59s/it]
+  3%|3         | 17/536 [01:37<27:44,  3.21s/it]
+  3%|3         | 18/536 [01:38<22:40,  2.63s/it]
+  4%|3         | 19/536 [01:41<21:33,  2.50s/it]
+  4%|3         | 20/536 [01:42<19:57,  2.32s/it]
+  4%|3         | 21/536 [01:45<20:17,  2.36s/it]
+  4%|4         | 22/536 [01:49<25:15,  2.95s/it]
+  4%|4         | 23/536 [02:16<1:27:29, 10.23s/it]
+  4%|4         | 24/536 [02:19<1:06:21,  7.78s/it]
+  5%|4         | 25/536 [02:21<53:12,  6.25s/it]  
+  5%|4         | 26/536 [02:23<41:36,  4.90s/it]
+  5%|5         | 27/536 [02:25<34:36,  4.08s/it]
+  5%|5         | 28/536 [02:27<28:54,  3.42s/it]
+  5%|5         | 29/536 [02:34<38:08,  4.51s/it]
+  6%|5         | 30/536 [02:36<31:05,  3.69s/it]
+  6%|5         | 31/536 [02:55<1:10:10,  8.34s/it]
+  6%|5         | 32/536 [02:57<53:01,  6.31s/it]  
+  6%|6         | 33/536 [02:59<42:55,  5.12s/it]
+  6%|6         | 34/536 [03:01<35:10,  4.20s/it]
+  7%|6         | 35/536 [03:03<28:47,  3.45s/it]
+  7%|6         | 36/536 [03:05<25:11,  3.02s/it]
+  7%|6         | 37/536 [03:06<21:47,  2.62s/it]
+  7%|7         | 38/536 [03:09<20:54,  2.52s/it]
+  7%|7         | 39/536 [03:13<24:42,  2.98s/it]
+  7%|7         | 40/536 [03:14<21:12,  2.57s/it]
+  8%|7         | 41/536 [03:16<18:39,  2.26s/it]
+  8%|7         | 42/536 [03:17<16:43,  2.03s/it]
+  8%|8         | 43/536 [03:19<15:13,  1.85s/it]
+  8%|8         | 44/536 [03:20<14:27,  1.76s/it]
+  8%|8         | 45/536 [03:22<13:22,  1.63s/it]
+  9%|8         | 46/536 [03:23<12:51,  1.58s/it]
+  9%|8         | 47/536 [03:25<13:55,  1.71s/it]
+  9%|8         | 48/536 [03:27<13:07,  1.61s/it]
+  9%|9         | 49/536 [03:28<12:24,  1.53s/it]
+  9%|9         | 50/536 [03:29<12:30,  1.54s/it]
+ 10%|9         | 51/536 [03:31<12:44,  1.58s/it]
+ 10%|9         | 52/536 [03:33<13:04,  1.62s/it]
+ 10%|9         | 53/536 [03:35<13:18,  1.65s/it]
+ 10%|#         | 54/536 [03:36<13:03,  1.63s/it]
+ 10%|#         | 55/536 [03:38<12:34,  1.57s/it]
+ 10%|#         | 56/536 [03:39<11:46,  1.47s/it]
+ 11%|#         | 57/536 [03:40<11:06,  1.39s/it]
+ 11%|#         | 58/536 [03:41<10:56,  1.37s/it]
+ 11%|#1        | 59/536 [03:44<12:50,  1.62s/it]
+ 11%|#1        | 60/536 [03:51<27:01,  3.41s/it]
+ 11%|#1        | 61/536 [03:52<22:01,  2.78s/it]
+ 12%|#1        | 62/536 [03:55<20:50,  2.64s/it]
+ 12%|#1        | 63/536 [03:56<18:18,  2.32s/it]
+ 12%|#1        | 64/536 [03:58<16:03,  2.04s/it]
+ 12%|#2        | 65/536 [04:02<20:25,  2.60s/it]
+ 12%|#2        | 66/536 [04:03<17:53,  2.28s/it]
+ 12%|#2        | 67/536 [04:05<16:55,  2.16s/it]
+ 13%|#2        | 68/536 [04:06<15:13,  1.95s/it]
+ 13%|#2        | 69/536 [04:08<15:18,  1.97s/it]
+ 13%|#3        | 70/536 [04:10<14:17,  1.84s/it]
+ 13%|#3        | 71/536 [04:11<13:10,  1.70s/it]
+ 13%|#3        | 72/536 [04:14<15:08,  1.96s/it]
+ 14%|#3        | 73/536 [04:16<15:27,  2.00s/it]
+ 14%|#3        | 74/536 [04:31<46:23,  6.03s/it]
+ 14%|#3        | 75/536 [06:41<5:31:52, 43.19s/it]
+ 14%|#4        | 76/536 [06:44<3:56:42, 30.88s/it]
+ 14%|#4        | 77/536 [06:45<2:48:12, 21.99s/it]
+ 15%|#4        | 78/536 [07:08<2:51:32, 22.47s/it]
+ 15%|#4        | 78/536 [07:13<42:25,  5.56s/it]  
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 243, in main
+    prepare_dataset(
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 205, in prepare_dataset
+    np.save(os.path.join(output_dir, 'DATA', str(parcel_id)), np_all_dates)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\numpy\lib\npyio.py", line 542, in save
+    file_ctx = open(file, "wb")
+               ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\DATA\\493.npy'
+
+2025-06-27 03:09:52,106 - sentinel1_data_extraction_agent - ERROR - Error processing task: Sentinel-1 extraction failed: 
+  0%|          | 0/536 [00:00<?, ?it/s]
+100%|##########| 536/536 [00:00<?, ?it/s]
+
+  0%|          | 0/536 [00:00<?, ?it/s]
+  0%|          | 1/536 [00:08<1:13:34,  8.25s/it]
+  0%|          | 2/536 [00:46<3:51:43, 26.04s/it]
+  1%|          | 3/536 [00:50<2:22:29, 16.04s/it]
+  1%|          | 4/536 [00:52<1:33:14, 10.52s/it]
+  1%|          | 5/536 [00:54<1:04:17,  7.27s/it]
+  1%|1         | 6/536 [00:56<49:06,  5.56s/it]  
+  1%|1         | 7/536 [00:59<41:00,  4.65s/it]
+  1%|1         | 8/536 [01:02<35:35,  4.04s/it]
+  2%|1         | 9/536 [01:09<44:42,  5.09s/it]
+  2%|1         | 10/536 [01:12<39:38,  4.52s/it]
+  2%|2         | 11/536 [01:15<34:33,  3.95s/it]
+  2%|2         | 12/536 [01:19<33:48,  3.87s/it]
+  2%|2         | 13/536 [01:26<42:27,  4.87s/it]
+  3%|2         | 14/536 [01:29<37:08,  4.27s/it]
+  3%|2         | 15/536 [01:32<34:42,  4.00s/it]
+  3%|2         | 16/536 [01:35<31:08,  3.59s/it]
+  3%|3         | 17/536 [01:37<27:44,  3.21s/it]
+  3%|3         | 18/536 [01:38<22:40,  2.63s/it]
+  4%|3         | 19/536 [01:41<21:33,  2.50s/it]
+  4%|3         | 20/536 [01:42<19:57,  2.32s/it]
+  4%|3         | 21/536 [01:45<20:17,  2.36s/it]
+  4%|4         | 22/536 [01:49<25:15,  2.95s/it]
+  4%|4         | 23/536 [02:16<1:27:29, 10.23s/it]
+  4%|4         | 24/536 [02:19<1:06:21,  7.78s/it]
+  5%|4         | 25/536 [02:21<53:12,  6.25s/it]  
+  5%|4         | 26/536 [02:23<41:36,  4.90s/it]
+  5%|5         | 27/536 [02:25<34:36,  4.08s/it]
+  5%|5         | 28/536 [02:27<28:54,  3.42s/it]
+  5%|5         | 29/536 [02:34<38:08,  4.51s/it]
+  6%|5         | 30/536 [02:36<31:05,  3.69s/it]
+  6%|5         | 31/536 [02:55<1:10:10,  8.34s/it]
+  6%|5         | 32/536 [02:57<53:01,  6.31s/it]  
+  6%|6         | 33/536 [02:59<42:55,  5.12s/it]
+  6%|6         | 34/536 [03:01<35:10,  4.20s/it]
+  7%|6         | 35/536 [03:03<28:47,  3.45s/it]
+  7%|6         | 36/536 [03:05<25:11,  3.02s/it]
+  7%|6         | 37/536 [03:06<21:47,  2.62s/it]
+  7%|7         | 38/536 [03:09<20:54,  2.52s/it]
+  7%|7         | 39/536 [03:13<24:42,  2.98s/it]
+  7%|7         | 40/536 [03:14<21:12,  2.57s/it]
+  8%|7         | 41/536 [03:16<18:39,  2.26s/it]
+  8%|7         | 42/536 [03:17<16:43,  2.03s/it]
+  8%|8         | 43/536 [03:19<15:13,  1.85s/it]
+  8%|8         | 44/536 [03:20<14:27,  1.76s/it]
+  8%|8         | 45/536 [03:22<13:22,  1.63s/it]
+  9%|8         | 46/536 [03:23<12:51,  1.58s/it]
+  9%|8         | 47/536 [03:25<13:55,  1.71s/it]
+  9%|8         | 48/536 [03:27<13:07,  1.61s/it]
+  9%|9         | 49/536 [03:28<12:24,  1.53s/it]
+  9%|9         | 50/536 [03:29<12:30,  1.54s/it]
+ 10%|9         | 51/536 [03:31<12:44,  1.58s/it]
+ 10%|9         | 52/536 [03:33<13:04,  1.62s/it]
+ 10%|9         | 53/536 [03:35<13:18,  1.65s/it]
+ 10%|#         | 54/536 [03:36<13:03,  1.63s/it]
+ 10%|#         | 55/536 [03:38<12:34,  1.57s/it]
+ 10%|#         | 56/536 [03:39<11:46,  1.47s/it]
+ 11%|#         | 57/536 [03:40<11:06,  1.39s/it]
+ 11%|#         | 58/536 [03:41<10:56,  1.37s/it]
+ 11%|#1        | 59/536 [03:44<12:50,  1.62s/it]
+ 11%|#1        | 60/536 [03:51<27:01,  3.41s/it]
+ 11%|#1        | 61/536 [03:52<22:01,  2.78s/it]
+ 12%|#1        | 62/536 [03:55<20:50,  2.64s/it]
+ 12%|#1        | 63/536 [03:56<18:18,  2.32s/it]
+ 12%|#1        | 64/536 [03:58<16:03,  2.04s/it]
+ 12%|#2        | 65/536 [04:02<20:25,  2.60s/it]
+ 12%|#2        | 66/536 [04:03<17:53,  2.28s/it]
+ 12%|#2        | 67/536 [04:05<16:55,  2.16s/it]
+ 13%|#2        | 68/536 [04:06<15:13,  1.95s/it]
+ 13%|#2        | 69/536 [04:08<15:18,  1.97s/it]
+ 13%|#3        | 70/536 [04:10<14:17,  1.84s/it]
+ 13%|#3        | 71/536 [04:11<13:10,  1.70s/it]
+ 13%|#3        | 72/536 [04:14<15:08,  1.96s/it]
+ 14%|#3        | 73/536 [04:16<15:27,  2.00s/it]
+ 14%|#3        | 74/536 [04:31<46:23,  6.03s/it]
+ 14%|#3        | 75/536 [06:41<5:31:52, 43.19s/it]
+ 14%|#4        | 76/536 [06:44<3:56:42, 30.88s/it]
+ 14%|#4        | 77/536 [06:45<2:48:12, 21.99s/it]
+ 15%|#4        | 78/536 [07:08<2:51:32, 22.47s/it]
+ 15%|#4        | 78/536 [07:13<42:25,  5.56s/it]  
+Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 260, in <module>
+    main()
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 243, in main
+    prepare_dataset(
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py", line 205, in prepare_dataset
+    np.save(os.path.join(output_dir, 'DATA', str(parcel_id)), np_all_dates)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\numpy\lib\npyio.py", line 542, in save
+    file_ctx = open(file, "wb")
+               ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\DATA\\493.npy'
+
+2025-06-27 03:09:52,112 - sentinel1_data_extraction_agent - ERROR - Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:09:52,112 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:09:52,112 - sentinel1_data_extraction_agent - ERROR - Error updating task status: Failed to update task status: {"detail":"Not Found"}
+2025-06-27 03:09:52,112 - sentinel1_data_extraction_agent - INFO - Converted metadata from string to dictionary
+2025-06-27 03:09:52,112 - sentinel1_data_extraction_agent - INFO - Processing task c0f49084-84db-4123-b623-9c8d08b0c64f: Sentinel-1 Data Extraction 2024-09-01 to 2025-03-31
+2025-06-27 03:09:52,113 - sentinel1_data_extraction_agent - INFO - Task metadata: {'geojson_path': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\psetae_all5models\\2_data_extraction\\sentinel\\test_new_wgs84_test.geojson', 'output_dir': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data\\testdirectory\\20240901_20250331', 'start_date': '2024-09-01', 'end_date': '2025-03-31', 'bands': ['VV', 'VH'], 'task_type': 'data_extraction', 'tile_information': {'tracks': ['63'], 'acquisitions': {'63': 16}}, 'coverage_file': 'D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt'}
+2025-06-27 03:09:52,113 - sentinel1_data_extraction_agent - INFO - Removed date-specific subdirectory. Using output_dir: D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory
+2025-06-27 03:09:52,113 - sentinel1_data_extraction_agent - INFO - Extracting Sentinel-1 data for period: 2024-09-01 to 2025-03-31
+2025-06-27 03:09:52,113 - sentinel1_data_extraction_agent - INFO - Command: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
+2025-06-27 03:09:52,113 - sentinel1_data_extraction_agent - INFO - Executing Sentinel-1 extraction: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\satellite_data_extraction_gee\sentinel_extraction.py D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\psetae_all5models\2_data_extraction\sentinel\test_new_wgs84_test.geojson D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --col_id COPERNICUS/S1_GRD --start_date 2024-09-01 --end_date 2025-03-31 --speckle_filter temporal --kernel_size 5
