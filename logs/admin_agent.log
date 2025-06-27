@@ -125,3 +125,36 @@
 2025-06-27 14:23:54,015 - admin_agent - INFO - Sentinel-1 Inference Agent created with token: 921b71b5-3d55-4a5d-9b71-af8aafc2cf5e
 2025-06-27 14:23:54,023 - admin_agent - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
 2025-06-27 14:23:54,025 - admin_agent - INFO - Sentinel-1 Tile Coverage Agent created with token: bbe49cd1-6f1c-4a8d-bc3e-12815d64a0a8
+2025-06-27 17:33:42,059 - admin_agent - INFO - Admin token validated successfully
+2025-06-27 17:33:42,059 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
+2025-06-27 17:33:42,080 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
+2025-06-27 17:33:42,090 - admin_agent - INFO - Created worker agent: sentinel1-data-extraction-agent of type sentinel1-data-extraction
+2025-06-27 17:33:42,091 - admin_agent - INFO - Sentinel-1 Data Extraction Agent created with token: 52f419b6-64b4-4e31-bea2-e0f78b56191b
+2025-06-27 17:33:42,102 - admin_agent - INFO - Created worker agent: sentinel1-model-training-agent of type sentinel1-model-training
+2025-06-27 17:33:42,103 - admin_agent - INFO - Sentinel-1 Model Training Agent created with token: 6a2efa16-40e7-423a-82ba-e571fb935ee6
+2025-06-27 17:33:42,112 - admin_agent - INFO - Created worker agent: sentinel1-inference-agent of type sentinel1-inference
+2025-06-27 17:33:42,112 - admin_agent - INFO - Sentinel-1 Inference Agent created with token: 37fb7546-b26f-4179-8aa3-e6a504c2219f
+2025-06-27 17:33:42,126 - admin_agent - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
+2025-06-27 17:33:42,128 - admin_agent - INFO - Sentinel-1 Tile Coverage Agent created with token: 055e7206-f2ac-4b4e-a8a2-c9a590390d09
+2025-06-27 17:45:54,190 - admin_agent - INFO - Admin token validated successfully
+2025-06-27 17:45:54,190 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
+2025-06-27 17:45:54,198 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
+2025-06-27 17:45:54,207 - admin_agent - INFO - Created worker agent: sentinel1-data-extraction-agent of type sentinel1-data-extraction
+2025-06-27 17:45:54,207 - admin_agent - INFO - Sentinel-1 Data Extraction Agent created with token: 4848b82b-93d7-4dab-add9-ef6e4f1deb70
+2025-06-27 17:45:54,215 - admin_agent - INFO - Created worker agent: sentinel1-model-training-agent of type sentinel1-model-training
+2025-06-27 17:45:54,215 - admin_agent - INFO - Sentinel-1 Model Training Agent created with token: f26a3ed1-c515-4ff3-8cdb-718c26df4292
+2025-06-27 17:45:54,225 - admin_agent - INFO - Created worker agent: sentinel1-inference-agent of type sentinel1-inference
+2025-06-27 17:45:54,225 - admin_agent - INFO - Sentinel-1 Inference Agent created with token: 8db1d3b3-93ec-4baf-a2b6-4a9471d5080b
+2025-06-27 17:45:54,234 - admin_agent - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
+2025-06-27 17:45:54,235 - admin_agent - INFO - Sentinel-1 Tile Coverage Agent created with token: 8391344c-f383-4406-82af-ecd2898f8733
+2025-06-27 18:01:50,586 - admin_agent - INFO - Admin token validated successfully
+2025-06-27 18:01:50,586 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
+2025-06-27 18:01:50,599 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
+2025-06-27 18:01:50,609 - admin_agent - INFO - Created worker agent: sentinel1-data-extraction-agent of type sentinel1-data-extraction
+2025-06-27 18:01:50,609 - admin_agent - INFO - Sentinel-1 Data Extraction Agent created with token: 9ea71d58-f6db-44f3-abc2-7ee4208b0a3b
+2025-06-27 18:01:50,618 - admin_agent - INFO - Created worker agent: sentinel1-model-training-agent of type sentinel1-model-training
+2025-06-27 18:01:50,619 - admin_agent - INFO - Sentinel-1 Model Training Agent created with token: 3a9f9c9d-4350-47f8-8898-e23533d6db4e
+2025-06-27 18:01:50,630 - admin_agent - INFO - Created worker agent: sentinel1-inference-agent of type sentinel1-inference
+2025-06-27 18:01:50,630 - admin_agent - INFO - Sentinel-1 Inference Agent created with token: 26e1c0e9-fe50-4da1-a9d5-5ba776fedd8f
+2025-06-27 18:01:50,639 - admin_agent - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
+2025-06-27 18:01:50,640 - admin_agent - INFO - Sentinel-1 Tile Coverage Agent created with token: 94633b2b-b4b9-4b7b-86f2-8cfc2c903b19

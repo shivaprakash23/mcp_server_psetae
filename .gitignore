@@ -1,2 +1,3 @@
 *.npy
-output\sentinel1_data\*\*.json
+output\sentinel1_data\testdirectory\META\*.json
+

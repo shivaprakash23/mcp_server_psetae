@@ -14,12 +14,30 @@ from datetime import datetime
 
 # Server configuration
 SERVER_URL = "http://localhost:8080"
-ADMIN_TOKEN = "4c4e2130-6bd1-4c76-87b8-83da2b9a2504"  # Updated admin token
+ADMIN_TOKEN = "c2b46016-7893-451a-b76d-c35f495bb17b"  # Updated admin token
 
 # Default paths
-DEFAULT_GEOJSON_PATH = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\geojson\\croptype_KA28_wgs84_test_622.geojson"
-DEFAULT_OUTPUT_DIR = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\sentinel1_data"
-DEFAULT_COVERAGE_FILE = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\tile_coverage\\sentinel1_coverage.txt"
+BASE_DIR = "D:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae"
+
+# Split-specific paths
+SPLIT_PATHS = {
+    "test": {
+        "geojson": os.path.join(BASE_DIR, "output", "geojson", "croptype_KA28_wgs84_test_622.geojson"),
+        "output_dir": os.path.join(BASE_DIR, "output", "sentinel1_data", "testdirectory")
+    },
+    "training": {
+        "geojson": os.path.join(BASE_DIR, "output", "geojson", "croptype_KA28_wgs84_training_622.geojson"),
+        "output_dir": os.path.join(BASE_DIR, "output", "sentinel1_data", "traindirectory")
+    },
+    "validation": {
+        "geojson": os.path.join(BASE_DIR, "output", "geojson", "croptype_KA28_wgs84_validation_622.geojson"),
+        "output_dir": os.path.join(BASE_DIR, "output", "sentinel1_data", "validationdirectory")
+    }
+}
+
+DEFAULT_GEOJSON_PATH = SPLIT_PATHS["test"]["geojson"]
+DEFAULT_OUTPUT_DIR = SPLIT_PATHS["test"]["output_dir"]
+DEFAULT_COVERAGE_FILE = os.path.join(BASE_DIR, "output", "tile_coverage", "sentinel1_coverage.txt")
 
 # Function to parse tile information from coverage file
 def parse_tile_information(coverage_file):
@@ -66,10 +84,12 @@ def parse_tile_information(coverage_file):
 # Parse command-line arguments
 def parse_args():
     parser = argparse.ArgumentParser(description='Create a Sentinel-1 data extraction task')
-    parser.add_argument('--geojson', type=str, default=DEFAULT_GEOJSON_PATH,
-                        help='Path to GeoJSON file')
-    parser.add_argument('--output-dir', type=str, default=DEFAULT_OUTPUT_DIR,
-                        help='Output directory for extracted data')
+    parser.add_argument('--split', type=str, choices=['test', 'training', 'validation', 'all'],
+                        default='test', help='Dataset split to create task for (test, training, validation, or all)')
+    parser.add_argument('--geojson', type=str, default=None,
+                        help='Path to GeoJSON file (overrides split-specific default)')
+    parser.add_argument('--output-dir', type=str, default=None,
+                        help='Output directory for extracted data (overrides split-specific default)')
     parser.add_argument('--start-date', type=str, default=None,
                         help='Start date in YYYY-MM-DD format')
     parser.add_argument('--end-date', type=str, default=None,
@@ -94,9 +114,39 @@ def parse_args():
 def create_task():
     args = parse_args()
     
-    # Get output directory from args or use default
-    output_dir = args.output_dir or DEFAULT_OUTPUT_DIR
-    os.makedirs(output_dir, exist_ok=True)
+    # Define split-specific paths
+    SPLIT_PATHS = {
+        'test': {
+            'geojson': os.path.join(BASE_DIR, 'output', 'geojson', 'croptype_KA28_wgs84_test_622.geojson'),
+            'output_dir': os.path.join(BASE_DIR, 'output', 'sentinel1_data', 'testdirectory')
+        },
+        'training': {
+            'geojson': os.path.join(BASE_DIR, 'output', 'geojson', 'croptype_KA28_wgs84_training_622.geojson'),
+            'output_dir': os.path.join(BASE_DIR, 'output', 'sentinel1_data', 'traindirectory')
+        },
+        'validation': {
+            'geojson': os.path.join(BASE_DIR, 'output', 'geojson', 'croptype_KA28_wgs84_validation_622.geojson'),
+            'output_dir': os.path.join(BASE_DIR, 'output', 'sentinel1_data', 'validationdirectory')
+        }
+    }
+    
+    # Determine which splits to process
+    splits_to_process = [args.split] if args.split != 'all' else ['test', 'training', 'validation']
+    
+    for split in splits_to_process:
+        print(f"\nCreating task for {split} split...")
+        
+        # Get split-specific paths or use command-line overrides
+        geojson_path = args.geojson or SPLIT_PATHS[split]['geojson']
+        output_dir = args.output_dir or SPLIT_PATHS[split]['output_dir']
+        
+        # Ensure output directory exists
+        os.makedirs(output_dir, exist_ok=True)
+        
+        print(f"Using GeoJSON: {geojson_path}")
+        print(f"Using output directory: {output_dir}")
+        
+        # Continue with task creation for this split
     
     # Determine date range
     start_date = args.start_date
@@ -127,7 +177,7 @@ def create_task():
         end_date = "2025-03-31"  # Default to March 2025
     
     # Determine dataset type (test, train, validation) based on geojson filename
-    geojson_filename = os.path.basename(args.geojson).lower()
+    geojson_filename = os.path.basename(geojson_path).lower()
     if "test" in geojson_filename:
         dataset_type = "testdirectory"
     elif "train" in geojson_filename:
@@ -139,8 +189,8 @@ def create_task():
         dataset_type = "testdirectory"
         print(f"Warning: Could not determine dataset type from filename '{geojson_filename}'. Using '{dataset_type}' as default.")
     
-    # Create dataset-specific output directory
-    specific_output_dir = os.path.join(output_dir, dataset_type)
+    # Use the output directory directly without nesting
+    specific_output_dir = output_dir
     os.makedirs(specific_output_dir, exist_ok=True)
     
     print(f"Dataset type: {dataset_type} (determined from GeoJSON filename)")

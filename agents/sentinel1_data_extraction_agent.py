@@ -429,27 +429,57 @@ class Sentinel1DataExtractionAgent:
                 
                 # Now determine the dataset type from the GeoJSON filename
                 geojson_path = metadata.get("geojson_path", "")
+                
+                # Always use GeoJSON files from /output/geojson
+                if geojson_path:
+                    # Check if the geojson_path is not from /output/geojson
+                    if "output/geojson" not in geojson_path and "output\\geojson" not in geojson_path:
+                        # Extract the filename and look for it in /output/geojson
+                        geojson_filename = os.path.basename(geojson_path)
+                        correct_geojson_path = os.path.join(BASE_DIR, "output", "geojson", geojson_filename)
+                        
+                        if os.path.exists(correct_geojson_path):
+                            logger.info(f"Replacing GeoJSON path {geojson_path} with {correct_geojson_path}")
+                            geojson_path = correct_geojson_path
+                            metadata["geojson_path"] = geojson_path
+                        else:
+                            # Look for a matching GeoJSON file in /output/geojson
+                            geojson_dir = os.path.join(BASE_DIR, "output", "geojson")
+                            if os.path.exists(geojson_dir):
+                                for file in os.listdir(geojson_dir):
+                                    if file.endswith(".geojson"):
+                                        if ("test" in file.lower() and "test" in geojson_filename.lower()) or \
+                                           ("train" in file.lower() and "train" in geojson_filename.lower()) or \
+                                           (("valid" in file.lower() or "val" in file.lower()) and \
+                                            ("valid" in geojson_filename.lower() or "val" in geojson_filename.lower())):
+                                            correct_geojson_path = os.path.join(geojson_dir, file)
+                                            logger.info(f"Found matching GeoJSON file: {correct_geojson_path}")
+                                            geojson_path = correct_geojson_path
+                                            metadata["geojson_path"] = geojson_path
+                                            break
+                
+                # Determine dataset type from GeoJSON filename
                 if geojson_path:
                     geojson_filename = os.path.basename(geojson_path).lower()
                     
-                    # Force dataset type based on GeoJSON filename, regardless of current output_dir
+                    # Force dataset type based on GeoJSON filename
                     if "test" in geojson_filename:
                         dataset_type = "testdirectory"
-                    elif "training" in geojson_filename:
+                    elif "train" in geojson_filename:
                         dataset_type = "traindirectory"
-                    elif "validation" in geojson_filename or "val" in geojson_filename:
+                    elif "valid" in geojson_filename or "val" in geojson_filename:
                         dataset_type = "validationdirectory"
                     else:
                         # Default to test if can't determine
                         dataset_type = "testdirectory"
                         logger.info(f"Could not determine dataset type from filename '{geojson_filename}'. Using '{dataset_type}' as default.")
                     
-                    # Always use the determined dataset type, overriding any existing directory
-                    base_dir = os.path.dirname(output_dir) if output_dir.lower().endswith(("testdirectory", "traindirectory", "validationdirectory")) else output_dir
-                    output_dir = os.path.join(base_dir, dataset_type)
+                    # Set output directory to the correct dataset directory without nesting
+                    sentinel1_data_dir = os.path.join(BASE_DIR, "output", "sentinel1_data")
+                    output_dir = os.path.join(sentinel1_data_dir, dataset_type)
                     metadata["output_dir"] = output_dir
                     os.makedirs(output_dir, exist_ok=True)
-                    logger.info(f"Using dataset-specific directory based on GeoJSON filename: {output_dir}")
+                    logger.info(f"Using dataset-specific directory: {output_dir}")
 
             
             # Extract parameters from metadata
