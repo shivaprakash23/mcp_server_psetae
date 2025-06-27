@@ -97,3 +97,17 @@
 2025-06-27 02:59:37,506 - admin_agent - INFO - Sentinel-1 Inference Agent created with token: 8dd19ef7-645b-49b1-98cf-2c045fb77d88
 2025-06-27 02:59:37,518 - admin_agent - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
 2025-06-27 02:59:37,519 - admin_agent - INFO - Sentinel-1 Tile Coverage Agent created with token: 695c6960-9a0e-4b44-b429-422c8697e27b
+2025-06-27 03:14:33,027 - admin_agent - INFO - Admin token validated successfully
+2025-06-27 03:14:33,027 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
+2025-06-27 03:14:33,039 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
+2025-06-27 03:15:06,994 - admin_agent - INFO - Admin token validated successfully
+2025-06-27 03:15:06,996 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
+2025-06-27 03:15:07,004 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
+2025-06-27 03:15:07,013 - admin_agent - INFO - Created worker agent: sentinel1-data-extraction-agent of type sentinel1-data-extraction
+2025-06-27 03:15:07,013 - admin_agent - INFO - Sentinel-1 Data Extraction Agent created with token: 16f20a3a-1c03-4518-ba0f-23e186dd8fa5
+2025-06-27 03:15:07,022 - admin_agent - INFO - Created worker agent: sentinel1-model-training-agent of type sentinel1-model-training
+2025-06-27 03:15:07,023 - admin_agent - INFO - Sentinel-1 Model Training Agent created with token: 07fdbea3-d0fa-41d2-a0b2-c116043ab762
+2025-06-27 03:15:07,035 - admin_agent - INFO - Created worker agent: sentinel1-inference-agent of type sentinel1-inference
+2025-06-27 03:15:07,036 - admin_agent - INFO - Sentinel-1 Inference Agent created with token: 5fc29c4a-a662-4a88-8703-37382489df21
+2025-06-27 03:15:07,045 - admin_agent - INFO - Created worker agent: sentinel1-tile-coverage-agent of type sentinel1-tile-coverage
+2025-06-27 03:15:07,046 - admin_agent - INFO - Sentinel-1 Tile Coverage Agent created with token: 5ccaf34d-ef3c-4fd8-812b-6cea32f6f203
