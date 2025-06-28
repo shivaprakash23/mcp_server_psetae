@@ -265,3 +265,6 @@
 2025-06-28 00:12:10,653 - admin_agent - INFO - Admin token validated successfully
 2025-06-28 00:12:10,654 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
 2025-06-28 00:12:10,673 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
+2025-06-28 20:00:22,589 - admin_agent - INFO - Admin token validated successfully
+2025-06-28 20:00:22,589 - admin_agent - INFO - Admin Agent initialized with ID: admin-agent
+2025-06-28 20:00:22,614 - admin_agent - INFO - MCD loaded successfully from D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\MCD.md
