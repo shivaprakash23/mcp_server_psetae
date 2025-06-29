@@ -26,7 +26,8 @@ AGENT_TYPES = {
     "sentinel1-data-extraction": "Sentinel1DataExtractionAgent",
     "sentinel1-model-training": "Sentinel1ModelTrainingAgent",
     "sentinel1-inference": "Sentinel1InferenceAgent",
-    "sentinel1-tile-coverage": "Sentinel1TileCoverageAgent"
+    "sentinel1-tile-coverage": "Sentinel1TileCoverageAgent",
+    "sentinel1-reporting": "Sentinel1ReportingAgent"
 }
 
 # PSETAE paths

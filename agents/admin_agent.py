@@ -224,12 +224,17 @@ class AdminAgent:
         coverage_agent = self.create_worker_agent("sentinel1-tile-coverage-agent", "sentinel1-tile-coverage")
         logger.info(f"Sentinel-1 Tile Coverage Agent created with token: {coverage_agent['token']}")
         
+        # Create Sentinel-1 reporting agent
+        reporting_agent = self.create_worker_agent("sentinel1-reporting-agent", "sentinel1-reporting")
+        logger.info(f"Sentinel-1 Reporting Agent created with token: {reporting_agent['token']}")
+        
         # Return all agent information
         return {
             "data_agent": data_agent,
             "training_agent": training_agent,
             "inference_agent": inference_agent,
-            "coverage_agent": coverage_agent
+            "coverage_agent": coverage_agent,
+            "reporting_agent": reporting_agent
         }
 
     def create_sentinel1_workflow(self, shapefile_path, output_base_dir, start_date, end_date, model_config=None):
@@ -571,6 +576,7 @@ def main():
             print(f"Sentinel-1 Model Training Agent: {agents['training_agent']['token']}")
             print(f"Sentinel-1 Inference Agent: {agents['inference_agent']['token']}")
             print(f"Sentinel-1 Tile Coverage Agent: {agents['coverage_agent']['token']}")
+            print(f"Sentinel-1 Reporting Agent: {agents['reporting_agent']['token']}")
             print("\n" + "="*50)
         
         # Create workflow if requested

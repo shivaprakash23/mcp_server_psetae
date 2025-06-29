@@ -20,6 +20,7 @@ PSETAE is a crop classification system using satellite imagery with deep learnin
   2. **Sentinel1ModelTrainingAgent**: Manages Sentinel-1 model training and hyperparameter tuning
   3. **Sentinel1InferenceAgent**: Applies Sentinel-1 models to new data
   4. **Sentinel1TileCoverageAgent**: Analyzes satellite tile coverage for study areas using Sentinel-1 data
+  5. **Sentinel1ReportingAgent**: Generates summary reports from model training results
 
 ## Workflow Definition
 
@@ -29,7 +30,8 @@ PSETAE is a crop classification system using satellite imagery with deep learnin
 3. **Tile Coverage Analysis**: Analyze satellite tile coverage for study areas
 4. **Data Extraction**: Retrieve and process Sentinel-1 imagery using GEE
 5. **Model Training**: Train Sentinel-1 PSETAE model with specified parameters
-6. **Inference**: Apply model to new data
+6. **Results Reporting**: Generate summary reports of model performance metrics and visualizations
+7. **Inference**: Apply model to new data
 
 ### Agent Interactions
 - Agents communicate through the MCP server
@@ -137,7 +139,15 @@ mcp_server_psetae/
    - **Geometric Features**: Set `--geomfeat 0` to disable geometric features and avoid pandas errors
    - **CPU Fallback**: The training script has been modified to automatically use CPU if CUDA is not available
    - **Parameter Type Enforcement**: All numeric parameters must be properly passed as strings in the subprocess call, which will be correctly parsed as integers by the argparse module
-8. Execute workflow through Admin Agent
+8. **SENTINEL1 REPORTING AGENT CONSIDERATIONS**:
+   - **Required Input**: The agent requires access to model output files including `overall.json`, `accuracy_graph.png`, `loss_graph.png`, and `conf_mat_picture.png`
+   - **Document Generation**: The agent creates a comprehensive DOCX report with metrics, visualizations, and explanations
+   - **Task Creation**: Use the `create_reporting_task.py` script to create a reporting task:
+     ```bash
+     python create_reporting_task.py --token <token> --model-dir <model_results_dir> --output-dir <report_output_dir>
+     ```
+   - **Dependencies**: The agent requires the `python-docx` package for document generation
+9. Execute workflow through Admin Agent
 
 ## References
 - PSETAE GitHub Repository
