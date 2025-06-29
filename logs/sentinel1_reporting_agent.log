@@ -43,3 +43,5 @@
 2025-06-29 22:59:31,372 - sentinel1_reporting_agent - INFO - Retrieved 0 tasks
 2025-06-29 22:59:41,378 - sentinel1_reporting_agent - ERROR - Failed to get tasks: 404 Client Error: Not Found for url: http://localhost:8080/api/tasks?assigned_to=sentinel1-reporting-agent&status=pending
 2025-06-29 22:59:41,378 - sentinel1_reporting_agent - INFO - Retrieved 0 tasks
+2025-06-29 22:59:51,384 - sentinel1_reporting_agent - ERROR - Failed to get tasks: 404 Client Error: Not Found for url: http://localhost:8080/api/tasks?assigned_to=sentinel1-reporting-agent&status=pending
+2025-06-29 22:59:51,384 - sentinel1_reporting_agent - INFO - Retrieved 0 tasks
