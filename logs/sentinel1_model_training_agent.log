@@ -472,3 +472,520 @@ TypeError: ufunc 'divide' not supported for the input types, and the inputs coul
            ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
 
+2025-06-28 20:23:18,688 - sentinel1_model_training_agent - INFO - Agent token validated successfully
+2025-06-28 20:23:18,688 - sentinel1_model_training_agent - INFO - Sentinel-1 Model Training Agent initialized with ID: sentinel1-model-training-agent
+2025-06-28 20:23:18,695 - sentinel1_model_training_agent - INFO - Retrieved 1 tasks
+2025-06-28 20:23:18,695 - sentinel1_model_training_agent - INFO - Processing task 2e915398-3135-43f8-bac3-c23e510d9e6d: Sentinel-1 Model Training 2025-06-28
+2025-06-28 20:23:18,695 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 1/4)
+2025-06-28 20:23:18,699 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:23:20,699 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 2/4)
+2025-06-28 20:23:20,704 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:23:24,704 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 3/4)
+2025-06-28 20:23:24,708 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:23:32,710 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 4/4)
+2025-06-28 20:23:32,714 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:23:32,715 - sentinel1_model_training_agent - ERROR - Failed to update task 2e915398-3135-43f8-bac3-c23e510d9e6d status after 4 attempts
+2025-06-28 20:23:32,715 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\traindirectory --val_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\validationdirectory --test_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --res_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1 --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 210
+2025-06-28 20:23:39,583 - sentinel1_model_training_agent - ERROR - Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 239, in main
+    model = PseTae(**model_config)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\stclassifier.py", line 24, in __init__
+    self.temporal_encoder = TemporalAttentionEncoder(in_channels=mlp2[-1], n_head=n_head, d_k=d_k, d_model=d_model,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 59, in __init__
+    get_sinusoid_encoding_table(n_positions, self.in_channels, T=T),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 195, in get_sinusoid_encoding_table
+    sinusoid_table = np.array([get_posi_angle_vec(pos_i) for pos_i in positions])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 193, in get_posi_angle_vec
+    return [cal_angle(position, hid_j) for hid_j in range(d_hid)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 190, in cal_angle
+    return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+2025-06-28 20:23:39,583 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 239, in main
+    model = PseTae(**model_config)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\stclassifier.py", line 24, in __init__
+    self.temporal_encoder = TemporalAttentionEncoder(in_channels=mlp2[-1], n_head=n_head, d_k=d_k, d_model=d_model,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 59, in __init__
+    get_sinusoid_encoding_table(n_positions, self.in_channels, T=T),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 195, in get_sinusoid_encoding_table
+    sinusoid_table = np.array([get_posi_angle_vec(pos_i) for pos_i in positions])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 193, in get_posi_angle_vec
+    return [cal_angle(position, hid_j) for hid_j in range(d_hid)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 190, in cal_angle
+    return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+2025-06-28 20:23:39,584 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 239, in main
+    model = PseTae(**model_config)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\stclassifier.py", line 24, in __init__
+    self.temporal_encoder = TemporalAttentionEncoder(in_channels=mlp2[-1], n_head=n_head, d_k=d_k, d_model=d_model,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 59, in __init__
+    get_sinusoid_encoding_table(n_positions, self.in_channels, T=T),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 195, in get_sinusoid_encoding_table
+    sinusoid_table = np.array([get_posi_angle_vec(pos_i) for pos_i in positions])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 193, in get_posi_angle_vec
+    return [cal_angle(position, hid_j) for hid_j in range(d_hid)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 190, in cal_angle
+    return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+2025-06-28 20:29:11,596 - sentinel1_model_training_agent - INFO - Agent token validated successfully
+2025-06-28 20:29:11,597 - sentinel1_model_training_agent - INFO - Sentinel-1 Model Training Agent initialized with ID: sentinel1-model-training-agent
+2025-06-28 20:29:11,601 - sentinel1_model_training_agent - INFO - Retrieved 1 tasks
+2025-06-28 20:29:11,601 - sentinel1_model_training_agent - INFO - Processing task 2e915398-3135-43f8-bac3-c23e510d9e6d: Sentinel-1 Model Training 2025-06-28
+2025-06-28 20:29:11,602 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 1/4)
+2025-06-28 20:29:11,604 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:29:13,605 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 2/4)
+2025-06-28 20:29:13,609 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:29:17,610 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 3/4)
+2025-06-28 20:29:17,613 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:29:25,615 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 4/4)
+2025-06-28 20:29:25,619 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:29:25,619 - sentinel1_model_training_agent - ERROR - Failed to update task 2e915398-3135-43f8-bac3-c23e510d9e6d status after 4 attempts
+2025-06-28 20:29:25,619 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\traindirectory --val_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\validationdirectory --test_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --res_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1 --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366.0 --lms 210 --n_head 4 --d_k 32
+2025-06-28 20:29:32,345 - sentinel1_model_training_agent - ERROR - Model training failed: usage: train.py [-h] [--dataset_folder DATASET_FOLDER]
+                [--dataset_folder2 DATASET_FOLDER2] [--val_folder VAL_FOLDER]
+                [--test_folder TEST_FOLDER] [--sensor SENSOR]
+                [--minimum_sampling MINIMUM_SAMPLING] [--res_dir RES_DIR]
+                [--num_workers NUM_WORKERS] [--rdm_seed RDM_SEED]
+                [--device DEVICE] [--display_step DISPLAY_STEP] [--preload]
+                [--epochs EPOCHS] [--batch_size BATCH_SIZE] [--lr LR]
+                [--gamma GAMMA] [--npixel NPIXEL] [--input_dim INPUT_DIM]
+                [--mlp1 MLP1] [--pooling POOLING] [--mlp2 MLP2]
+                [--geomfeat GEOMFEAT] [--n_head N_HEAD] [--d_k D_K]
+                [--mlp3 MLP3] [--T T] [--positions POSITIONS] [--lms LMS]
+                [--dropout DROPOUT] [--num_classes NUM_CLASSES] [--mlp4 MLP4]
+train.py: error: argument --T: invalid int value: '366.0'
+
+2025-06-28 20:29:32,346 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: usage: train.py [-h] [--dataset_folder DATASET_FOLDER]
+                [--dataset_folder2 DATASET_FOLDER2] [--val_folder VAL_FOLDER]
+                [--test_folder TEST_FOLDER] [--sensor SENSOR]
+                [--minimum_sampling MINIMUM_SAMPLING] [--res_dir RES_DIR]
+                [--num_workers NUM_WORKERS] [--rdm_seed RDM_SEED]
+                [--device DEVICE] [--display_step DISPLAY_STEP] [--preload]
+                [--epochs EPOCHS] [--batch_size BATCH_SIZE] [--lr LR]
+                [--gamma GAMMA] [--npixel NPIXEL] [--input_dim INPUT_DIM]
+                [--mlp1 MLP1] [--pooling POOLING] [--mlp2 MLP2]
+                [--geomfeat GEOMFEAT] [--n_head N_HEAD] [--d_k D_K]
+                [--mlp3 MLP3] [--T T] [--positions POSITIONS] [--lms LMS]
+                [--dropout DROPOUT] [--num_classes NUM_CLASSES] [--mlp4 MLP4]
+train.py: error: argument --T: invalid int value: '366.0'
+
+2025-06-28 20:29:32,346 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: usage: train.py [-h] [--dataset_folder DATASET_FOLDER]
+                [--dataset_folder2 DATASET_FOLDER2] [--val_folder VAL_FOLDER]
+                [--test_folder TEST_FOLDER] [--sensor SENSOR]
+                [--minimum_sampling MINIMUM_SAMPLING] [--res_dir RES_DIR]
+                [--num_workers NUM_WORKERS] [--rdm_seed RDM_SEED]
+                [--device DEVICE] [--display_step DISPLAY_STEP] [--preload]
+                [--epochs EPOCHS] [--batch_size BATCH_SIZE] [--lr LR]
+                [--gamma GAMMA] [--npixel NPIXEL] [--input_dim INPUT_DIM]
+                [--mlp1 MLP1] [--pooling POOLING] [--mlp2 MLP2]
+                [--geomfeat GEOMFEAT] [--n_head N_HEAD] [--d_k D_K]
+                [--mlp3 MLP3] [--T T] [--positions POSITIONS] [--lms LMS]
+                [--dropout DROPOUT] [--num_classes NUM_CLASSES] [--mlp4 MLP4]
+train.py: error: argument --T: invalid int value: '366.0'
+
+2025-06-28 20:30:31,601 - sentinel1_model_training_agent - INFO - Agent token validated successfully
+2025-06-28 20:30:31,601 - sentinel1_model_training_agent - INFO - Sentinel-1 Model Training Agent initialized with ID: sentinel1-model-training-agent
+2025-06-28 20:30:31,602 - sentinel1_model_training_agent - INFO - Retrieved 1 tasks
+2025-06-28 20:30:31,602 - sentinel1_model_training_agent - INFO - Processing task 2e915398-3135-43f8-bac3-c23e510d9e6d: Sentinel-1 Model Training 2025-06-28
+2025-06-28 20:30:31,602 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 1/4)
+2025-06-28 20:30:31,609 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:30:33,610 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 2/4)
+2025-06-28 20:30:33,614 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:30:37,615 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 3/4)
+2025-06-28 20:30:37,619 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:30:45,620 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 4/4)
+2025-06-28 20:30:45,624 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:30:45,624 - sentinel1_model_training_agent - ERROR - Failed to update task 2e915398-3135-43f8-bac3-c23e510d9e6d status after 4 attempts
+2025-06-28 20:30:45,624 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\traindirectory --val_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\validationdirectory --test_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --res_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1 --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 210 --n_head 4 --d_k 32
+2025-06-28 20:30:52,596 - sentinel1_model_training_agent - ERROR - Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 239, in main
+    model = PseTae(**model_config)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\stclassifier.py", line 24, in __init__
+    self.temporal_encoder = TemporalAttentionEncoder(in_channels=mlp2[-1], n_head=n_head, d_k=d_k, d_model=d_model,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 59, in __init__
+    get_sinusoid_encoding_table(n_positions, self.in_channels, T=T),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 195, in get_sinusoid_encoding_table
+    sinusoid_table = np.array([get_posi_angle_vec(pos_i) for pos_i in positions])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 193, in get_posi_angle_vec
+    return [cal_angle(position, hid_j) for hid_j in range(d_hid)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 190, in cal_angle
+    return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+2025-06-28 20:30:52,597 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 239, in main
+    model = PseTae(**model_config)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\stclassifier.py", line 24, in __init__
+    self.temporal_encoder = TemporalAttentionEncoder(in_channels=mlp2[-1], n_head=n_head, d_k=d_k, d_model=d_model,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 59, in __init__
+    get_sinusoid_encoding_table(n_positions, self.in_channels, T=T),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 195, in get_sinusoid_encoding_table
+    sinusoid_table = np.array([get_posi_angle_vec(pos_i) for pos_i in positions])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 193, in get_posi_angle_vec
+    return [cal_angle(position, hid_j) for hid_j in range(d_hid)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 190, in cal_angle
+    return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+2025-06-28 20:30:52,597 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 239, in main
+    model = PseTae(**model_config)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\stclassifier.py", line 24, in __init__
+    self.temporal_encoder = TemporalAttentionEncoder(in_channels=mlp2[-1], n_head=n_head, d_k=d_k, d_model=d_model,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 59, in __init__
+    get_sinusoid_encoding_table(n_positions, self.in_channels, T=T),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 195, in get_sinusoid_encoding_table
+    sinusoid_table = np.array([get_posi_angle_vec(pos_i) for pos_i in positions])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 193, in get_posi_angle_vec
+    return [cal_angle(position, hid_j) for hid_j in range(d_hid)]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\models\tae.py", line 190, in cal_angle
+    return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: ufunc 'divide' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+2025-06-28 20:43:52,499 - sentinel1_model_training_agent - INFO - Agent token validated successfully
+2025-06-28 20:43:52,499 - sentinel1_model_training_agent - INFO - Sentinel-1 Model Training Agent initialized with ID: sentinel1-model-training-agent
+2025-06-28 20:43:52,504 - sentinel1_model_training_agent - INFO - Retrieved 2 tasks
+2025-06-28 20:43:52,504 - sentinel1_model_training_agent - INFO - Processing task 2e915398-3135-43f8-bac3-c23e510d9e6d: Sentinel-1 Model Training 2025-06-28
+2025-06-28 20:43:52,504 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 1/4)
+2025-06-28 20:43:52,504 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:43:54,508 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 2/4)
+2025-06-28 20:43:54,513 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:43:58,514 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 3/4)
+2025-06-28 20:43:58,520 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:44:06,520 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 4/4)
+2025-06-28 20:44:06,525 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:44:06,525 - sentinel1_model_training_agent - ERROR - Failed to update task 2e915398-3135-43f8-bac3-c23e510d9e6d status after 4 attempts
+2025-06-28 20:44:06,525 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\traindirectory --val_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\validationdirectory --test_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --res_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1 --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 180 --n_head 4 --d_k 32 --positions order
+2025-06-28 20:44:13,781 - sentinel1_model_training_agent - ERROR - Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 242, in main
+    model = model.to(device)
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 1343, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 930, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 1329, in convert
+    return t.to(
+           ^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\cuda\__init__.py", line 310, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+
+2025-06-28 20:44:13,781 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 242, in main
+    model = model.to(device)
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 1343, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 930, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 1329, in convert
+    return t.to(
+           ^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\cuda\__init__.py", line 310, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+
+2025-06-28 20:44:13,781 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 242, in main
+    model = model.to(device)
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 1343, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 903, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 930, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\nn\modules\module.py", line 1329, in convert
+    return t.to(
+           ^^^^^
+  File "C:\Users\Shivaprakesh\mambaforge\Lib\site-packages\torch\cuda\__init__.py", line 310, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+
+2025-06-28 20:44:13,781 - sentinel1_model_training_agent - INFO - Processing task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241: Sentinel-1 Model Training 2025-06-28
+2025-06-28 20:44:13,781 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 1/4)
+2025-06-28 20:44:13,787 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:44:15,788 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 2/4)
+2025-06-28 20:44:15,792 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:44:19,793 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 3/4)
+2025-06-28 20:44:19,798 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:44:27,799 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 4/4)
+2025-06-28 20:44:27,803 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:44:27,803 - sentinel1_model_training_agent - ERROR - Failed to update task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status after 4 attempts
+2025-06-28 20:44:27,803 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\traindirectory --val_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\validationdirectory --test_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\testdirectory --res_dir d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\model_output --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 180 --n_head 4 --d_k 32 --positions order
+2025-06-28 20:44:34,721 - sentinel1_model_training_agent - ERROR - Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-28 20:44:34,721 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-28 20:44:34,721 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-28 20:45:58,097 - sentinel1_model_training_agent - INFO - Agent token validated successfully
+2025-06-28 20:45:58,097 - sentinel1_model_training_agent - INFO - Sentinel-1 Model Training Agent initialized with ID: sentinel1-model-training-agent
+2025-06-28 20:45:58,102 - sentinel1_model_training_agent - INFO - Retrieved 3 tasks
+2025-06-28 20:45:58,103 - sentinel1_model_training_agent - INFO - Processing task 2e915398-3135-43f8-bac3-c23e510d9e6d: Sentinel-1 Model Training 2025-06-28
+2025-06-28 20:45:58,103 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 1/4)
+2025-06-28 20:45:58,106 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:46:00,107 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 2/4)
+2025-06-28 20:46:00,112 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:46:04,112 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 3/4)
+2025-06-28 20:46:04,117 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:46:12,118 - sentinel1_model_training_agent - INFO - Updating task 2e915398-3135-43f8-bac3-c23e510d9e6d status to 'in_progress' (attempt 4/4)
+2025-06-28 20:46:12,122 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-28 20:46:12,123 - sentinel1_model_training_agent - ERROR - Failed to update task 2e915398-3135-43f8-bac3-c23e510d9e6d status after 4 attempts
+2025-06-28 20:46:12,123 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\traindirectory --val_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\validationdirectory --test_folder D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\sentinel1_data\testdirectory --res_dir D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1 --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 180 --n_head 4 --d_k 32 --positions order
+2025-06-29 00:14:41,904 - sentinel1_model_training_agent - INFO - Model training completed successfully
+2025-06-29 00:14:41,907 - sentinel1_model_training_agent - ERROR - Error training model: No model files found in D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1
+2025-06-29 00:14:41,907 - sentinel1_model_training_agent - ERROR - Error processing task: No model files found in D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\models\sentinel1
+2025-06-29 00:14:41,907 - sentinel1_model_training_agent - INFO - Processing task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241: Sentinel-1 Model Training 2025-06-28
+2025-06-29 00:14:41,907 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 1/4)
+2025-06-29 00:14:41,913 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:14:43,913 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 2/4)
+2025-06-29 00:14:43,917 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:14:47,919 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 3/4)
+2025-06-29 00:14:47,924 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:14:55,926 - sentinel1_model_training_agent - INFO - Updating task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status to 'in_progress' (attempt 4/4)
+2025-06-29 00:14:55,931 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:14:55,931 - sentinel1_model_training_agent - ERROR - Failed to update task 76bdd4f3-e5c6-4617-9a9c-c192ebd4d241 status after 4 attempts
+2025-06-29 00:14:55,931 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\traindirectory --val_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\validationdirectory --test_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\testdirectory --res_dir d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\model_output --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 180 --n_head 4 --d_k 32 --positions order
+2025-06-29 00:15:02,474 - sentinel1_model_training_agent - ERROR - Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-29 00:15:02,475 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-29 00:15:02,475 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-29 00:15:02,475 - sentinel1_model_training_agent - INFO - Processing task b9af4583-f890-4d5a-8c40-7cd429a434b1: Sentinel-1 Model Training 2025-06-28
+2025-06-29 00:15:02,475 - sentinel1_model_training_agent - INFO - Updating task b9af4583-f890-4d5a-8c40-7cd429a434b1 status to 'in_progress' (attempt 1/4)
+2025-06-29 00:15:02,480 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:15:04,481 - sentinel1_model_training_agent - INFO - Updating task b9af4583-f890-4d5a-8c40-7cd429a434b1 status to 'in_progress' (attempt 2/4)
+2025-06-29 00:15:04,482 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:15:08,488 - sentinel1_model_training_agent - INFO - Updating task b9af4583-f890-4d5a-8c40-7cd429a434b1 status to 'in_progress' (attempt 3/4)
+2025-06-29 00:15:08,494 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:15:16,495 - sentinel1_model_training_agent - INFO - Updating task b9af4583-f890-4d5a-8c40-7cd429a434b1 status to 'in_progress' (attempt 4/4)
+2025-06-29 00:15:16,498 - sentinel1_model_training_agent - WARNING - Failed to update task status: {"detail":"Method Not Allowed"}
+2025-06-29 00:15:16,498 - sentinel1_model_training_agent - ERROR - Failed to update task b9af4583-f890-4d5a-8c40-7cd429a434b1 status after 4 attempts
+2025-06-29 00:15:16,498 - sentinel1_model_training_agent - INFO - Executing model training: C:\Users\Shivaprakesh\mambaforge\python.exe D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py --dataset_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\traindirectory --val_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\validationdirectory --test_folder d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\testdirectory --res_dir d:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\output\model_output --epochs 100 --batch_size 32 --lr 0.0001 --sensor S1 --input_dim 2 --mlp1 [2,32,64] --num_classes 10 --geomfeat 0 --T 366 --lms 180 --n_head 4 --d_k 32 --positions order
+2025-06-29 00:15:23,131 - sentinel1_model_training_agent - ERROR - Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-29 00:15:23,131 - sentinel1_model_training_agent - ERROR - Error training model: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+
+2025-06-29 00:15:23,131 - sentinel1_model_training_agent - ERROR - Error processing task: Model training failed: Traceback (most recent call last):
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 361, in <module>
+    main(config)
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 224, in main
+    loaders = get_loaders(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 114, in get_loaders
+    train_dataset = get_pse('dataset_folder', config)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\train.py", line 104, in get_pse
+    dt = PixelSetData(config[folder], labels='CODE_GROUP', npixel=config['npixel'],
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Semester4\ProjectVijayapur\psetae\psetae_all_github\mcp_server_psetae\tools\psetae_model\single_sensor\dataset.py", line 50, in __init__
+    l = [f for f in os.listdir(self.data_folder) if f.endswith('.npy')]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'd:\\Semester4\\ProjectVijayapur\\psetae\\psetae_all_github\\mcp_server_psetae\\output\\traindirectory\\DATA'
+

@@ -220,7 +220,12 @@ class Sentinel1ModelTrainingAgent:
                 "--input_dim", str(input_dim),
                 "--mlp1", mlp1_str,
                 "--num_classes", str(num_classes),
-                "--geomfeat", "0"  # Disable geometric features to avoid pandas error
+                "--geomfeat", str(0),  # Disable geometric features to avoid pandas error
+                "--T", str(366),  # Temporal encoding parameter as integer
+                "--lms", str(180),  # LMS parameter (max sequence length) as per documentation
+                "--n_head", str(4),  # Number of attention heads
+                "--d_k", str(32),  # Dimension of key and query vectors
+                "--positions", "order"  # Position encoding type
             ]
             
             # Execute command

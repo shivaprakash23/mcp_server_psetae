@@ -126,7 +126,18 @@ mcp_server_psetae/
    - **Script Location**: The agent must use the correct version of `sentinel_extraction.py` from `mcp_server_psetae/tools/satellite_data_extraction_gee/`
    - **Task Switching**: The agent implements task tracking to prevent task repetition and ensure proper sequential processing of test, validation, and training splits
    - If tasks are being repeated or overwritten, check that task status updates are working correctly
-7. Execute workflow through Admin Agent
+7. **CRITICAL - SENTINEL1 MODEL TRAINING AGENT CONSIDERATIONS**:
+   - **Temporal Encoding Parameters**: The agent MUST pass the following parameters to avoid errors in the temporal attention encoder:
+     - `--T 366` (temporal period, must be an integer)
+     - `--lms 180` (maximum sequence length, must be an integer)
+     - `--positions order` (position encoding type)
+   - **Attention Parameters**: The agent MUST explicitly pass these parameters to ensure proper initialization:
+     - `--n_head 4` (number of attention heads)
+     - `--d_k 32` (dimension of key and query vectors)
+   - **Geometric Features**: Set `--geomfeat 0` to disable geometric features and avoid pandas errors
+   - **CPU Fallback**: The training script has been modified to automatically use CPU if CUDA is not available
+   - **Parameter Type Enforcement**: All numeric parameters must be properly passed as strings in the subprocess call, which will be correctly parsed as integers by the argparse module
+8. Execute workflow through Admin Agent
 
 ## References
 - PSETAE GitHub Repository

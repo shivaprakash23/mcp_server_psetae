@@ -187,7 +187,8 @@ def get_sinusoid_encoding_table(positions, d_hid, T=1000):
         positions = list(range(positions))
 
     def cal_angle(position, hid_idx):
-        return position / np.power(T, 2 * (hid_idx // 2) / d_hid)
+        # Convert position to float to ensure proper division
+        return float(position) / np.power(float(T), 2 * (hid_idx // 2) / d_hid)
 
     def get_posi_angle_vec(position):
         return [cal_angle(position, hid_j) for hid_j in range(d_hid)]

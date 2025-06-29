@@ -310,7 +310,7 @@ if __name__ == '__main__':
     parser.add_argument('--res_dir', default='./results', help='Path to the folder where the results should be stored')
     parser.add_argument('--num_workers', default=8, type=int, help='Number of data loading workers')
     parser.add_argument('--rdm_seed', default=1, type=int, help='Random seed')
-    parser.add_argument('--device', default='cuda', type=str,
+    parser.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu', type=str,
                         help='Name of device to use for tensor computations (cuda/cpu)')
     parser.add_argument('--display_step', default=50, type=int,
                         help='Interval in batches between display of training metrics')
