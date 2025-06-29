@@ -29,14 +29,16 @@ def create_reporting_task(server_url, token, model_dir, output_dir):
     current_date = datetime.now().strftime("%Y-%m-%d")
     task_payload = {
         "title": f"Sentinel-1 Model Results Report {current_date}",
+        "description": f"Generate a summary report for Sentinel-1 model results from {model_dir}",
         "assigned_to": "sentinel1-reporting-agent",
+        "priority": 1,
         "metadata": metadata
     }
     
     # Send request to create task
     response = requests.post(
-        f"{server_url}/api/tasks",
-        headers={"Authorization": f"Bearer {token}"},
+        f"{server_url}/api/tasks/create",
+        params={"token": token},
         json=task_payload
     )
     

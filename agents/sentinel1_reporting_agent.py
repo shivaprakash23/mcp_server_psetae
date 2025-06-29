@@ -72,13 +72,13 @@ class Sentinel1ReportingAgent:
         """
         try:
             response = requests.get(
-                f"{self.server_url}/api/tasks",
-                headers={"Authorization": f"Bearer {self.token}"},
-                params={"assigned_to": self.agent_id, "status": "pending"}
+                f"{self.server_url}/api/tasks/{self.agent_id}",
+                params={"token": self.token}
             )
             response.raise_for_status()
-            tasks = response.json()
-            return tasks
+            result = response.json()
+            self.logger.info(f"Retrieved {len(result.get('tasks', []))} tasks")
+            return result.get('tasks', [])
         except requests.exceptions.RequestException as e:
             self.logger.error(f"Failed to get tasks: {e}")
             return []
@@ -98,9 +98,9 @@ class Sentinel1ReportingAgent:
         for attempt in range(1, max_retries + 1):
             try:
                 self.logger.info(f"Updating task {task_id} status to '{status}' (attempt {attempt}/{max_retries})")
-                response = requests.patch(
-                    f"{self.server_url}/api/tasks/{task_id}",
-                    headers={"Authorization": f"Bearer {self.token}"},
+                response = requests.put(
+                    f"{self.server_url}/api/tasks/{task_id}/status",
+                    params={"token": self.token},
                     json={"status": status}
                 )
                 response.raise_for_status()
@@ -120,7 +120,7 @@ class Sentinel1ReportingAgent:
         Args:
             task (dict): Task information
         """
-        task_id = task["task_id"]
+        task_id = task["id"]
         self.logger.info(f"Processing task {task_id}: {task.get('title', 'No title')}")
         
         # Update task status to in_progress
@@ -129,7 +129,16 @@ class Sentinel1ReportingAgent:
         
         try:
             # Extract metadata from task
-            metadata = task.get("metadata", {})
+            metadata = task.get("metadata", "{}")
+            
+            # Parse metadata if it's a string
+            if isinstance(metadata, str):
+                try:
+                    metadata = json.loads(metadata)
+                except json.JSONDecodeError:
+                    self.logger.error(f"Failed to parse metadata as JSON: {metadata}")
+                    metadata = {}
+            
             model_dir = metadata.get("model_dir", "")
             output_dir = metadata.get("output_dir", "")
             
