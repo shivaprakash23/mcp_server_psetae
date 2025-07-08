@@ -26,6 +26,7 @@ This repository implements a Model Context Protocol (MCP) server that coordinate
   - **Sentinel1ModelTrainingAgent**: Manages model training and hyperparameter tuning for Sentinel-1
   - **Sentinel1InferenceAgent**: Applies Sentinel-1 models to new data
   - **Sentinel1TileCoverageAgent**: Analyzes satellite tile coverage for study areas
+  - **Sentinel1DocumentationAgent**: Prepares the report based on the results of the PSETAE model that got trained.
 
 ## Installation
 
